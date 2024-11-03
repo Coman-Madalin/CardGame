@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+
 import engineer.comanmadalin.actions.BaseAction;
-import engineer.comanmadalin.cards.BaseCard;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.game.GameConditions;
 
@@ -23,12 +23,14 @@ public class GameDeserializer extends StdDeserializer<Game> {
         JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
         Game toReturnGame = new Game();
-        toReturnGame.setGameConditions(root.get("startGame").traverse(jsonParser.getCodec()).readValueAs(GameConditions.class));
+        toReturnGame.setGameConditions(root.get("startGame")
+                .traverse(jsonParser.getCodec())
+                .readValueAs(GameConditions.class));
 
         ArrayNode actions = (ArrayNode) root.get("actions");
         for (JsonNode action : actions) {
             JsonParser jsonParserAction = action.traverse(jsonParser.getCodec());
-            jsonParserAction.nextToken();
+
             toReturnGame.getActions().add(jsonParserAction.readValueAs(BaseAction.class));
         }
 

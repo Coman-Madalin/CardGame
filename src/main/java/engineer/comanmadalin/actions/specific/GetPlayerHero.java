@@ -13,4 +13,10 @@ public class GetPlayerHero extends BaseAction {
 
     public GetPlayerHero(String playerID) {
         this.playerID = Integer.parseInt(playerID);
-    }}
+    }
+
+    @Override
+    public void run(Object... params) {
+
+    }
+}

@@ -2,12 +2,11 @@ package engineer.comanmadalin.deserializers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import engineer.comanmadalin.cards.BaseCard;
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+
+import engineer.comanmadalin.cards.BaseCard;
 import engineer.comanmadalin.cards.hero.specific.EmpressThorina;
 import engineer.comanmadalin.cards.hero.specific.GeneralKocioraw;
 import engineer.comanmadalin.cards.hero.specific.KingMudface;
@@ -30,14 +29,6 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
         super(vc);
     }
 
-    protected BaseCardDeserializer(JavaType valueType) {
-        super(valueType);
-    }
-
-    protected BaseCardDeserializer(StdDeserializer<?> src) {
-        super(src);
-    }
-
     private static final HashMap<String, Class<?>> nameToMinionClass = new HashMap<>() {{
         put("Sentinel", Sentinel.class);
         put("Warden", Warden.class);
@@ -58,7 +49,7 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
     }};
 
     @Override
-    public BaseCard deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JacksonException {
+    public BaseCard deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException {
         JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
         String name = root.get("name").asText();

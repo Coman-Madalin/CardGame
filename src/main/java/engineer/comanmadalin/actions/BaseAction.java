@@ -9,9 +9,7 @@ import lombok.ToString;
 @ToString
 public abstract class BaseAction {
     private String command;
+    private String error;
 
-    public BaseAction() {
-        command = "";
-    }
-
+    public abstract void run(Object... params);
 }

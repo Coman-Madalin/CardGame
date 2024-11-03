@@ -9,4 +9,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class GetPlayerTurn extends BaseAction {
+    @Override
+    public void run(Object... params) {
+
+    }
 }
