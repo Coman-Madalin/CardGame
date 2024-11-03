@@ -2,7 +2,6 @@ package engineer.comanmadalin.game;
 
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.player.Player;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

@@ -1,11 +1,10 @@
 package engineer.comanmadalin.deserializers;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import engineer.comanmadalin.cards.BaseCard;
 import engineer.comanmadalin.cards.hero.specific.EmpressThorina;
 import engineer.comanmadalin.cards.hero.specific.GeneralKocioraw;
@@ -25,10 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
-    public BaseCardDeserializer(Class<?> vc) {
-        super(vc);
-    }
-
     private static final HashMap<String, Class<?>> nameToMinionClass = new HashMap<>() {{
         put("Sentinel", Sentinel.class);
         put("Warden", Warden.class);
@@ -40,13 +35,16 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
         put("The Cursed One", TheCursedOne.class);
         put("Disciple", Disciple.class);
     }};
-
     private static final HashMap<String, Class<?>> nameToHeroClass = new HashMap<>() {{
         put("Lord Royce", LordRoyce.class);
         put("Empress Thorina", EmpressThorina.class);
         put("King Mudface", KingMudface.class);
         put("General Kocioraw", GeneralKocioraw.class);
     }};
+
+    public BaseCardDeserializer(Class<?> vc) {
+        super(vc);
+    }
 
     @Override
     public BaseCard deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException {

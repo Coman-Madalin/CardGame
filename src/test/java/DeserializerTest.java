@@ -1,11 +1,10 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import engineer.comanmadalin.game.Input;
+import engineer.comanmadalin.utils.JsonUtils;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import engineer.comanmadalin.utils.JsonUtils;
-import org.junit.jupiter.api.Test;
 
 public class DeserializerTest {
 
@@ -16,5 +15,5 @@ public class DeserializerTest {
                 Input.class);
 
         System.out.println(inputData);
-}
+    }
 }

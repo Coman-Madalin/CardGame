@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.game.GameConditions;

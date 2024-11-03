@@ -8,8 +8,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public final class Coordinates {
-   private int x, y;
+    private int x, y;
 
-   public Coordinates() {
-   }
+    public Coordinates() {
+    }
 }

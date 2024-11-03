@@ -5,28 +5,29 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import engineer.comanmadalin.actions.BaseAction;
-import engineer.comanmadalin.actions.specific.*;
+import engineer.comanmadalin.actions.specific.GetPlayerDeck;
+import engineer.comanmadalin.actions.specific.GetPlayerHero;
+import engineer.comanmadalin.actions.specific.GetPlayerTurn;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
-    public BaseActionDeserializer(Class<?> vc) {
-        super(vc);
-    }
-
     private static final HashMap<String, String[]> nameToArguments = new HashMap<>() {{
         put("getPlayerDeck", new String[]{"playerIdx"});
         put("getPlayerHero", new String[]{"playerIdx"});
         put("getPlayerTurn", new String[0]);
     }};
-
     private static final HashMap<String, Class<?>> nameToActionClass = new HashMap<>() {{
         put("getPlayerDeck", GetPlayerDeck.class);
         put("getPlayerHero", GetPlayerHero.class);
         put("getPlayerTurn", GetPlayerTurn.class);
     }};
+
+    public BaseActionDeserializer(Class<?> vc) {
+        super(vc);
+    }
 
     @Override
     public BaseAction deserialize(JsonParser jsonParser, DeserializationContext ctxt)

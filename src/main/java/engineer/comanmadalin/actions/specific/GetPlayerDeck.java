@@ -15,7 +15,7 @@ import lombok.ToString;
 public class GetPlayerDeck extends BaseAction {
     private int playerID;
 
-    public GetPlayerDeck(String command,String playerID) {
+    public GetPlayerDeck(String command, String playerID) {
         super(command);
         this.playerID = Integer.parseInt(playerID);
     }
