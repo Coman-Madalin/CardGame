@@ -5,7 +5,10 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.actions.specific.GetPlayerDeck;
+import engineer.comanmadalin.actions.specific.GetPlayerHero;
+import engineer.comanmadalin.actions.specific.GetPlayerTurn;
 import engineer.comanmadalin.cards.BaseCard;
+import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.deck.Deck;
 import engineer.comanmadalin.deck.PlayerDecks;
 import engineer.comanmadalin.deserializers.*;
@@ -13,9 +16,12 @@ import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.game.GameConditions;
 import engineer.comanmadalin.game.Input;
 import engineer.comanmadalin.serializers.BaseCardSerializer;
+import engineer.comanmadalin.serializers.BaseHeroSerializer;
 import engineer.comanmadalin.serializers.DeckSerializer;
 import engineer.comanmadalin.serializers.GameSerializer;
 import engineer.comanmadalin.serializers.actions.GetPlayerDeckSerializer;
+import engineer.comanmadalin.serializers.actions.GetPlayerHeroSerializer;
+import engineer.comanmadalin.serializers.actions.GetPlayerTurnSerializer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,9 +44,12 @@ public class JsonUtils {
     private static final SimpleModule customSerializers = new SimpleModule() {{
         addSerializer(Game.class, new GameSerializer(Game.class));
         addSerializer(Deck.class, new DeckSerializer(Deck.class));
+        addSerializer(BaseHero.class, new BaseHeroSerializer(BaseHero.class));
         addSerializer(BaseCard.class, new BaseCardSerializer(BaseCard.class));
 
         addSerializer(GetPlayerDeck.class, new GetPlayerDeckSerializer(GetPlayerDeck.class));
+        addSerializer(GetPlayerHero.class, new GetPlayerHeroSerializer(GetPlayerHero.class));
+        addSerializer(GetPlayerTurn.class, new GetPlayerTurnSerializer(GetPlayerTurn.class));
     }};
 
 

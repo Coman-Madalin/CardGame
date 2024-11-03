@@ -15,6 +15,7 @@ public class GetPlayerTurn extends BaseAction {
 
     @Override
     public void run(Object... params) {
-
+        Integer turn = (Integer) params[0];
+        this.setResult(String.valueOf(turn));
     }
 }

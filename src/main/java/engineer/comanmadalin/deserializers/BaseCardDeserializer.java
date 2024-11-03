@@ -51,7 +51,7 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
         JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
         String name = root.get("name").asText();
-        int health = 0;
+        int health = 30;
         int mana = root.get("mana").asInt();
         String description = root.get("description").asText();
         ArrayList<String> colors = new ArrayList<>();

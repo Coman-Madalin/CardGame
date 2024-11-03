@@ -21,8 +21,8 @@ public class GetPlayerDeck extends BaseAction {
     }
 
     @Override
-    public void run(Object... args) {
-        Player[] players = (Player[]) args[0];
+    public void run(Object... params) {
+        Player[] players = (Player[]) params[0];
         Player player = players[playerID - 1];
         ObjectMapper mapper = JsonUtils.getObjectMapper();
         String serializedDeck;

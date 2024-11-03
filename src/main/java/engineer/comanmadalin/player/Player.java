@@ -1,5 +1,6 @@
 package engineer.comanmadalin.player;
 
+import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.deck.Deck;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,11 +17,13 @@ import lombok.ToString;
 public class Player {
     Deck hand;
     Deck deck;
+    BaseHero hero;
     int mana;
 
-    public Player() {
+    public Player(Deck deck, BaseHero hero) {
         hand = new Deck();
-        deck = new Deck();
+        this.deck = deck;
+        this.hero = hero;
         mana = 0;
     }
 
