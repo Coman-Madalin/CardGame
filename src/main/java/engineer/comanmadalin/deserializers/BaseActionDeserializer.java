@@ -8,6 +8,7 @@ import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.actions.specific.*;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
@@ -34,8 +35,9 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
 
         String command = root.get("command").asText();
         String[] argumentsNameArray = nameToArguments.get(command);
-        String[] argumentsArray = new String[argumentsNameArray.length];
-        int index = 0;
+        String[] argumentsArray = new String[argumentsNameArray.length + 1];
+        argumentsArray[0] = command;
+        int index = 1;
         for (String s : argumentsNameArray) {
             argumentsArray[index] = root.get(s).asText();
             index++;
@@ -44,10 +46,9 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         Class<?> clazz = nameToActionClass.get(command);
         Object o;
         try {
-            Class<?>[] argumentTypes = new Class<?>[argumentsNameArray.length];
-            for (int i = 0; i < argumentsNameArray.length; i++) {
-                argumentTypes[i] = String.class;
-            }
+            Class<?>[] argumentTypes = new Class<?>[argumentsNameArray.length + 1];
+            Arrays.fill(argumentTypes, String.class);
+
             o = clazz.getConstructor(argumentTypes).newInstance((Object[]) argumentsArray);
 
         } catch (Exception e) {

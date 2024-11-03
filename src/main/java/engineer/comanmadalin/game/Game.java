@@ -2,6 +2,7 @@ package engineer.comanmadalin.game;
 
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.player.Player;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -25,7 +26,6 @@ public final class Game {
 
     private void playActions(Player[] players) {
         for (BaseAction action : actions) {
-            System.out.println(action);
             action.run((Object) players);
         }
     }
@@ -35,6 +35,7 @@ public final class Game {
             players[i].getHand().getCards()
                     .add(players[i].getDeck().getCards().get(roundNumber));
 
+            players[i].getDeck().getCards().remove(0);
             players[i].addMana(roundNumber + 1);
         }
     }

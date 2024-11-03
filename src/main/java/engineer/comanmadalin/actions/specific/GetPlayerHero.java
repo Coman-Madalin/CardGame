@@ -11,7 +11,8 @@ import lombok.ToString;
 public class GetPlayerHero extends BaseAction {
     private int playerID;
 
-    public GetPlayerHero(String playerID) {
+    public GetPlayerHero(String command, String playerID) {
+        super(command);
         this.playerID = Integer.parseInt(playerID);
     }
 
