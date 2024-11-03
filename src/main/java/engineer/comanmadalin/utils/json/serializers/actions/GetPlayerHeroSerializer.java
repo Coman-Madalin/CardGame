@@ -1,19 +1,19 @@
-package engineer.comanmadalin.serializers.actions;
+package engineer.comanmadalin.utils.json.serializers.actions;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import engineer.comanmadalin.actions.specific.GetPlayerDeck;
+import engineer.comanmadalin.actions.specific.GetPlayerHero;
 
 import java.io.IOException;
 
-public class GetPlayerDeckSerializer extends StdSerializer<GetPlayerDeck> {
-    public GetPlayerDeckSerializer(Class<GetPlayerDeck> t) {
+public class GetPlayerHeroSerializer extends StdSerializer<GetPlayerHero> {
+    public GetPlayerHeroSerializer(Class<GetPlayerHero> t) {
         super(t);
     }
 
     @Override
-    public void serialize(GetPlayerDeck value, JsonGenerator jsonGenerator, SerializerProvider provider)
+    public void serialize(GetPlayerHero value, JsonGenerator jsonGenerator, SerializerProvider provider)
             throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("command", value.getCommand());

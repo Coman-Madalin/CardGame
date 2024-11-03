@@ -1,4 +1,4 @@
-package engineer.comanmadalin.utils;
+package engineer.comanmadalin.utils.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -11,17 +11,17 @@ import engineer.comanmadalin.cards.BaseCard;
 import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.deck.Deck;
 import engineer.comanmadalin.deck.PlayerDecks;
-import engineer.comanmadalin.deserializers.*;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.game.GameConditions;
 import engineer.comanmadalin.game.Input;
-import engineer.comanmadalin.serializers.BaseCardSerializer;
-import engineer.comanmadalin.serializers.BaseHeroSerializer;
-import engineer.comanmadalin.serializers.DeckSerializer;
-import engineer.comanmadalin.serializers.GameSerializer;
-import engineer.comanmadalin.serializers.actions.GetPlayerDeckSerializer;
-import engineer.comanmadalin.serializers.actions.GetPlayerHeroSerializer;
-import engineer.comanmadalin.serializers.actions.GetPlayerTurnSerializer;
+import engineer.comanmadalin.utils.json.deserializers.*;
+import engineer.comanmadalin.utils.json.serializers.BaseCardSerializer;
+import engineer.comanmadalin.utils.json.serializers.BaseHeroSerializer;
+import engineer.comanmadalin.utils.json.serializers.DeckSerializer;
+import engineer.comanmadalin.utils.json.serializers.GameSerializer;
+import engineer.comanmadalin.utils.json.serializers.actions.GetPlayerDeckSerializer;
+import engineer.comanmadalin.utils.json.serializers.actions.GetPlayerHeroSerializer;
+import engineer.comanmadalin.utils.json.serializers.actions.GetPlayerTurnSerializer;
 import lombok.Getter;
 import lombok.Setter;
 

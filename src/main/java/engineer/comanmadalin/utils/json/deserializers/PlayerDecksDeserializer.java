@@ -1,4 +1,4 @@
-package engineer.comanmadalin.deserializers;
+package engineer.comanmadalin.utils.json.deserializers;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

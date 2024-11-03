@@ -1,6 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import engineer.comanmadalin.game.Input;
-import engineer.comanmadalin.utils.JsonUtils;
+import engineer.comanmadalin.utils.json.JsonUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
