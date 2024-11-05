@@ -1,10 +1,8 @@
 package engineer.comanmadalin.game;
 
 import engineer.comanmadalin.actions.BaseAction;
-import engineer.comanmadalin.actions.specific.GetPlayerDeck;
-import engineer.comanmadalin.actions.specific.GetPlayerHero;
-import engineer.comanmadalin.actions.specific.GetPlayerTurn;
 import engineer.comanmadalin.cards.hero.BaseHero;
+import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.deck.Deck;
 import engineer.comanmadalin.player.Player;
 import lombok.Getter;
@@ -13,67 +11,61 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
+
+import static java.lang.Math.min;
 
 @Getter
 @Setter
 @ToString
 public final class Game {
-    private static final HashMap<Class<?>, String> actionToParameters = new HashMap<>() {{
-        put(GetPlayerDeck.class, "players");
-        put(GetPlayerHero.class, "players");
-        put(GetPlayerTurn.class, "round_nr");
-    }};
     private static int GAME_NR = 0;
-    private int roundNumber = 0;
+    Player[] players;
+    private int roundNumber;
+    private List<List<BaseMinionCard>> board;
+    private Boolean nextEndTurnWillEndRound;
+    private int playerIDTurn;
+
     private GameConditions gameConditions;
-    private ArrayList<BaseAction> actions;
+    private List<BaseAction> actions;
 
     public Game() {
         gameConditions = new GameConditions();
         actions = new ArrayList<>();
     }
 
-    private void playersAction(BaseAction action, Player[] players) {
-        action.run((Object) players);
-    }
-
-    private void roundNrAction(BaseAction action) {
-        int currentRound = gameConditions.getStartingPlayer() - 1 + roundNumber;
-        currentRound %= 2;
-        currentRound += 1;
-        action.run(currentRound);
-    }
-
-    private void playActions(Player[] players) {
+    private void playActions() {
         for (BaseAction action : actions) {
-            System.out.println(action.getClass());
-            String specificActionParameters = actionToParameters.get(action.getClass());
-            switch (specificActionParameters) {
-                case "players":
-                    playersAction(action, players);
-                    break;
-                case "round_nr":
-                    roundNrAction(action);
-                    break;
-            }
+            action.run(this);
         }
     }
 
-    private void playRound(Player[] players) {
+    public void startOfRound() {
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
-            players[i].getHand().getCards().add(players[i].getDeck().getCards().get(roundNumber));
+            players[i].getHand().getCards().add(players[i].getDeck().getCards().get(0));
 
             players[i].getDeck().getCards().remove(0);
-            players[i].addMana(roundNumber + 1);
+            players[i].addMana(min(roundNumber + 1, 10));
+        }
+
+        roundNumber += 1;
+    }
+
+    public void setBoard() {
+        board = new ArrayList<>(4);
+        for (int i = 0; i < 4; i++) {
+            board.add(new ArrayList<>(5));
         }
     }
 
     public void runGame() {
+        setBoard();
+        roundNumber = 0;
+        playerIDTurn = gameConditions.getStartingPlayer() - 1;
+        nextEndTurnWillEndRound = false;
         Input inputInstance = Input.getINSTANCE();
-
-        Player[] players = new Player[Input.getMAX_PLAYERS()];
+        players = new Player[Input.getMAX_PLAYERS()];
 
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
             Deck playerDeck = inputInstance.getPlayersData()[i].getDecks().getDecks().get(inputInstance.getPlayersData()[i].getDeckIndexForGame().get(GAME_NR)).clone();
@@ -84,8 +76,7 @@ public final class Game {
             players[i] = new Player(playerDeck, playerHero);
         }
 
-
-        playRound(players);
-        playActions(players);
+        startOfRound();
+        playActions();
     }
 }

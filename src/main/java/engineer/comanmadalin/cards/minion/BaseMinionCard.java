@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Getter
 @Setter
 @ToString
-public class BaseMinionCard extends BaseCard {
+public class BaseMinionCard extends BaseCard implements Cloneable {
     private int attackDamage;
     private Boolean mustBePlaceOnFrontRow;
 
@@ -19,5 +19,13 @@ public class BaseMinionCard extends BaseCard {
         super(mana, health, description, colors, name);
         this.attackDamage = 0;
         mustBePlaceOnFrontRow = null;
+    }
+
+
+    @Override
+    public BaseMinionCard clone() {
+        BaseMinionCard clone = (BaseMinionCard) super.clone();
+        clone.mustBePlaceOnFrontRow = this.mustBePlaceOnFrontRow;
+        return clone;
     }
 }

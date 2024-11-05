@@ -52,7 +52,7 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
 
         String name = root.get("name").asText();
         int health = 30;
-        int mana = root.get("mana").asInt();
+        int manaCost = root.get("mana").asInt();
         String description = root.get("description").asText();
         ArrayList<String> colors = new ArrayList<>();
 
@@ -72,7 +72,7 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
             // This constructor is the one present in BaseCard.java
             o = clazz.getConstructor(int.class, int.class, String.class, ArrayList.class,
                             String.class)
-                    .newInstance(mana, health, description, colors, name);
+                    .newInstance(manaCost, health, description, colors, name);
 
             // If the card is a minion type, we need to set the attack damage
             if (nameToMinionClass.containsKey(name)) {

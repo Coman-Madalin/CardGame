@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import engineer.comanmadalin.actions.BaseAction;
-import engineer.comanmadalin.actions.specific.GetPlayerDeck;
-import engineer.comanmadalin.actions.specific.GetPlayerHero;
-import engineer.comanmadalin.actions.specific.GetPlayerTurn;
+import engineer.comanmadalin.actions.specific.*;
 import engineer.comanmadalin.cards.BaseCard;
 import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.deck.Deck;
@@ -19,9 +17,7 @@ import engineer.comanmadalin.utils.json.serializers.BaseCardSerializer;
 import engineer.comanmadalin.utils.json.serializers.BaseHeroSerializer;
 import engineer.comanmadalin.utils.json.serializers.DeckSerializer;
 import engineer.comanmadalin.utils.json.serializers.GameSerializer;
-import engineer.comanmadalin.utils.json.serializers.actions.GetPlayerDeckSerializer;
-import engineer.comanmadalin.utils.json.serializers.actions.GetPlayerHeroSerializer;
-import engineer.comanmadalin.utils.json.serializers.actions.GetPlayerTurnSerializer;
+import engineer.comanmadalin.utils.json.serializers.actions.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -50,6 +46,13 @@ public class JsonUtils {
         addSerializer(GetPlayerDeck.class, new GetPlayerDeckSerializer(GetPlayerDeck.class));
         addSerializer(GetPlayerHero.class, new GetPlayerHeroSerializer(GetPlayerHero.class));
         addSerializer(GetPlayerTurn.class, new GetPlayerTurnSerializer(GetPlayerTurn.class));
+        addSerializer(GetPlayerMana.class, new GetPlayerManaSerializer(GetPlayerMana.class));
+
+        addSerializer(GetCardsOnTable.class, new GetCardsOnTableSerializer(GetCardsOnTable.class));
+        addSerializer(GetCardsInHand.class, new GetCardsInHandSerializer(GetCardsInHand.class));
+
+        addSerializer(EndPlayerTurn.class, new EmptySerializer<>(EndPlayerTurn.class));
+        addSerializer(PlaceCard.class, new EmptySerializer<>(PlaceCard.class));
     }};
 
 

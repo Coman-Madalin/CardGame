@@ -8,15 +8,13 @@ import engineer.comanmadalin.player.Player;
 import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-public class GetPlayerHero extends BaseAction {
+public class GetCardsInHand extends BaseAction {
     private int playerID;
 
-    public GetPlayerHero(String command, String playerID) {
+    public GetCardsInHand(String command, String playerID) {
         super(command);
         this.playerID = Integer.parseInt(playerID);
     }
@@ -25,14 +23,14 @@ public class GetPlayerHero extends BaseAction {
     public void run(Game game) {
         Player player = game.getPlayers()[playerID - 1];
         ObjectMapper mapper = JsonUtils.getObjectMapper();
-        String serializedHero;
+        String serializedDeck;
 
         try {
-            serializedHero = mapper.writeValueAsString(player.getHero());
+            serializedDeck = mapper.writeValueAsString(player.getHand());
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
 
-        this.setResult(serializedHero);
+        this.setResult(serializedDeck);
     }
 }

@@ -3,6 +3,7 @@ package engineer.comanmadalin.actions.specific;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import engineer.comanmadalin.actions.BaseAction;
+import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.player.Player;
 import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
@@ -21,9 +22,8 @@ public class GetPlayerDeck extends BaseAction {
     }
 
     @Override
-    public void run(Object... params) {
-        Player[] players = (Player[]) params[0];
-        Player player = players[playerID - 1];
+    public void run(Game game) {
+        Player player = game.getPlayers()[playerID - 1];
         ObjectMapper mapper = JsonUtils.getObjectMapper();
         String serializedDeck;
 

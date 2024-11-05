@@ -1,5 +1,6 @@
 package engineer.comanmadalin.actions;
 
+import engineer.comanmadalin.game.Game;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,5 +17,5 @@ public abstract class BaseAction {
         this.command = command;
     }
 
-    public abstract void run(Object... params);
+    public abstract void run(Game game);
 }

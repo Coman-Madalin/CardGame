@@ -15,7 +15,7 @@ public class BaseHeroSerializer extends StdSerializer<BaseHero> {
     @Override
     public void serialize(BaseHero value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeNumberField("mana", value.getMana());
+        jsonGenerator.writeNumberField("mana", value.getManaCost());
         jsonGenerator.writeStringField("description", value.getDescription());
 
         jsonGenerator.writeArrayFieldStart("colors");

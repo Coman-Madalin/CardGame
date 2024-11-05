@@ -16,7 +16,7 @@ public class BaseCardSerializer extends StdSerializer<BaseCard> {
     @Override
     public void serialize(BaseCard value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeNumberField("mana", value.getMana());
+        jsonGenerator.writeNumberField("mana", value.getManaCost());
         jsonGenerator.writeNumberField("attackDamage",
                 ((BaseMinionCard) value).getAttackDamage());
         jsonGenerator.writeNumberField("health", value.getHealth());

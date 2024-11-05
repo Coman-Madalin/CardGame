@@ -7,7 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The `Player` class holds information about a player's deck, hand and mana associated with
+ * The `Player` class holds information about a player's deck, hand and manaCost associated with
  * the player.
  * NOTE: This class is the one that will be changed as particular games are played.
  */

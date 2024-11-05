@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import engineer.comanmadalin.actions.BaseAction;
-import engineer.comanmadalin.actions.specific.GetPlayerDeck;
-import engineer.comanmadalin.actions.specific.GetPlayerHero;
-import engineer.comanmadalin.actions.specific.GetPlayerTurn;
+import engineer.comanmadalin.actions.specific.*;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -15,14 +13,28 @@ import java.util.HashMap;
 
 public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
     private static final HashMap<String, String[]> nameToArguments = new HashMap<>() {{
+        put("getCardsInHand", new String[]{"playerIdx"});
         put("getPlayerDeck", new String[]{"playerIdx"});
         put("getPlayerHero", new String[]{"playerIdx"});
+        put("getPlayerMana", new String[]{"playerIdx"});
+
+        put("placeCard", new String[]{"handIdx"});
+
+        put("getCardsOnTable", new String[0]);
         put("getPlayerTurn", new String[0]);
+        put("endPlayerTurn", new String[0]);
     }};
     private static final HashMap<String, Class<?>> nameToActionClass = new HashMap<>() {{
+        put("getCardsInHand", GetCardsInHand.class);
         put("getPlayerDeck", GetPlayerDeck.class);
         put("getPlayerHero", GetPlayerHero.class);
+        put("getPlayerMana", GetPlayerMana.class);
+
+        put("placeCard", PlaceCard.class);
+
+        put("getCardsOnTable", GetCardsOnTable.class);
         put("getPlayerTurn", GetPlayerTurn.class);
+        put("endPlayerTurn", EndPlayerTurn.class);
     }};
 
     public BaseActionDeserializer(Class<?> vc) {

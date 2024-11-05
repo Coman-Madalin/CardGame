@@ -1,6 +1,7 @@
 package engineer.comanmadalin.actions.specific;
 
 import engineer.comanmadalin.actions.BaseAction;
+import engineer.comanmadalin.game.Game;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,8 +15,7 @@ public class GetPlayerTurn extends BaseAction {
     }
 
     @Override
-    public void run(Object... params) {
-        Integer turn = (Integer) params[0];
-        this.setResult(String.valueOf(turn));
+    public void run(Game game) {
+        this.setResult(String.valueOf(game.getPlayerIDTurn() + 1));
     }
 }
