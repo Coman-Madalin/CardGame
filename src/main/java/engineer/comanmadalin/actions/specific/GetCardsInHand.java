@@ -1,6 +1,7 @@
 package engineer.comanmadalin.actions.specific;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.game.Game;
@@ -14,9 +15,9 @@ import lombok.Setter;
 public class GetCardsInHand extends BaseAction {
     private int playerID;
 
-    public GetCardsInHand(String command, String playerID) {
+    public GetCardsInHand(String command, JsonNode playerID) {
         super(command);
-        this.playerID = Integer.parseInt(playerID);
+        this.playerID = playerID.asInt();
     }
 
     @Override

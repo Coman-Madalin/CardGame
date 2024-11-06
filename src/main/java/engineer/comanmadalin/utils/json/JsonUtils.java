@@ -13,7 +13,10 @@ import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.game.GameConditions;
 import engineer.comanmadalin.game.Input;
 import engineer.comanmadalin.utils.json.deserializers.*;
-import engineer.comanmadalin.utils.json.serializers.*;
+import engineer.comanmadalin.utils.json.serializers.BaseCardSerializer;
+import engineer.comanmadalin.utils.json.serializers.BaseHeroSerializer;
+import engineer.comanmadalin.utils.json.serializers.DeckSerializer;
+import engineer.comanmadalin.utils.json.serializers.GameSerializer;
 import engineer.comanmadalin.utils.json.serializers.actions.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,6 +52,7 @@ public class JsonUtils {
         addSerializer(GetCardsInHand.class, new GetCardsInHandSerializer(GetCardsInHand.class));
 
         addSerializer(PlaceCard.class, new PlaceCardSerializer(PlaceCard.class));
+        addSerializer(CardUsesAttack.class, new EmptySerializer<>(CardUsesAttack.class));
         addSerializer(EndPlayerTurn.class, new EmptySerializer<>(EndPlayerTurn.class));
     }};
 

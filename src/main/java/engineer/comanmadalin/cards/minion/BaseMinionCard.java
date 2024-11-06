@@ -21,7 +21,6 @@ public class BaseMinionCard extends BaseCard implements Cloneable {
         mustBePlaceOnFrontRow = null;
     }
 
-
     @Override
     public BaseMinionCard clone() {
         BaseMinionCard clone = (BaseMinionCard) super.clone();

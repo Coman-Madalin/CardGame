@@ -18,6 +18,7 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("getPlayerHero", new String[]{"playerIdx"});
         put("getPlayerMana", new String[]{"playerIdx"});
 
+        put("cardUsesAttack", new String[]{"cardAttacker", "cardAttacked"});
         put("placeCard", new String[]{"handIdx"});
 
         put("getCardsOnTable", new String[0]);
@@ -30,6 +31,7 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("getPlayerHero", GetPlayerHero.class);
         put("getPlayerMana", GetPlayerMana.class);
 
+        put("cardUsesAttack", CardUsesAttack.class);
         put("placeCard", PlaceCard.class);
 
         put("getCardsOnTable", GetCardsOnTable.class);
@@ -48,11 +50,16 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
 
         String command = root.get("command").asText();
         String[] argumentsNameArray = nameToArguments.get(command);
-        String[] argumentsArray = new String[argumentsNameArray.length + 1];
+        Object[] argumentsArray = new Object[argumentsNameArray.length + 1];
         argumentsArray[0] = command;
         int index = 1;
+
+        if( command.equals("cardUsesAttack")){
+            System.out.println("DADAD");
+        }
+
         for (String s : argumentsNameArray) {
-            argumentsArray[index] = root.get(s).asText();
+            argumentsArray[index] = root.get(s);
             index++;
         }
 
@@ -60,9 +67,10 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         Object o;
         try {
             Class<?>[] argumentTypes = new Class<?>[argumentsNameArray.length + 1];
-            Arrays.fill(argumentTypes, String.class);
+            Arrays.fill(argumentTypes, JsonNode.class);
+            argumentTypes[0] = String.class;
 
-            o = clazz.getConstructor(argumentTypes).newInstance((Object[]) argumentsArray);
+            o = clazz.getConstructor(argumentTypes).newInstance(argumentsArray);
 
         } catch (Exception e) {
             throw new RuntimeException(e);

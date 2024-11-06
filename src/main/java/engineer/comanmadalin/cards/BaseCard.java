@@ -24,6 +24,10 @@ public abstract class BaseCard implements Cloneable {
         this.name = name;
     }
 
+    public void takeDamage(int damage) {
+        this.health -= damage;
+    }
+
     @Override
     public BaseCard clone() {
         try {

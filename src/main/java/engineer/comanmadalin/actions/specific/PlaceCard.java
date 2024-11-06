@@ -1,5 +1,6 @@
 package engineer.comanmadalin.actions.specific;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.game.Game;
@@ -14,9 +15,9 @@ import java.util.List;
 public class PlaceCard extends BaseAction {
     private int handID;
 
-    public PlaceCard(String command, String handID) {
+    public PlaceCard(String command, JsonNode handID) {
         super(command);
-        this.handID = Integer.parseInt(handID);
+        this.handID = handID.asInt();
     }
 
     @Override
