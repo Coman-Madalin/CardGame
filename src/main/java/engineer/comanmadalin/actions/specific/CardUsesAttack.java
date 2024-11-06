@@ -9,10 +9,13 @@ import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class CardUsesAttack extends BaseAction {
-    private Coordinates cardAttacker, cardAttacked;
+    private Coordinates cardAttacker;
+    private Coordinates cardAttacked;
 
     public CardUsesAttack(String command, JsonNode cardAttacker, JsonNode cardAttacked) {
         super(command);
@@ -22,9 +25,14 @@ public class CardUsesAttack extends BaseAction {
 
     @Override
     public void run(Game game) {
-        BaseMinionCard attacker = game.getBoard().get(cardAttacker.getX()).get(cardAttacker.getY());
-        BaseMinionCard attacked = game.getBoard().get(cardAttacked.getX()).get(cardAttacked.getY());
+        List<List<BaseMinionCard>> board = game.getBoard();
+        BaseMinionCard attacker = board.get(cardAttacker.getX()).get(cardAttacker.getY());
+        BaseMinionCard attacked = board.get(cardAttacked.getX()).get(cardAttacked.getY());
 
         attacked.takeDamage(attacker.getAttackDamage());
+
+        if (attacked.getHealth() <= 0) {
+            board.get(cardAttacked.getX()).remove(cardAttacked.getY());
+        }
     }
 }

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import engineer.comanmadalin.actions.specific.PlaceCard;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class PlaceCardSerializer extends StdSerializer<PlaceCard> {
     public PlaceCardSerializer(Class<PlaceCard> t) {
@@ -15,7 +14,7 @@ public class PlaceCardSerializer extends StdSerializer<PlaceCard> {
 
     @Override
     public void serialize(PlaceCard value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
-        if (Objects.equals(value.getError(), "")){
+        if (value.getError() == null) {
             return;
         }
 

@@ -4,7 +4,6 @@ import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.deck.Deck;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * The `Player` class holds information about a player's deck, hand and manaCost associated with
@@ -13,18 +12,15 @@ import lombok.ToString;
  */
 @Getter
 @Setter
-@ToString
 public class Player {
-    Deck hand;
-    Deck deck;
-    BaseHero hero;
-    int mana;
+    private Deck hand = new Deck();
+    private Deck deck;
+    private BaseHero hero;
+    private int mana = 0;
 
     public Player(Deck deck, BaseHero hero) {
-        hand = new Deck();
         this.deck = deck;
         this.hero = hero;
-        mana = 0;
     }
 
     public void addMana(int manaToAdd) {

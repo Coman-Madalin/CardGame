@@ -1,15 +1,18 @@
 package engineer.comanmadalin.utils;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
 public final class Coordinates {
-    private int x, y;
+    private int x;
+    private int y;
 
-    public Coordinates() {
+    public Coordinates(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }

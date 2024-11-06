@@ -2,13 +2,11 @@ package engineer.comanmadalin.cards;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 
 @Getter
 @Setter
-@ToString
 public abstract class BaseCard implements Cloneable {
     private int manaCost;
     private int health;

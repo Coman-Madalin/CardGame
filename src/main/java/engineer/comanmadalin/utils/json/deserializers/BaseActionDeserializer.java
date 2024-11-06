@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
     private static final HashMap<String, String[]> nameToArguments = new HashMap<>() {{
+        put("getCardAtPosition", new String[]{"x", "y"});
         put("getCardsInHand", new String[]{"playerIdx"});
         put("getPlayerDeck", new String[]{"playerIdx"});
         put("getPlayerHero", new String[]{"playerIdx"});
@@ -26,6 +27,7 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("endPlayerTurn", new String[0]);
     }};
     private static final HashMap<String, Class<?>> nameToActionClass = new HashMap<>() {{
+        put("getCardAtPosition", GetCardAtPosition.class);
         put("getCardsInHand", GetCardsInHand.class);
         put("getPlayerDeck", GetPlayerDeck.class);
         put("getPlayerHero", GetPlayerHero.class);
@@ -53,10 +55,6 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         Object[] argumentsArray = new Object[argumentsNameArray.length + 1];
         argumentsArray[0] = command;
         int index = 1;
-
-        if( command.equals("cardUsesAttack")){
-            System.out.println("DADAD");
-        }
 
         for (String s : argumentsNameArray) {
             argumentsArray[index] = root.get(s);

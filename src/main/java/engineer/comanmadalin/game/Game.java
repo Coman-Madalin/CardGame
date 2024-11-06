@@ -6,8 +6,8 @@ import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.deck.Deck;
 import engineer.comanmadalin.player.Player;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,26 +18,35 @@ import static java.lang.Math.min;
 
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
 public final class Game {
     private static int GAME_NR = 0;
-    Player[] players;
-    private int roundNumber;
+    Player[] players = new Player[Input.getMAX_PLAYERS()];
+    private int roundNumber = 0;
     private List<List<BaseMinionCard>> board;
-    private Boolean nextEndTurnWillEndRound;
+    private Boolean nextEndTurnWillEndRound = false;
     private int playerIDTurn;
 
-    private GameConditions gameConditions;
-    private List<BaseAction> actions;
+    private GameConditions gameConditions = new GameConditions();
+    private List<BaseAction> actions = new ArrayList<>();
 
-    public Game() {
-        gameConditions = new GameConditions();
-        actions = new ArrayList<>();
+    private void printBoard() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < board.get(i).size(); j++) {
+                System.out.print(board.get(i).get(j).getName() + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\");
+
     }
 
     private void playActions() {
         for (BaseAction action : actions) {
+            System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\");
+            System.out.println(action.getClass());
             action.run(this);
+            printBoard();
         }
     }
 
@@ -61,14 +70,12 @@ public final class Game {
 
     public void runGame() {
         setBoard();
-        roundNumber = 0;
         playerIDTurn = gameConditions.getStartingPlayer() - 1;
-        nextEndTurnWillEndRound = false;
         Input inputInstance = Input.getINSTANCE();
-        players = new Player[Input.getMAX_PLAYERS()];
 
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
-            Deck playerDeck = inputInstance.getPlayersData()[i].getDecks().getDecks().get(inputInstance.getPlayersData()[i].getDeckIndexForGame().get(GAME_NR)).clone();
+            Deck playerDeck = inputInstance.getPlayersData()[i].getDecks().getDecks()
+                    .get(inputInstance.getPlayersData()[i].getDeckIndexForGame().get(GAME_NR)).clone();
             Collections.shuffle(playerDeck.getCards(), new Random(gameConditions.getShuffleSeed()));
 
             BaseHero playerHero = inputInstance.getPlayersData()[i].getHero().get(GAME_NR);

@@ -4,11 +4,9 @@ import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.game.Game;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 public class GetPlayerTurn extends BaseAction {
     public GetPlayerTurn(String command) {
         super(command);

@@ -3,8 +3,8 @@ package engineer.comanmadalin.player;
 import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.deck.PlayerDecks;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 
@@ -16,15 +16,9 @@ import java.util.ArrayList;
  */
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
 public class PlayerData {
-    private PlayerDecks decks;
-    private ArrayList<Integer> deckIndexForGame;
-    private ArrayList<BaseHero> hero;
-
-    public PlayerData() {
-        decks = new PlayerDecks();
-        deckIndexForGame = new ArrayList<>();
-        hero = new ArrayList<>();
-    }
+    private PlayerDecks decks = new PlayerDecks();
+    private ArrayList<Integer> deckIndexForGame = new ArrayList<>();
+    private ArrayList<BaseHero> hero = new ArrayList<>();
 }

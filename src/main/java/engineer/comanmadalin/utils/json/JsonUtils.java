@@ -48,6 +48,8 @@ public class JsonUtils {
         addSerializer(GetPlayerTurn.class, new GetPlayerTurnSerializer(GetPlayerTurn.class));
         addSerializer(GetPlayerMana.class, new GetPlayerManaSerializer(GetPlayerMana.class));
 
+        addSerializer(GetCardAtPosition.class,
+                new GetCardAtPositionSerializer(GetCardAtPosition.class));
         addSerializer(GetCardsOnTable.class, new GetCardsOnTableSerializer(GetCardsOnTable.class));
         addSerializer(GetCardsInHand.class, new GetCardsInHandSerializer(GetCardsInHand.class));
 

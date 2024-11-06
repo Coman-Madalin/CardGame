@@ -1,18 +1,13 @@
 package engineer.comanmadalin.game;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
 public class GameConditions {
-    private int shuffleSeed;
-    private int startingPlayer;
-
-    public GameConditions() {
-        shuffleSeed = 0;
-        startingPlayer = 0;
-    }
+    private int shuffleSeed = 0;
+    private int startingPlayer = 0;
 }
