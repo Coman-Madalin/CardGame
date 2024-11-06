@@ -25,7 +25,7 @@ public class PlaceCard extends BaseAction {
         BaseMinionCard card = (BaseMinionCard) player.getHand().getCards().get(handID);
 
         if (player.getMana() < card.getManaCost()) {
-            setError("Not enough mana to place card on board.");
+            setError("Not enough mana to place card on table.");
             return;
         }
 

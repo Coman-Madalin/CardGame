@@ -15,6 +15,8 @@ public abstract class BaseAction {
 
     public BaseAction(String command) {
         this.command = command;
+        error = "";
+        result = "";
     }
 
     public abstract void run(Game game);
