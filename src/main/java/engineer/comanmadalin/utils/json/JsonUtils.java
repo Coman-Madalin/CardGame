@@ -56,6 +56,7 @@ public class JsonUtils {
         addSerializer(PlaceCard.class, new PlaceCardSerializer(PlaceCard.class));
         addSerializer(CardUsesAttack.class, new EmptySerializer<>(CardUsesAttack.class));
         addSerializer(EndPlayerTurn.class, new EmptySerializer<>(EndPlayerTurn.class));
+        addSerializer(CardUsesAbility.class, new EmptySerializer<>(CardUsesAbility.class));
     }};
 
 

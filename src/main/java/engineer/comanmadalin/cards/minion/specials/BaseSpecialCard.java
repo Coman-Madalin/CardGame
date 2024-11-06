@@ -10,5 +10,5 @@ public abstract class BaseSpecialCard extends BaseMinionCard {
         super(mana, health, description, colors, name);
     }
 
-    public abstract void ability();
+    public abstract void ability(BaseMinionCard target);
 }

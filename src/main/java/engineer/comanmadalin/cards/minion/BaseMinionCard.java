@@ -17,6 +17,18 @@ public class BaseMinionCard extends BaseCard implements Cloneable {
         super(mana, health, description, colors, name);
     }
 
+    public void subtractAttackDamage(int toSubtract) {
+        attackDamage -= toSubtract;
+        if (attackDamage < 0) {
+            attackDamage = 0;
+        }
+    }
+
+    public void heal(int toHeal) {
+        this.setHealth(this.getHealth() + toHeal);
+    }
+
+
     @Override
     public BaseMinionCard clone() {
         BaseMinionCard clone = (BaseMinionCard) super.clone();
