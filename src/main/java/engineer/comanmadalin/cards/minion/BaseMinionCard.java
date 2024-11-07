@@ -11,6 +11,8 @@ import java.util.ArrayList;
 public class BaseMinionCard extends BaseCard implements Cloneable {
     private int attackDamage = 0;
     private Boolean mustBePlaceOnFrontRow = null;
+    private Boolean isTank = false;
+    private Boolean attackedThisRound = false;
 
     public BaseMinionCard(int mana, int health, String description,
                           ArrayList<String> colors, String name) {

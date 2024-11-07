@@ -9,5 +9,6 @@ public class Warden extends BaseMinionCard {
     public Warden(int mana, int health, String description, ArrayList<String> colors, String name) {
         super(mana, health, description, colors, name);
         setMustBePlaceOnFrontRow(true);
+        setIsTank(true);
     }
 }

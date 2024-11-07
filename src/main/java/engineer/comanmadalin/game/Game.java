@@ -33,17 +33,36 @@ public final class Game {
     private void printBoard() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < board.get(i).size(); j++) {
-                System.out.print(board.get(i).get(j).getName() + " ");
+                System.out.print(board.get(i).get(j).getName() + "|||");
             }
             System.out.println();
         }
-        System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\");
+        System.out.println("*****************************************");
 
+    }
+
+    public Boolean checkForTank(int playerID) {
+        List<BaseMinionCard> row = board.get(2 - playerID);
+        for (BaseMinionCard minion : row) {
+            if (minion.getIsTank()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void resetCardsAttackCheck() {
+        for (List<BaseMinionCard> row : board) {
+            for (BaseMinionCard minionCard : row) {
+                minionCard.setAttackedThisRound(false);
+            }
+        }
     }
 
     private void playActions() {
         for (BaseAction action : actions) {
-            System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\");
+            System.out.println("*****************************************");
             System.out.println(action.getClass());
             action.run(this);
             printBoard();
@@ -51,6 +70,7 @@ public final class Game {
     }
 
     public void startOfRound() {
+        resetCardsAttackCheck();
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
             players[i].getHand().getCards().add(players[i].getDeck().getCards().get(0));
 

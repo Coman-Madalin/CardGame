@@ -25,11 +25,25 @@ public class CardUsesAttack extends BaseAction {
 
     @Override
     public void run(Game game) {
+        int attackedPlayerID = (game.getPlayerIDTurn() + 1) / 2;
+
         List<List<BaseMinionCard>> board = game.getBoard();
         BaseMinionCard attacker = board.get(coordinatesAttacker.getX()).get(coordinatesAttacker.getY());
+
+        if(attacker.getAttackedThisRound()){
+            this.setError("Attacker card has already attacked this turn.");
+            return;
+        }
+
+        if (game.checkForTank(attackedPlayerID)) {
+            this.setError("Attacked card is not of type 'Tank'.");
+            return;
+        }
+
         BaseMinionCard attacked = board.get(coordinatesAttacked.getX()).get(coordinatesAttacked.getY());
 
         attacked.takeDamage(attacker.getAttackDamage());
+        attacker.setAttackedThisRound(true);
 
         if (attacked.getHealth() <= 0) {
             board.get(coordinatesAttacked.getX()).remove(coordinatesAttacked.getY());

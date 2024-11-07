@@ -23,10 +23,22 @@ public class UseAttackHero extends BaseAction {
         List<List<BaseMinionCard>> board = game.getBoard();
         BaseMinionCard attacker = board.get(coordinatesAttacker.getX()).get(coordinatesAttacker.getY());
 
-        int heroOwnerID = (game.getPlayerIDTurn() + 1) / 2;
-        BaseHero heroAttacked = game.getPlayers()[heroOwnerID].getHero();
+        int heroOwnerID = (game.getPlayerIDTurn() + 1) % 2;
 
+        if (attacker.getAttackedThisRound()) {
+            this.setError("Attacker card has already attacked this turn.");
+            return;
+        }
+
+        if (game.checkForTank(heroOwnerID)) {
+            this.setError("Attacked card is not of type 'Tank'.");
+            return;
+        }
+
+        BaseHero heroAttacked = game.getPlayers()[heroOwnerID].getHero();
         heroAttacked.takeDamage(attacker.getAttackDamage());
+
+        attacker.setAttackedThisRound(true);
 
         if (heroAttacked.getHealth() <= 0) {
             // This will be changed in a hashmap if we might have more players than 2 in the future
