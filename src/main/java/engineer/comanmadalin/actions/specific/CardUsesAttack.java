@@ -25,22 +25,40 @@ public class CardUsesAttack extends BaseAction {
 
     @Override
     public void run(Game game) {
-        int attackedPlayerID = (game.getPlayerIDTurn() + 1) / 2;
-
         List<List<BaseMinionCard>> board = game.getBoard();
-        BaseMinionCard attacker = board.get(coordinatesAttacker.getX()).get(coordinatesAttacker.getY());
 
-        if(attacker.getAttackedThisRound()){
+        if (coordinatesAttacked.getX() == 1 && coordinatesAttacked.getY() == 0) {
+            System.out.println();
+        }
+
+        if (board.size() <= coordinatesAttacked.getX()) {
+            setError("No card available at that position.");
+            return;
+        }
+        if (board.get(coordinatesAttacked.getX()).size() <= coordinatesAttacked.getY()) {
+            setError("No card available at that position.");
+            return;
+        }
+        BaseMinionCard attacker = board.get(coordinatesAttacker.getX()).get(coordinatesAttacker.getY());
+        BaseMinionCard attacked = board.get(coordinatesAttacked.getX()).get(coordinatesAttacked.getY());
+
+        if (attacker.getAttackedThisRound()) {
             this.setError("Attacker card has already attacked this turn.");
             return;
         }
 
-        if (game.checkForTank(attackedPlayerID)) {
+        int attackedPlayerID;
+        if (coordinatesAttacked.getX() < 2) {
+            attackedPlayerID = 1;
+        } else {
+            attackedPlayerID = 0;
+        }
+
+        if (!attacked.getIsTank() && game.checkForTank(attackedPlayerID)) {
             this.setError("Attacked card is not of type 'Tank'.");
             return;
         }
 
-        BaseMinionCard attacked = board.get(coordinatesAttacked.getX()).get(coordinatesAttacked.getY());
 
         attacked.takeDamage(attacker.getAttackDamage());
         attacker.setAttackedThisRound(true);
