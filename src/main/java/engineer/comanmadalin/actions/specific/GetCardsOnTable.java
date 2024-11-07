@@ -16,11 +16,8 @@ public class GetCardsOnTable extends BaseAction {
     @Override
     public void run(Game game) {
         ObjectMapper mapper = JsonUtils.getObjectMapper();
-
         List<List<BaseMinionCard>> table = game.getBoard();
-        String serializedDeck;
-
-        serializedDeck = String.valueOf(mapper.valueToTree(table));
+        String serializedDeck = String.valueOf(mapper.valueToTree(table));
 
         this.setResult(serializedDeck);
     }

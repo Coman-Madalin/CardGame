@@ -1,6 +1,5 @@
 package engineer.comanmadalin.actions.specific;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import engineer.comanmadalin.actions.BaseAction;
@@ -24,13 +23,7 @@ public class GetPlayerDeck extends BaseAction {
     public void run(Game game) {
         Player player = game.getPlayers()[playerID - 1];
         ObjectMapper mapper = JsonUtils.getObjectMapper();
-        String serializedDeck;
-
-        try {
-            serializedDeck = mapper.writeValueAsString(player.getDeck());
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        String serializedDeck = String.valueOf(mapper.valueToTree(player.getDeck()));
 
         this.setResult(serializedDeck);
     }

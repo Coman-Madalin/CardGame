@@ -1,6 +1,5 @@
 package engineer.comanmadalin.actions.specific;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import engineer.comanmadalin.actions.BaseAction;
@@ -43,13 +42,7 @@ public class GetCardAtPosition extends BaseAction {
         BaseMinionCard card = game.getBoard().get(cardCoordinates.getX()).get(cardCoordinates.getY());
 
         ObjectMapper mapper = JsonUtils.getObjectMapper();
-        String serializedCard;
-
-        try {
-            serializedCard = mapper.writeValueAsString(card);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        String serializedCard = String.valueOf(mapper.valueToTree(card));
 
         this.setResult(serializedCard);
     }
