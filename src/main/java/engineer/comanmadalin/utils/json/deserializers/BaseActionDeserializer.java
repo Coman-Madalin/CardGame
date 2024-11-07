@@ -21,6 +21,8 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
 
         put("cardUsesAbility", new String[]{"cardAttacker", "cardAttacked"});
         put("cardUsesAttack", new String[]{"cardAttacker", "cardAttacked"});
+        put("useAttackHero", new String[]{"cardAttacker"});
+
         put("placeCard", new String[]{"handIdx"});
 
         put("getCardsOnTable", new String[0]);
@@ -36,6 +38,8 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
 
         put("cardUsesAbility", CardUsesAbility.class);
         put("cardUsesAttack", CardUsesAttack.class);
+        put("useAttackHero", UseAttackHero.class);
+
         put("placeCard", PlaceCard.class);
 
         put("getCardsOnTable", GetCardsOnTable.class);
