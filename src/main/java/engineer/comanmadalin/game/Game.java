@@ -41,6 +41,20 @@ public final class Game {
 
     }
 
+    public List<BaseMinionCard> findAllFrozenCards() {
+        List<BaseMinionCard> result = new ArrayList<>();
+
+        for (List<BaseMinionCard> row : board) {
+            for (BaseMinionCard minion : row) {
+                if (minion.getIsFrozen()) {
+                    result.add(minion);
+                }
+            }
+        }
+
+        return result;
+    }
+
     public Boolean checkForTank(int playerID) {
         List<BaseMinionCard> row = board.get(2 - playerID);
         for (BaseMinionCard minion : row) {
@@ -52,11 +66,16 @@ public final class Game {
         return false;
     }
 
-    private void resetCardsAttackCheck() {
+    private void endOfRound() {
         for (List<BaseMinionCard> row : board) {
             for (BaseMinionCard minionCard : row) {
                 minionCard.setAttackedThisRound(false);
+                minionCard.setIsFrozen(false);
             }
+        }
+
+        for (Player player : players) {
+            player.getHero().setAttackedThisRound(false);
         }
     }
 
@@ -70,7 +89,7 @@ public final class Game {
     }
 
     public void startOfRound() {
-        resetCardsAttackCheck();
+        endOfRound();
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
             players[i].getHand().getCards().add(players[i].getDeck().getCards().get(0));
 

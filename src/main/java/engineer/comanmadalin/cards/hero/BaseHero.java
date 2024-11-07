@@ -1,6 +1,7 @@
 package engineer.comanmadalin.cards.hero;
 
 import engineer.comanmadalin.cards.BaseCard;
+import engineer.comanmadalin.game.Game;
 
 import java.util.ArrayList;
 
@@ -10,5 +11,5 @@ public abstract class BaseHero extends BaseCard {
         health = 30;
     }
 
-    public abstract void ability();
+    public abstract void ability(Game game, int affectedRow);
 }

@@ -1,6 +1,7 @@
 package engineer.comanmadalin.cards.hero.specific;
 
 import engineer.comanmadalin.cards.hero.BaseHero;
+import engineer.comanmadalin.game.Game;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class LordRoyce extends BaseHero {
     }
 
     @Override
-    public void ability() {
-        // TODO: Implement Sub-Zero ability
+    public void ability(Game game, int affectedRow) {
+        game.getBoard().get(affectedRow).forEach((minionCard -> minionCard.setIsFrozen(true)));
     }
 }

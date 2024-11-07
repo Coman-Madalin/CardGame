@@ -13,6 +13,7 @@ public abstract class BaseCard implements Cloneable {
     private String description;
     private ArrayList<String> colors;
     private String name;
+    private Boolean attackedThisRound = false;
 
     public BaseCard(int manaCost, int health, String description, ArrayList<String> colors, String name) {
         this.manaCost = manaCost;

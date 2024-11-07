@@ -1,6 +1,7 @@
 package engineer.comanmadalin.cards.hero.specific;
 
 import engineer.comanmadalin.cards.hero.BaseHero;
+import engineer.comanmadalin.game.Game;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class KingMudface extends BaseHero {
     }
 
     @Override
-    public void ability() {
-        // TODO: Implement Earth-Born ability
+    public void ability(Game game, int affectedRow) {
+        game.getBoard().get(affectedRow).forEach((baseMinion) -> baseMinion.heal(1));
     }
 }

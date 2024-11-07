@@ -14,6 +14,7 @@ import java.util.HashMap;
 public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
     private static final HashMap<String, String[]> nameToArguments = new HashMap<>() {{
         put("getCardAtPosition", new String[]{"x", "y"});
+
         put("getCardsInHand", new String[]{"playerIdx"});
         put("getPlayerDeck", new String[]{"playerIdx"});
         put("getPlayerHero", new String[]{"playerIdx"});
@@ -23,14 +24,19 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("cardUsesAttack", new String[]{"cardAttacker", "cardAttacked"});
         put("useAttackHero", new String[]{"cardAttacker"});
 
+        put("useHeroAbility", new String[]{"affectedRow"});
+
         put("placeCard", new String[]{"handIdx"});
 
+        put("getFrozenCardsOnTable", new String[0]);
         put("getCardsOnTable", new String[0]);
         put("getPlayerTurn", new String[0]);
         put("endPlayerTurn", new String[0]);
     }};
+
     private static final HashMap<String, Class<?>> nameToActionClass = new HashMap<>() {{
         put("getCardAtPosition", GetCardAtPosition.class);
+
         put("getCardsInHand", GetCardsInHand.class);
         put("getPlayerDeck", GetPlayerDeck.class);
         put("getPlayerHero", GetPlayerHero.class);
@@ -40,8 +46,11 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("cardUsesAttack", CardUsesAttack.class);
         put("useAttackHero", UseAttackHero.class);
 
+        put("useHeroAbility", UseHeroAbility.class);
+
         put("placeCard", PlaceCard.class);
 
+        put("getFrozenCardsOnTable", GetFrozenCardsOnTable.class);
         put("getCardsOnTable", GetCardsOnTable.class);
         put("getPlayerTurn", GetPlayerTurn.class);
         put("endPlayerTurn", EndPlayerTurn.class);
