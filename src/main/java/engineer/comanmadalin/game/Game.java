@@ -20,7 +20,6 @@ import static java.lang.Math.min;
 @Setter
 @NoArgsConstructor
 public final class Game {
-    private static int GAME_NR = 0;
     Player[] players = new Player[Input.getMAX_PLAYERS()];
     private int roundNumber = 0;
     private List<List<BaseMinionCard>> board;

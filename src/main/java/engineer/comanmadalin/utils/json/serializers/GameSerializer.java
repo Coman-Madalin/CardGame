@@ -15,10 +15,8 @@ public class GameSerializer extends StdSerializer<Game> {
 
     @Override
     public void serialize(Game value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
-        jsonGenerator.writeStartArray();
         for (BaseAction action : value.getActions()) {
             jsonGenerator.writeObject(action);
         }
-        jsonGenerator.writeEndArray();
     }
 }
