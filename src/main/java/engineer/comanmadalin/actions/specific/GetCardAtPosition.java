@@ -26,10 +26,6 @@ public class GetCardAtPosition extends BaseAction {
     public void run(Game game) {
         List<List<BaseMinionCard>> board = game.getBoard();
 
-        if (cardCoordinates.getX() == 2 && cardCoordinates.getY() == 0) {
-            System.out.println("DADA");
-        }
-
         if (board.size() <= cardCoordinates.getX()) {
             setError("No card available at that position.");
             return;

@@ -25,6 +25,11 @@ public class UseAttackHero extends BaseAction {
 
         int heroOwnerID = (game.getPlayerIDTurn() + 1) % 2;
 
+        if (attacker.getIsFrozen()) {
+            this.setError("Attacker card is frozen.");
+            return;
+        }
+
         if (attacker.getAttackedThisRound()) {
             this.setError("Attacker card has already attacked this turn.");
             return;

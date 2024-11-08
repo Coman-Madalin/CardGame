@@ -47,6 +47,11 @@ public class CardUsesAttack extends BaseAction {
             return;
         }
 
+        if (attacker.getIsFrozen()) {
+            this.setError("Attacker card is frozen.");
+            return;
+        }
+
         int attackedPlayerID;
         if (coordinatesAttacked.getX() < 2) {
             attackedPlayerID = 1;

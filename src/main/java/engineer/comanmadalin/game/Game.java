@@ -91,10 +91,14 @@ public final class Game {
     public void startOfRound() {
         endOfRound();
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
-            players[i].getHand().getCards().add(players[i].getDeck().getCards().get(0));
-
-            players[i].getDeck().getCards().remove(0);
             players[i].addMana(min(roundNumber + 1, 10));
+
+            if (players[i].getDeck().getCards().isEmpty()) {
+                continue;
+            }
+
+            players[i].getHand().getCards().add(players[i].getDeck().getCards().get(0));
+            players[i].getDeck().getCards().remove(0);
         }
 
         roundNumber += 1;

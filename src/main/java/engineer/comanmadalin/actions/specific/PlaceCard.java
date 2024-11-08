@@ -39,15 +39,12 @@ public class PlaceCard extends BaseAction {
         }
 
         if (row.size() >= 5) {
-            setError("Cannot place card on board since row is full.");
+            this.setError("Cannot place card on board since row is full.");
             return;
         }
 
         row.add(card);
         player.addMana(-card.getManaCost());
         player.getHand().getCards().remove(handID);
-
     }
-
-
 }

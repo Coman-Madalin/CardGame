@@ -31,6 +31,11 @@ public class CardUsesAbility extends BaseAction {
                 .get(coordinatesAttacker.getY());
         BaseMinionCard attacked = board.get(coordinatesAttacked.getX()).get(coordinatesAttacked.getY());
 
+        if (attacker.getIsFrozen()) {
+            this.setError("Attacker card is frozen.");
+            return;
+        }
+
         if (attacker.getAttackedThisRound()) {
             this.setError("Attacker card has already attacked this turn.");
             return;
