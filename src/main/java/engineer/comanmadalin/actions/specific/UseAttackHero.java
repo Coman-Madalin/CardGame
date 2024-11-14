@@ -7,9 +7,11 @@ import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.utils.Coordinates;
 import engineer.comanmadalin.utils.json.JsonUtils;
+import lombok.Getter;
 
 import java.util.List;
 
+@Getter
 public class UseAttackHero extends BaseAction {
     private final Coordinates coordinatesAttacker;
 

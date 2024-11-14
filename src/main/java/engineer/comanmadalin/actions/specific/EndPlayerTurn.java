@@ -14,6 +14,7 @@ public class EndPlayerTurn extends BaseAction {
             game.startOfRound();
         }
 
+        game.unfreezePlayerCards();
         game.setPlayerIDTurn((game.getPlayerIDTurn() + 1) % 2);
         game.setNextEndTurnWillEndRound(!game.getNextEndTurnWillEndRound());
     }

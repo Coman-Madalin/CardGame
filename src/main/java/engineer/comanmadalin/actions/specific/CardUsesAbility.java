@@ -11,9 +11,11 @@ import engineer.comanmadalin.cards.minion.specials.specific.TheRipper;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.utils.Coordinates;
 import engineer.comanmadalin.utils.json.JsonUtils;
+import lombok.Getter;
 
 import java.util.List;
 
+@Getter
 public class CardUsesAbility extends BaseAction {
     private final Coordinates coordinatesAttacker;
     private final Coordinates coordinatesAttacked;

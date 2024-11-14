@@ -56,9 +56,9 @@ public class JsonUtils {
         addSerializer(GetCardsOnTable.class, new GetCardsOnTableSerializer(GetCardsOnTable.class));
 
         addSerializer(PlaceCard.class, new PlaceCardSerializer(PlaceCard.class));
-        addSerializer(CardUsesAttack.class, new EmptySerializer<>(CardUsesAttack.class));
+        addSerializer(CardUsesAttack.class, new CardUsesAttackSerializer(CardUsesAttack.class));
         addSerializer(EndPlayerTurn.class, new EmptySerializer<>(EndPlayerTurn.class));
-        addSerializer(CardUsesAbility.class, new EmptySerializer<>(CardUsesAbility.class));
+        addSerializer(CardUsesAbility.class, new CardUsesAbilitySerializer(CardUsesAbility.class));
         addSerializer(UseHeroAbility.class, new UseHeroAbilitySerializer(UseHeroAbility.class));
 
         addSerializer(UseAttackHero.class, new GameEndedSerializer(UseAttackHero.class));

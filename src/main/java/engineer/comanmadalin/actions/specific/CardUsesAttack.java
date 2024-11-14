@@ -42,6 +42,25 @@ public class CardUsesAttack extends BaseAction {
         BaseMinionCard attacker = board.get(coordinatesAttacker.getX()).get(coordinatesAttacker.getY());
         BaseMinionCard attacked = board.get(coordinatesAttacked.getX()).get(coordinatesAttacked.getY());
 
+        int attackerPlayerID;
+        if (coordinatesAttacker.getX() < 2) {
+            attackerPlayerID = 1;
+        } else {
+            attackerPlayerID = 0;
+        }
+
+        int attackedPlayerID;
+        if (coordinatesAttacked.getX() < 2) {
+            attackedPlayerID = 1;
+        } else {
+            attackedPlayerID = 0;
+        }
+
+        if (attackedPlayerID == attackerPlayerID) {
+            this.setError("Attacked card does not belong to the enemy.");
+            return;
+        }
+
         if (attacker.getAttackedThisRound()) {
             this.setError("Attacker card has already attacked this turn.");
             return;
@@ -50,13 +69,6 @@ public class CardUsesAttack extends BaseAction {
         if (attacker.getIsFrozen()) {
             this.setError("Attacker card is frozen.");
             return;
-        }
-
-        int attackedPlayerID;
-        if (coordinatesAttacked.getX() < 2) {
-            attackedPlayerID = 1;
-        } else {
-            attackedPlayerID = 0;
         }
 
         if (!attacked.getIsTank() && game.checkForTank(attackedPlayerID)) {

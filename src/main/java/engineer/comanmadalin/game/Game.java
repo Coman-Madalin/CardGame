@@ -65,6 +65,21 @@ public final class Game {
         return false;
     }
 
+    public void unfreezePlayerCards() {
+        int startingRow;
+        if (playerIDTurn == 0) {
+            startingRow = 2;
+        } else {
+            startingRow = 0;
+        }
+
+        for (int i = startingRow; i <= startingRow + 1; i++) {
+            for (BaseMinionCard minionCard : board.get(i)) {
+                minionCard.setIsFrozen(false);
+            }
+        }
+    }
+
     private void endOfRound() {
         for (List<BaseMinionCard> row : board) {
             for (BaseMinionCard minionCard : row) {
@@ -110,17 +125,17 @@ public final class Game {
         }
     }
 
-    public void runGame() {
+    public void runGame(int gameNumber) {
         setBoard();
         playerIDTurn = gameConditions.getStartingPlayer() - 1;
         Input inputInstance = Input.getINSTANCE();
 
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
             Deck playerDeck = inputInstance.getPlayersData()[i].getDecks().getDecks()
-                    .get(inputInstance.getPlayersData()[i].getDeckIndexForGame().get(GAME_NR)).clone();
+                    .get(inputInstance.getPlayersData()[i].getDeckIndexForGame().get(gameNumber)).clone();
             Collections.shuffle(playerDeck.getCards(), new Random(gameConditions.getShuffleSeed()));
 
-            BaseHero playerHero = inputInstance.getPlayersData()[i].getHero().get(GAME_NR);
+            BaseHero playerHero = inputInstance.getPlayersData()[i].getHero().get(gameNumber);
 
             players[i] = new Player(playerDeck, playerHero);
         }
