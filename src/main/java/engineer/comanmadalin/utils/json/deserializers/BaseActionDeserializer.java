@@ -32,6 +32,10 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("getCardsOnTable", new String[0]);
         put("getPlayerTurn", new String[0]);
         put("endPlayerTurn", new String[0]);
+
+        put("getPlayerOneWins", new String[0]);
+        put("getPlayerTwoWins", new String[0]);
+        put("getTotalGamesPlayed", new String[0]);
     }};
 
     private static final HashMap<String, Class<?>> nameToActionClass = new HashMap<>() {{
@@ -54,6 +58,10 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("getCardsOnTable", GetCardsOnTable.class);
         put("getPlayerTurn", GetPlayerTurn.class);
         put("endPlayerTurn", EndPlayerTurn.class);
+
+        put("getPlayerOneWins", GetPlayerWins.class);
+        put("getPlayerTwoWins", GetPlayerWins.class);
+        put("getTotalGamesPlayed", GetTotalGamesPlayed.class);
     }};
 
     public BaseActionDeserializer(Class<?> vc) {
@@ -66,6 +74,10 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
         String command = root.get("command").asText();
+
+        if (command.equals("getPlayerOneWins")) {
+            System.out.println("TRSAED");
+        }
         String[] argumentsNameArray = nameToArguments.get(command);
         Object[] argumentsArray = new Object[argumentsNameArray.length + 1];
         argumentsArray[0] = command;

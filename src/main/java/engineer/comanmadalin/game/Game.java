@@ -30,14 +30,18 @@ public final class Game {
     private List<BaseAction> actions = new ArrayList<>();
 
     private void printBoard() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < board.get(i).size(); j++) {
-                System.out.print(board.get(i).get(j).getName() + "|||");
+        System.out.println("Player2: " + players[1].getMana());
+        System.out.println("Player1: " + players[0].getMana());
+
+        for (List<BaseMinionCard> row : board) {
+            for (BaseMinionCard baseMinionCard : row) {
+                System.out.print(baseMinionCard.getName() + ":" + baseMinionCard.getManaCost() +
+                        " " + baseMinionCard.getIsFrozen() + "|||");
             }
             System.out.println();
         }
-        System.out.println("*****************************************");
 
+        System.out.println("*****************************************");
     }
 
     public List<BaseMinionCard> findAllFrozenCards() {
@@ -84,7 +88,6 @@ public final class Game {
         for (List<BaseMinionCard> row : board) {
             for (BaseMinionCard minionCard : row) {
                 minionCard.setAttackedThisRound(false);
-                minionCard.setIsFrozen(false);
             }
         }
 

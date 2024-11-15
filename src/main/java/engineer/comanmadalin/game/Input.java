@@ -19,6 +19,8 @@ public final class Input {
     @Getter
     private static Input INSTANCE;
 
+    private int gamesPlayed = 0;
+
     private PlayerData[] playersData = new PlayerData[MAX_PLAYERS];
     private ArrayList<Game> games = new ArrayList<>();
 
@@ -34,6 +36,10 @@ public final class Input {
         for (int i = 0; i < games.size(); i++) {
             games.get(i).runGame(i);
         }
+    }
+
+    public void increaseGamesPlayed(){
+        gamesPlayed++;
     }
 
     public void gamesToJson(final String filePath1) throws IOException {

@@ -21,4 +21,9 @@ public class PlayerData {
     private PlayerDecks decks = new PlayerDecks();
     private ArrayList<Integer> deckIndexForGame = new ArrayList<>();
     private ArrayList<BaseHero> hero = new ArrayList<>();
+    private int wins = 0;
+
+    public void increaseWins(){
+        wins++;
+    }
 }

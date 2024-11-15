@@ -5,6 +5,7 @@ import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.game.Game;
+import engineer.comanmadalin.game.Input;
 import engineer.comanmadalin.utils.Coordinates;
 import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
@@ -51,6 +52,9 @@ public class UseAttackHero extends BaseAction {
             // This will be changed in a hashmap if we might have more players than 2 in the future
             this.setResult("Player " + (game.getPlayerIDTurn() == 0 ? "one" : "two")
                     + " killed the enemy hero.");
+
+            Input.getINSTANCE().getPlayersData()[game.getPlayerIDTurn()].increaseWins();
+            Input.getINSTANCE().increaseGamesPlayed();
         }
     }
 }
