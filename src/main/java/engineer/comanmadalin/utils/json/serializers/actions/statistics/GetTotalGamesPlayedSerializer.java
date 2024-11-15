@@ -1,9 +1,9 @@
-package engineer.comanmadalin.utils.json.serializers.actions;
+package engineer.comanmadalin.utils.json.serializers.actions.statistics;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import engineer.comanmadalin.actions.specific.GetTotalGamesPlayed;
+import engineer.comanmadalin.actions.statistics.GetTotalGamesPlayed;
 
 import java.io.IOException;
 

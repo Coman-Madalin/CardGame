@@ -1,4 +1,4 @@
-package engineer.comanmadalin.actions.specific;
+package engineer.comanmadalin.actions.debug;
 
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.game.Game;

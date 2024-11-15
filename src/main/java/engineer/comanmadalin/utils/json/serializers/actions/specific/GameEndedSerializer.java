@@ -1,4 +1,4 @@
-package engineer.comanmadalin.utils.json.serializers.actions;
+package engineer.comanmadalin.utils.json.serializers.actions.specific;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

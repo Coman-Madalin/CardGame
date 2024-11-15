@@ -1,4 +1,4 @@
-package engineer.comanmadalin.actions.specific;
+package engineer.comanmadalin.actions.debug;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

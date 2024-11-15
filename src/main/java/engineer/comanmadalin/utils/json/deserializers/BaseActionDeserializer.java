@@ -5,7 +5,10 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import engineer.comanmadalin.actions.BaseAction;
+import engineer.comanmadalin.actions.debug.*;
 import engineer.comanmadalin.actions.specific.*;
+import engineer.comanmadalin.actions.statistics.GetPlayerWins;
+import engineer.comanmadalin.actions.statistics.GetTotalGamesPlayed;
 
 import java.io.IOException;
 import java.util.Arrays;

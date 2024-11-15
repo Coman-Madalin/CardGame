@@ -1,9 +1,9 @@
-package engineer.comanmadalin.utils.json.serializers.actions;
+package engineer.comanmadalin.utils.json.serializers.actions.debug;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import engineer.comanmadalin.actions.specific.GetPlayerTurn;
+import engineer.comanmadalin.actions.debug.GetPlayerTurn;
 
 import java.io.IOException;
 

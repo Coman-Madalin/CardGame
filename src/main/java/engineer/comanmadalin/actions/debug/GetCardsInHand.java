@@ -1,4 +1,4 @@
-package engineer.comanmadalin.actions.specific;
+package engineer.comanmadalin.actions.debug;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,10 +11,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GetPlayerHero extends BaseAction {
+public class GetCardsInHand extends BaseAction {
     private int playerID;
 
-    public GetPlayerHero(String command, JsonNode playerID) {
+    public GetCardsInHand(String command, JsonNode playerID) {
         super(command);
         this.playerID = playerID.asInt();
     }
@@ -23,8 +23,8 @@ public class GetPlayerHero extends BaseAction {
     public void run(Game game) {
         Player player = game.getPlayers()[playerID - 1];
         ObjectMapper mapper = JsonUtils.getObjectMapper();
-        String serializedHero = String.valueOf(mapper.valueToTree(player.getHero()));
+        String serializedDeck = String.valueOf(mapper.valueToTree(player.getHand()));
 
-        this.setResult(serializedHero);
+        this.setResult(serializedDeck);
     }
 }
