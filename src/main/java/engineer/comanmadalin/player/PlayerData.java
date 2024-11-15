@@ -3,7 +3,6 @@ package engineer.comanmadalin.player;
 import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.deck.PlayerDecks;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
  */
 @Getter
 @Setter
-@NoArgsConstructor
 public final class PlayerData {
     private PlayerDecks decks = new PlayerDecks();
     private ArrayList<Integer> deckIndexForGame = new ArrayList<>();

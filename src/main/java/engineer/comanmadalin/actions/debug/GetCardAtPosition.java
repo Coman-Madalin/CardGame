@@ -8,7 +8,6 @@ import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.utils.Coordinates;
 import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -16,9 +15,8 @@ import java.util.List;
  * The type Get card at position.
  */
 @Getter
-@Setter
 public final class GetCardAtPosition extends BaseAction {
-    private Coordinates cardCoordinates;
+    private final Coordinates cardCoordinates;
 
     /**
      * Instantiates a new Get card at position.

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import engineer.comanmadalin.player.PlayerData;
 import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,17 +14,14 @@ import java.util.ArrayList;
  * The type Input.
  */
 @Getter
-@Setter
 public final class Input {
     @Getter
     private static final int MAX_PLAYERS = 2;
     @Getter
     private static Input instance;
-
+    private final PlayerData[] playersData = new PlayerData[MAX_PLAYERS];
+    private final ArrayList<Game> games = new ArrayList<>();
     private int gamesPlayed = 0;
-
-    private PlayerData[] playersData = new PlayerData[MAX_PLAYERS];
-    private ArrayList<Game> games = new ArrayList<>();
 
     /**
      * Instantiates a new Input.

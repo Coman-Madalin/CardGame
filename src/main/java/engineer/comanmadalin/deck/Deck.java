@@ -2,8 +2,6 @@ package engineer.comanmadalin.deck;
 
 import engineer.comanmadalin.cards.BaseCard;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.ArrayList;
 
@@ -11,8 +9,6 @@ import java.util.ArrayList;
  * The type Deck.
  */
 @Getter
-@Setter
-@NoArgsConstructor
 public final class Deck implements Cloneable {
     private ArrayList<BaseCard> cards = new ArrayList<>();
 

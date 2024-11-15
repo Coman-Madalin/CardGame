@@ -8,15 +8,13 @@ import engineer.comanmadalin.cards.hero.specific.LordRoyce;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.player.Player;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * The type Use hero ability.
  */
 @Getter
-@Setter
 public final class UseHeroAbility extends BaseAction {
-    private int affectedRow;
+    private final int affectedRow;
 
     /**
      * Instantiates a new Use hero ability.

@@ -5,8 +5,8 @@ import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.deck.Deck;
 import engineer.comanmadalin.player.Player;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -21,7 +21,6 @@ import static java.lang.Math.min;
  */
 @Getter
 @Setter
-@NoArgsConstructor
 public final class Game {
     private static final int NUMBER_OF_ROWS = 4;
     @Getter

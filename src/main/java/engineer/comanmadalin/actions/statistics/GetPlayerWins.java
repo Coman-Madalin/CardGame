@@ -4,7 +4,6 @@ import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.game.Input;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Objects;
 
@@ -12,9 +11,8 @@ import java.util.Objects;
  * The type Get player wins.
  */
 @Getter
-@Setter
 public final class GetPlayerWins extends BaseAction {
-    private int playerID;
+    private final int playerID;
 
     /**
      * Instantiates a new Get player wins.

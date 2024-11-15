@@ -7,15 +7,13 @@ import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.player.Player;
 import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * The type Get player hero.
  */
 @Getter
-@Setter
 public final class GetPlayerHero extends BaseAction {
-    private int playerID;
+    private final int playerID;
 
     /**
      * Instantiates a new Get player hero.

@@ -25,13 +25,11 @@ import engineer.comanmadalin.utils.json.serializers.actions.specific.*;
 import engineer.comanmadalin.utils.json.serializers.actions.statistics.GetPlayerWinsSerializer;
 import engineer.comanmadalin.utils.json.serializers.actions.statistics.GetTotalGamesPlayedSerializer;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * The type Json utils.
  */
 @Getter
-@Setter
 public final class JsonUtils {
     @Getter
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();

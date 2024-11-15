@@ -7,7 +7,6 @@ import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.utils.Coordinates;
 import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -15,10 +14,9 @@ import java.util.List;
  * The type Card uses attack.
  */
 @Getter
-@Setter
 public final class CardUsesAttack extends BaseAction {
-    private Coordinates coordinatesAttacker;
-    private Coordinates coordinatesAttacked;
+    private final Coordinates coordinatesAttacker;
+    private final Coordinates coordinatesAttacked;
 
     /**
      * Instantiates a new Card uses attack.

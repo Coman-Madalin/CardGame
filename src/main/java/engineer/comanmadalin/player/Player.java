@@ -3,7 +3,6 @@ package engineer.comanmadalin.player;
 import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.deck.Deck;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * The `Player` class holds information about a player's deck, hand and manaCost associated with
@@ -11,11 +10,10 @@ import lombok.Setter;
  * NOTE: This class is the one that will be changed as particular games are played.
  */
 @Getter
-@Setter
 public final class Player {
-    private Deck hand = new Deck();
-    private Deck deck;
-    private BaseHero hero;
+    private final Deck hand = new Deck();
+    private final Deck deck;
+    private final BaseHero hero;
     private int mana = 0;
 
     /**

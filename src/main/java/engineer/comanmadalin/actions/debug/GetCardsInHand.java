@@ -7,15 +7,13 @@ import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.player.Player;
 import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * The type Get cards in hand.
  */
 @Getter
-@Setter
 public final class GetCardsInHand extends BaseAction {
-    private int playerID;
+    private final int playerID;
 
     /**
      * Instantiates a new Get cards in hand.

@@ -6,7 +6,6 @@ import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.player.Player;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +14,9 @@ import java.util.List;
  * The type Place card.
  */
 @Getter
-@Setter
 public final class PlaceCard extends BaseAction {
+    private final int handID;
+
     // Need to have this because of magic number code style check
     private static final int PLAYER_TWO_BACK_ROW = 0;
     private static final int PLAYER_TWO_FRONT_ROW = 1;
@@ -30,7 +30,6 @@ public final class PlaceCard extends BaseAction {
         put("0true", PLAYER_ONE_FRONT_ROW);
         put("0false", PLAYER_ONE_BACK_ROW);
     }};
-    private int handID;
 
     /**
      * Instantiates a new Place card.
