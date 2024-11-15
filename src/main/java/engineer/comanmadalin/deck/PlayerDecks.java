@@ -6,6 +6,9 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
+/**
+ * The type Player decks.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

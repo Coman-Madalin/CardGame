@@ -10,11 +10,20 @@ import engineer.comanmadalin.player.Player;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * The type Use hero ability.
+ */
 @Getter
 @Setter
 public final class UseHeroAbility extends BaseAction {
     private int affectedRow;
 
+    /**
+     * Instantiates a new Use hero ability.
+     *
+     * @param command     the command
+     * @param affectedRow the affected row
+     */
     public UseHeroAbility(final String command, final JsonNode affectedRow) {
         super(command);
         this.affectedRow = affectedRow.asInt();

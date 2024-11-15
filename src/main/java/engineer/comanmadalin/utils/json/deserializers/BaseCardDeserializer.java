@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * The type Base card deserializer.
+ */
 public final class BaseCardDeserializer extends StdDeserializer<BaseCard> {
     private static final HashMap<String, Class<?>> NAME_TO_MINION_CLASS = new HashMap<>() {{
         put("Sentinel", Sentinel.class);
@@ -44,6 +47,11 @@ public final class BaseCardDeserializer extends StdDeserializer<BaseCard> {
 
     private static final int DEFAULT_HEALTH_VALUE = 30;
 
+    /**
+     * Instantiates a new Base card deserializer.
+     *
+     * @param vc the vc
+     */
     public BaseCardDeserializer(final Class<?> vc) {
         super(vc);
     }

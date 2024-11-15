@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.debug.GetCardsInHand;
 
 import java.io.IOException;
 
+/**
+ * The type Get cards in hand serializer.
+ */
 public final class GetCardsInHandSerializer extends StdSerializer<GetCardsInHand> {
+    /**
+     * Instantiates a new Get cards in hand serializer.
+     *
+     * @param t the t
+     */
     public GetCardsInHandSerializer(final Class<GetCardsInHand> t) {
         super(t);
     }

@@ -8,7 +8,15 @@ import engineer.comanmadalin.game.Game;
 
 import java.io.IOException;
 
+/**
+ * The type Game serializer.
+ */
 public final class GameSerializer extends StdSerializer<Game> {
+    /**
+     * Instantiates a new Game serializer.
+     *
+     * @param t the t
+     */
     public GameSerializer(final Class<Game> t) {
         super(t);
     }

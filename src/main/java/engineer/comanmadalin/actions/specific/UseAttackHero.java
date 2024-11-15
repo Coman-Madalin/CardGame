@@ -12,10 +12,19 @@ import lombok.Getter;
 
 import java.util.List;
 
+/**
+ * The type Use attack hero.
+ */
 @Getter
 public final class UseAttackHero extends BaseAction {
     private final Coordinates coordinatesAttacker;
 
+    /**
+     * Instantiates a new Use attack hero.
+     *
+     * @param command             the command
+     * @param coordinatesAttacker the coordinates attacker
+     */
     public UseAttackHero(final String command, final JsonNode coordinatesAttacker) {
         super(command);
         this.coordinatesAttacker = JsonUtils.getOBJECT_MAPPER()

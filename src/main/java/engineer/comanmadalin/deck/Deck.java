@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
+/**
+ * The type Deck.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

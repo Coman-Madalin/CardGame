@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.debug.GetPlayerTurn;
 
 import java.io.IOException;
 
+/**
+ * The type Get player turn serializer.
+ */
 public final class GetPlayerTurnSerializer extends StdSerializer<GetPlayerTurn> {
+    /**
+     * Instantiates a new Get player turn serializer.
+     *
+     * @param t the t
+     */
     public GetPlayerTurnSerializer(final Class<GetPlayerTurn> t) {
         super(t);
     }

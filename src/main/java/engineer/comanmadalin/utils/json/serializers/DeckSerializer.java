@@ -8,7 +8,15 @@ import engineer.comanmadalin.deck.Deck;
 
 import java.io.IOException;
 
+/**
+ * The type Deck serializer.
+ */
 public final class DeckSerializer extends StdSerializer<Deck> {
+    /**
+     * Instantiates a new Deck serializer.
+     *
+     * @param t the t
+     */
     public DeckSerializer(final Class<Deck> t) {
         super(t);
     }

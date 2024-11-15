@@ -5,7 +5,19 @@ import engineer.comanmadalin.game.Game;
 
 import java.util.ArrayList;
 
+/**
+ * The type General kocioraw.
+ */
 public final class GeneralKocioraw extends BaseHero {
+    /**
+     * Instantiates a new General kocioraw.
+     *
+     * @param mana        the mana
+     * @param health      the health
+     * @param description the description
+     * @param colors      the colors
+     * @param name        the name
+     */
     public GeneralKocioraw(final int mana, final int health, final String description,
                            final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);

@@ -5,7 +5,19 @@ import engineer.comanmadalin.cards.minion.specials.BaseSpecialCard;
 
 import java.util.ArrayList;
 
+/**
+ * The type Disciple.
+ */
 public final class Disciple extends BaseSpecialCard {
+    /**
+     * Instantiates a new Disciple.
+     *
+     * @param mana        the mana
+     * @param health      the health
+     * @param description the description
+     * @param colors      the colors
+     * @param name        the name
+     */
     public Disciple(final int mana, final int health, final String description,
                     final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);

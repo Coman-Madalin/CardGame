@@ -8,7 +8,15 @@ import engineer.comanmadalin.utils.json.JsonUtils;
 
 import java.util.List;
 
+/**
+ * The type Get cards on table.
+ */
 public final class GetCardsOnTable extends BaseAction {
+    /**
+     * Instantiates a new Get cards on table.
+     *
+     * @param command the command
+     */
     public GetCardsOnTable(final String command) {
         super(command);
     }

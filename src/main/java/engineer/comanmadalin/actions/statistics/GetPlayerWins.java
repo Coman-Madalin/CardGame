@@ -8,11 +8,19 @@ import lombok.Setter;
 
 import java.util.Objects;
 
+/**
+ * The type Get player wins.
+ */
 @Getter
 @Setter
 public final class GetPlayerWins extends BaseAction {
     private int playerID;
 
+    /**
+     * Instantiates a new Get player wins.
+     *
+     * @param command the command
+     */
     public GetPlayerWins(final String command) {
         super(command);
         if (Objects.equals(command, "getPlayerOneWins")) {

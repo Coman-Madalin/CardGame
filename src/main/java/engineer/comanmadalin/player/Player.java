@@ -18,11 +18,22 @@ public final class Player {
     private BaseHero hero;
     private int mana = 0;
 
+    /**
+     * Instantiates a new Player.
+     *
+     * @param deck the deck
+     * @param hero the hero
+     */
     public Player(final Deck deck, final BaseHero hero) {
         this.deck = deck;
         this.hero = hero;
     }
 
+    /**
+     * Add mana.
+     *
+     * @param manaToAdd the mana to add
+     */
     public void addMana(final int manaToAdd) {
         this.mana += manaToAdd;
     }

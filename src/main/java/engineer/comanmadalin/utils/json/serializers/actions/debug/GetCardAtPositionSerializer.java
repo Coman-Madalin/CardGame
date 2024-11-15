@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.debug.GetCardAtPosition;
 
 import java.io.IOException;
 
+/**
+ * The type Get card at position serializer.
+ */
 public final class GetCardAtPositionSerializer extends StdSerializer<GetCardAtPosition> {
+    /**
+     * Instantiates a new Get card at position serializer.
+     *
+     * @param t the t
+     */
     public GetCardAtPositionSerializer(final Class<GetCardAtPosition> t) {
         super(t);
     }

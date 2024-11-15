@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.debug.GetPlayerMana;
 
 import java.io.IOException;
 
+/**
+ * The type Get player mana serializer.
+ */
 public final class GetPlayerManaSerializer extends StdSerializer<GetPlayerMana> {
+    /**
+     * Instantiates a new Get player mana serializer.
+     *
+     * @param t the t
+     */
     public GetPlayerManaSerializer(final Class<GetPlayerMana> t) {
         super(t);
     }

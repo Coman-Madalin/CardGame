@@ -9,11 +9,20 @@ import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * The type Get player deck.
+ */
 @Getter
 @Setter
 public final class GetPlayerDeck extends BaseAction {
     private int playerID;
 
+    /**
+     * Instantiates a new Get player deck.
+     *
+     * @param command  the command
+     * @param playerID the player id
+     */
     public GetPlayerDeck(final String command, final JsonNode playerID) {
         super(command);
         this.playerID = playerID.asInt();

@@ -8,7 +8,15 @@ import engineer.comanmadalin.cards.minion.BaseMinionCard;
 
 import java.io.IOException;
 
+/**
+ * The type Base card serializer.
+ */
 public final class BaseCardSerializer extends StdSerializer<BaseCard> {
+    /**
+     * Instantiates a new Base card serializer.
+     *
+     * @param t the t
+     */
     public BaseCardSerializer(final Class<BaseCard> t) {
         super(t);
     }

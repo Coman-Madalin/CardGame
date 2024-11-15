@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.debug.GetPlayerDeck;
 
 import java.io.IOException;
 
+/**
+ * The type Get player deck serializer.
+ */
 public final class GetPlayerDeckSerializer extends StdSerializer<GetPlayerDeck> {
+    /**
+     * Instantiates a new Get player deck serializer.
+     *
+     * @param t the t
+     */
     public GetPlayerDeckSerializer(final Class<GetPlayerDeck> t) {
         super(t);
     }

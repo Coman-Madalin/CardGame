@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.specific.UseHeroAbility;
 
 import java.io.IOException;
 
+/**
+ * The type Use hero ability serializer.
+ */
 public final class UseHeroAbilitySerializer extends StdSerializer<UseHeroAbility> {
+    /**
+     * Instantiates a new Use hero ability serializer.
+     *
+     * @param t the t
+     */
     public UseHeroAbilitySerializer(final Class<UseHeroAbility> t) {
         super(t);
     }

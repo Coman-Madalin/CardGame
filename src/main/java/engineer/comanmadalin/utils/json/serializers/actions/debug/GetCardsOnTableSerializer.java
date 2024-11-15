@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.debug.GetCardsOnTable;
 
 import java.io.IOException;
 
+/**
+ * The type Get cards on table serializer.
+ */
 public final class GetCardsOnTableSerializer extends StdSerializer<GetCardsOnTable> {
+    /**
+     * Instantiates a new Get cards on table serializer.
+     *
+     * @param t the t
+     */
     public GetCardsOnTableSerializer(final Class<GetCardsOnTable> t) {
         super(t);
     }

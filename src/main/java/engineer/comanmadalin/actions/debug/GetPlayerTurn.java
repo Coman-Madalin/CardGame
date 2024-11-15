@@ -5,9 +5,17 @@ import engineer.comanmadalin.game.Game;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * The type Get player turn.
+ */
 @Getter
 @Setter
 public final class GetPlayerTurn extends BaseAction {
+    /**
+     * Instantiates a new Get player turn.
+     *
+     * @param command the command
+     */
     public GetPlayerTurn(final String command) {
         super(command);
     }

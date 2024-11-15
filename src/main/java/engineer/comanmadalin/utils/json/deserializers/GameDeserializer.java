@@ -11,7 +11,15 @@ import engineer.comanmadalin.game.GameConditions;
 
 import java.io.IOException;
 
+/**
+ * The type Game deserializer.
+ */
 public final class GameDeserializer extends StdDeserializer<Game> {
+    /**
+     * Instantiates a new Game deserializer.
+     *
+     * @param vc the vc
+     */
     public GameDeserializer(final Class<?> vc) {
         super(vc);
     }

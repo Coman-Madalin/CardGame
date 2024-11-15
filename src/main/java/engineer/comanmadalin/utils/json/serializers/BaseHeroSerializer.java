@@ -7,7 +7,15 @@ import engineer.comanmadalin.cards.hero.BaseHero;
 
 import java.io.IOException;
 
+/**
+ * The type Base hero serializer.
+ */
 public final class BaseHeroSerializer extends StdSerializer<BaseHero> {
+    /**
+     * Instantiates a new Base hero serializer.
+     *
+     * @param t the t
+     */
     public BaseHeroSerializer(final Class<BaseHero> t) {
         super(t);
     }

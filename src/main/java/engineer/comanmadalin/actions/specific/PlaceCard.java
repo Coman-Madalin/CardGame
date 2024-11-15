@@ -11,6 +11,9 @@ import lombok.Setter;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * The type Place card.
+ */
 @Getter
 @Setter
 public final class PlaceCard extends BaseAction {
@@ -29,6 +32,12 @@ public final class PlaceCard extends BaseAction {
     }};
     private int handID;
 
+    /**
+     * Instantiates a new Place card.
+     *
+     * @param command the command
+     * @param handID  the hand id
+     */
     public PlaceCard(final String command, final JsonNode handID) {
         super(command);
         this.handID = handID.asInt();

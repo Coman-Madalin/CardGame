@@ -9,11 +9,20 @@ import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * The type Get player hero.
+ */
 @Getter
 @Setter
 public final class GetPlayerHero extends BaseAction {
     private int playerID;
 
+    /**
+     * Instantiates a new Get player hero.
+     *
+     * @param command  the command
+     * @param playerID the player id
+     */
     public GetPlayerHero(final String command, final JsonNode playerID) {
         super(command);
         this.playerID = playerID.asInt();

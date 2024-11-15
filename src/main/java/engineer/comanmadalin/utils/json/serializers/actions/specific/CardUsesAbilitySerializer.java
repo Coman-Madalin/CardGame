@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.specific.CardUsesAbility;
 
 import java.io.IOException;
 
+/**
+ * The type Card uses ability serializer.
+ */
 public final class CardUsesAbilitySerializer extends StdSerializer<CardUsesAbility> {
+    /**
+     * Instantiates a new Card uses ability serializer.
+     *
+     * @param t the t
+     */
     public CardUsesAbilitySerializer(final Class<CardUsesAbility> t) {
         super(t);
     }

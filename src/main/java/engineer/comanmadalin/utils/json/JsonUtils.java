@@ -27,6 +27,9 @@ import engineer.comanmadalin.utils.json.serializers.actions.statistics.GetTotalG
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * The type Json utils.
+ */
 @Getter
 @Setter
 public final class JsonUtils {

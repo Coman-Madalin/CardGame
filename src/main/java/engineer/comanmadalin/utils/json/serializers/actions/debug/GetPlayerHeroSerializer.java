@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.debug.GetPlayerHero;
 
 import java.io.IOException;
 
+/**
+ * The type Get player hero serializer.
+ */
 public final class GetPlayerHeroSerializer extends StdSerializer<GetPlayerHero> {
+    /**
+     * Instantiates a new Get player hero serializer.
+     *
+     * @param t the t
+     */
     public GetPlayerHeroSerializer(final Class<GetPlayerHero> t) {
         super(t);
     }

@@ -7,7 +7,15 @@ import engineer.comanmadalin.utils.json.JsonUtils;
 
 import java.util.List;
 
+/**
+ * The type Get frozen cards on table.
+ */
 public final class GetFrozenCardsOnTable extends BaseAction {
+    /**
+     * Instantiates a new Get frozen cards on table.
+     *
+     * @param command the command
+     */
     public GetFrozenCardsOnTable(final String command) {
         super(command);
     }

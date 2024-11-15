@@ -13,7 +13,15 @@ import engineer.comanmadalin.game.Input;
 
 import java.io.IOException;
 
+/**
+ * The type Input deserializer.
+ */
 public final class InputDeserializer extends StdDeserializer<Input> {
+    /**
+     * Instantiates a new Input deserializer.
+     *
+     * @param vc the vc
+     */
     public InputDeserializer(final Class<?> vc) {
         super(vc);
     }

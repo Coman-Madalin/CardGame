@@ -7,7 +7,19 @@ import engineer.comanmadalin.game.Game;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Empress thorina.
+ */
 public final class EmpressThorina extends BaseHero {
+    /**
+     * Instantiates a new Empress thorina.
+     *
+     * @param mana        the mana
+     * @param health      the health
+     * @param description the description
+     * @param colors      the colors
+     * @param name        the name
+     */
     public EmpressThorina(final int mana, final int health, final String description,
                           final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);

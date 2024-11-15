@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.debug.GetFrozenCardsOnTable;
 
 import java.io.IOException;
 
+/**
+ * The type Get frozen cards on table serializer.
+ */
 public final class GetFrozenCardsOnTableSerializer extends StdSerializer<GetFrozenCardsOnTable> {
+    /**
+     * Instantiates a new Get frozen cards on table serializer.
+     *
+     * @param t the t
+     */
     public GetFrozenCardsOnTableSerializer(final Class<GetFrozenCardsOnTable> t) {
         super(t);
     }

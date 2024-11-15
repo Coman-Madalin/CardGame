@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.statistics.GetPlayerWins;
 
 import java.io.IOException;
 
+/**
+ * The type Get player wins serializer.
+ */
 public final class GetPlayerWinsSerializer extends StdSerializer<GetPlayerWins> {
+    /**
+     * Instantiates a new Get player wins serializer.
+     *
+     * @param t the t
+     */
     public GetPlayerWinsSerializer(final Class<GetPlayerWins> t) {
         super(t);
     }

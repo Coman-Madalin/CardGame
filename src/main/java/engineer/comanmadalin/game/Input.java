@@ -11,6 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The type Input.
+ */
 @Getter
 @Setter
 public final class Input {
@@ -24,6 +27,9 @@ public final class Input {
     private PlayerData[] playersData = new PlayerData[MAX_PLAYERS];
     private ArrayList<Game> games = new ArrayList<>();
 
+    /**
+     * Instantiates a new Input.
+     */
     public Input() {
         Input.instance = this;
 
@@ -32,16 +38,28 @@ public final class Input {
         }
     }
 
+    /**
+     * Play all games.
+     */
     public void playAllGames() {
         for (int i = 0; i < games.size(); i++) {
             games.get(i).runGame(i);
         }
     }
 
+    /**
+     * Increase games played.
+     */
     public void increaseGamesPlayed() {
         gamesPlayed++;
     }
 
+    /**
+     * Games to json.
+     *
+     * @param filePath1 the file path 1
+     * @throws IOException the io exception
+     */
     public void gamesToJson(final String filePath1) throws IOException {
         final ObjectMapper objectMapper = JsonUtils.getOBJECT_MAPPER();
         final ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();

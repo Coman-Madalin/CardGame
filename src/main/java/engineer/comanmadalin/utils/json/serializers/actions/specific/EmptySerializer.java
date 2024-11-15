@@ -7,7 +7,17 @@ import engineer.comanmadalin.actions.BaseAction;
 
 import java.io.IOException;
 
+/**
+ * The type Empty serializer.
+ *
+ * @param <T> the type parameter
+ */
 public final class EmptySerializer<T extends BaseAction> extends StdSerializer<T> {
+    /**
+     * Instantiates a new Empty serializer.
+     *
+     * @param t the t
+     */
     public EmptySerializer(final Class<T> t) {
         super(t);
     }

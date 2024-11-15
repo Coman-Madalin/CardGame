@@ -3,7 +3,15 @@ package engineer.comanmadalin.actions.specific;
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.game.Game;
 
+/**
+ * The type End player turn.
+ */
 public final class EndPlayerTurn extends BaseAction {
+    /**
+     * Instantiates a new End player turn.
+     *
+     * @param command the command
+     */
     public EndPlayerTurn(final String command) {
         super(command);
     }

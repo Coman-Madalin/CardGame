@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * The type Base action deserializer.
+ */
 public final class BaseActionDeserializer extends StdDeserializer<BaseAction> {
     private static final HashMap<String, String[]> NAME_TO_ARGUMENTS = new HashMap<>() {{
         put("getCardAtPosition", new String[]{"x", "y"});
@@ -67,6 +70,11 @@ public final class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("getTotalGamesPlayed", GetTotalGamesPlayed.class);
     }};
 
+    /**
+     * Instantiates a new Base action deserializer.
+     *
+     * @param vc the vc
+     */
     public BaseActionDeserializer(final Class<?> vc) {
         super(vc);
     }

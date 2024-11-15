@@ -12,11 +12,21 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * The type Get card at position.
+ */
 @Getter
 @Setter
 public final class GetCardAtPosition extends BaseAction {
     private Coordinates cardCoordinates;
 
+    /**
+     * Instantiates a new Get card at position.
+     *
+     * @param command the command
+     * @param x       the x
+     * @param y       the y
+     */
     public GetCardAtPosition(final String command, final JsonNode x, final JsonNode y) {
         super(command);
         cardCoordinates = new Coordinates(x.asInt(), y.asInt());

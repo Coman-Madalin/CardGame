@@ -15,11 +15,21 @@ import lombok.Getter;
 
 import java.util.List;
 
+/**
+ * The type Card uses ability.
+ */
 @Getter
 public final class CardUsesAbility extends BaseAction {
     private final Coordinates coordinatesAttacker;
     private final Coordinates coordinatesAttacked;
 
+    /**
+     * Instantiates a new Card uses ability.
+     *
+     * @param command             the command
+     * @param coordinatesAttacker the coordinates attacker
+     * @param coordinatesAttacked the coordinates attacked
+     */
     public CardUsesAbility(final String command, final JsonNode coordinatesAttacker,
                            final JsonNode coordinatesAttacked) {
         super(command);

@@ -16,6 +16,9 @@ import java.util.Random;
 
 import static java.lang.Math.min;
 
+/**
+ * The type Game.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,6 +35,11 @@ public final class Game {
     private GameConditions gameConditions = new GameConditions();
     private List<BaseAction> actions = new ArrayList<>();
 
+    /**
+     * Find all frozen cards list.
+     *
+     * @return the list
+     */
     public List<BaseMinionCard> findAllFrozenCards() {
         final List<BaseMinionCard> result = new ArrayList<>();
 
@@ -46,6 +54,12 @@ public final class Game {
         return result;
     }
 
+    /**
+     * Check for tank boolean.
+     *
+     * @param playerID the player id
+     * @return the boolean
+     */
     public Boolean checkForTank(final int playerID) {
         final List<BaseMinionCard> row = board.get(2 - playerID);
         for (final BaseMinionCard minion : row) {
@@ -57,6 +71,9 @@ public final class Game {
         return false;
     }
 
+    /**
+     * Unfreeze player cards.
+     */
     public void unfreezePlayerCards() {
         final int startingRow;
         if (playerIDTurn == 0) {
@@ -90,6 +107,9 @@ public final class Game {
         }
     }
 
+    /**
+     * Start of round.
+     */
     public void startOfRound() {
         endOfRound();
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
@@ -106,6 +126,9 @@ public final class Game {
         roundNumber += 1;
     }
 
+    /**
+     * Sets board.
+     */
     public void setBoard() {
         board = new ArrayList<>(NUMBER_OF_ROWS);
         for (int i = 0; i < NUMBER_OF_ROWS; i++) {
@@ -113,6 +136,11 @@ public final class Game {
         }
     }
 
+    /**
+     * Run game.
+     *
+     * @param gameNumber the game number
+     */
     public void runGame(final int gameNumber) {
         setBoard();
         playerIDTurn = gameConditions.getStartingPlayer() - 1;

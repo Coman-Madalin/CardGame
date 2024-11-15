@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.specific.PlaceCard;
 
 import java.io.IOException;
 
+/**
+ * The type Place card serializer.
+ */
 public final class PlaceCardSerializer extends StdSerializer<PlaceCard> {
+    /**
+     * Instantiates a new Place card serializer.
+     *
+     * @param t the t
+     */
     public PlaceCardSerializer(final Class<PlaceCard> t) {
         super(t);
     }

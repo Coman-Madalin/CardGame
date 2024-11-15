@@ -4,10 +4,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * The type Game conditions.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
-public class GameConditions {
+public final class GameConditions {
     private int shuffleSeed = 0;
     private int startingPlayer = 0;
 }

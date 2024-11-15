@@ -7,7 +7,15 @@ import engineer.comanmadalin.actions.specific.UseAttackHero;
 
 import java.io.IOException;
 
+/**
+ * The type Game ended serializer.
+ */
 public final class GameEndedSerializer extends StdSerializer<UseAttackHero> {
+    /**
+     * Instantiates a new Game ended serializer.
+     *
+     * @param t the t
+     */
     public GameEndedSerializer(final Class<UseAttackHero> t) {
         super(t);
     }

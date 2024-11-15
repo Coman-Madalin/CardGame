@@ -11,12 +11,22 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * The type Card uses attack.
+ */
 @Getter
 @Setter
 public final class CardUsesAttack extends BaseAction {
     private Coordinates coordinatesAttacker;
     private Coordinates coordinatesAttacked;
 
+    /**
+     * Instantiates a new Card uses attack.
+     *
+     * @param command             the command
+     * @param coordinatesAttacker the coordinates attacker
+     * @param coordinatesAttacked the coordinates attacked
+     */
     public CardUsesAttack(final String command, final JsonNode coordinatesAttacker,
                           final JsonNode coordinatesAttacked) {
         super(command);
