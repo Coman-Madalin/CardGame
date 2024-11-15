@@ -14,7 +14,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class GetCardAtPosition extends BaseAction {
+public final class GetCardAtPosition extends BaseAction {
     private Coordinates cardCoordinates;
 
     public GetCardAtPosition(final String command, final JsonNode x, final JsonNode y) {
@@ -38,7 +38,7 @@ public class GetCardAtPosition extends BaseAction {
         final BaseMinionCard card = game.getBoard().get(cardCoordinates.getX())
                 .get(cardCoordinates.getY());
 
-        final ObjectMapper mapper = JsonUtils.getObjectMapper();
+        final ObjectMapper mapper = JsonUtils.getOBJECT_MAPPER();
         final String serializedCard = String.valueOf(mapper.valueToTree(card));
 
         this.setResult(serializedCard);

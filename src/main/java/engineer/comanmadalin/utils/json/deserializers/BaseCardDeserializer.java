@@ -23,8 +23,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
-    private static final HashMap<String, Class<?>> nameToMinionClass = new HashMap<>() {{
+public final class BaseCardDeserializer extends StdDeserializer<BaseCard> {
+    private static final HashMap<String, Class<?>> NAME_TO_MINION_CLASS = new HashMap<>() {{
         put("Sentinel", Sentinel.class);
         put("Warden", Warden.class);
         put("Berserker", Berserker.class);
@@ -35,12 +35,14 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
         put("The Cursed One", TheCursedOne.class);
         put("Disciple", Disciple.class);
     }};
-    private static final HashMap<String, Class<?>> nameToHeroClass = new HashMap<>() {{
+    private static final HashMap<String, Class<?>> NAME_TO_HERO_CLASS = new HashMap<>() {{
         put("Lord Royce", LordRoyce.class);
         put("Empress Thorina", EmpressThorina.class);
         put("King Mudface", KingMudface.class);
         put("General Kocioraw", GeneralKocioraw.class);
     }};
+
+    private static final int DEFAULT_HEALTH_VALUE = 30;
 
     public BaseCardDeserializer(final Class<?> vc) {
         super(vc);
@@ -52,7 +54,7 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
         final JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
         final String name = root.get("name").asText();
-        int health = 30;
+        int health = DEFAULT_HEALTH_VALUE;
         final int manaCost = root.get("mana").asInt();
         final String description = root.get("description").asText();
         final ArrayList<String> colors = new ArrayList<>();
@@ -62,9 +64,9 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
             colors.add(colorNode.asText());
         }
 
-        Class<?> clazz = nameToHeroClass.get(name);
+        Class<?> clazz = NAME_TO_HERO_CLASS.get(name);
         if (clazz == null) {
-            clazz = nameToMinionClass.get(name);
+            clazz = NAME_TO_MINION_CLASS.get(name);
             health = root.get("health").asInt();
         }
 
@@ -76,7 +78,7 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
                     .newInstance(manaCost, health, description, colors, name);
 
             // If the card is a minion type, we need to set the attack damage
-            if (nameToMinionClass.containsKey(name)) {
+            if (NAME_TO_MINION_CLASS.containsKey(name)) {
                 final int attackDamage = root.get("attackDamage").asInt();
                 clazz.getMethod("setAttackDamage", int.class).invoke(o, attackDamage);
             }

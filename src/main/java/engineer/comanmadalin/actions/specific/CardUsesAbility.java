@@ -16,16 +16,16 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class CardUsesAbility extends BaseAction {
+public final class CardUsesAbility extends BaseAction {
     private final Coordinates coordinatesAttacker;
     private final Coordinates coordinatesAttacked;
 
     public CardUsesAbility(final String command, final JsonNode coordinatesAttacker,
                            final JsonNode coordinatesAttacked) {
         super(command);
-        this.coordinatesAttacker = JsonUtils.getObjectMapper()
+        this.coordinatesAttacker = JsonUtils.getOBJECT_MAPPER()
                 .convertValue(coordinatesAttacker, Coordinates.class);
-        this.coordinatesAttacked = JsonUtils.getObjectMapper()
+        this.coordinatesAttacked = JsonUtils.getOBJECT_MAPPER()
                 .convertValue(coordinatesAttacked, Coordinates.class);
     }
 
@@ -66,8 +66,8 @@ public class CardUsesAbility extends BaseAction {
                 this.setError("Attacked card does not belong to the current player.");
                 return;
             }
-        } else if (attacker instanceof TheRipper || attacker instanceof Miraj ||
-                attacker instanceof TheCursedOne) {
+        } else if (attacker instanceof TheRipper || attacker instanceof Miraj
+                || attacker instanceof TheCursedOne) {
             if (attackedPlayerID == attackerPlayerID) {
                 this.setError("Attacked card does not belong to the enemy.");
                 return;

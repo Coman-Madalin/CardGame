@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GetPlayerHero extends BaseAction {
+public final class GetPlayerHero extends BaseAction {
     private int playerID;
 
     public GetPlayerHero(final String command, final JsonNode playerID) {
@@ -22,7 +22,7 @@ public class GetPlayerHero extends BaseAction {
     @Override
     public void run(final Game game) {
         final Player player = game.getPlayers()[playerID - 1];
-        final ObjectMapper mapper = JsonUtils.getObjectMapper();
+        final ObjectMapper mapper = JsonUtils.getOBJECT_MAPPER();
         final String serializedHero = String.valueOf(mapper.valueToTree(player.getHero()));
 
         this.setResult(serializedHero);

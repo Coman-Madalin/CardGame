@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Deck implements Cloneable {
+public final class Deck implements Cloneable {
     private ArrayList<BaseCard> cards = new ArrayList<>();
 
     @Override

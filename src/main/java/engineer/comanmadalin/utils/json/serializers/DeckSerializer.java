@@ -8,7 +8,7 @@ import engineer.comanmadalin.deck.Deck;
 
 import java.io.IOException;
 
-public class DeckSerializer extends StdSerializer<Deck> {
+public final class DeckSerializer extends StdSerializer<Deck> {
     public DeckSerializer(final Class<Deck> t) {
         super(t);
     }

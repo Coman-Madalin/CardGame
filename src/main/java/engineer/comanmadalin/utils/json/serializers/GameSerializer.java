@@ -8,7 +8,7 @@ import engineer.comanmadalin.game.Game;
 
 import java.io.IOException;
 
-public class GameSerializer extends StdSerializer<Game> {
+public final class GameSerializer extends StdSerializer<Game> {
     public GameSerializer(final Class<Game> t) {
         super(t);
     }

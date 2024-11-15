@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.specific.PlaceCard;
 
 import java.io.IOException;
 
-public class PlaceCardSerializer extends StdSerializer<PlaceCard> {
+public final class PlaceCardSerializer extends StdSerializer<PlaceCard> {
     public PlaceCardSerializer(final Class<PlaceCard> t) {
         super(t);
     }

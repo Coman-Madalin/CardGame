@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.debug.GetCardsOnTable;
 
 import java.io.IOException;
 
-public class GetCardsOnTableSerializer extends StdSerializer<GetCardsOnTable> {
+public final class GetCardsOnTableSerializer extends StdSerializer<GetCardsOnTable> {
     public GetCardsOnTableSerializer(final Class<GetCardsOnTable> t) {
         super(t);
     }

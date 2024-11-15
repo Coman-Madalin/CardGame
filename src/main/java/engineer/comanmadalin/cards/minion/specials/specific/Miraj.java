@@ -5,7 +5,7 @@ import engineer.comanmadalin.cards.minion.specials.BaseSpecialCard;
 
 import java.util.ArrayList;
 
-public class Miraj extends BaseSpecialCard {
+public final class Miraj extends BaseSpecialCard {
     public Miraj(final int mana, final int health, final String description,
                  final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);

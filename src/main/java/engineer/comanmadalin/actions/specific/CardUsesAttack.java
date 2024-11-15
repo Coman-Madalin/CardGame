@@ -13,16 +13,16 @@ import java.util.List;
 
 @Getter
 @Setter
-public class CardUsesAttack extends BaseAction {
+public final class CardUsesAttack extends BaseAction {
     private Coordinates coordinatesAttacker;
     private Coordinates coordinatesAttacked;
 
     public CardUsesAttack(final String command, final JsonNode coordinatesAttacker,
                           final JsonNode coordinatesAttacked) {
         super(command);
-        this.coordinatesAttacker = JsonUtils.getObjectMapper()
+        this.coordinatesAttacker = JsonUtils.getOBJECT_MAPPER()
                 .convertValue(coordinatesAttacker, Coordinates.class);
-        this.coordinatesAttacked = JsonUtils.getObjectMapper()
+        this.coordinatesAttacked = JsonUtils.getOBJECT_MAPPER()
                 .convertValue(coordinatesAttacked, Coordinates.class);
     }
 

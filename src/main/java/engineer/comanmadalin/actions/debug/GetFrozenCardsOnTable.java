@@ -7,7 +7,7 @@ import engineer.comanmadalin.utils.json.JsonUtils;
 
 import java.util.List;
 
-public class GetFrozenCardsOnTable extends BaseAction {
+public final class GetFrozenCardsOnTable extends BaseAction {
     public GetFrozenCardsOnTable(final String command) {
         super(command);
     }
@@ -16,7 +16,7 @@ public class GetFrozenCardsOnTable extends BaseAction {
     public void run(final Game game) {
         final List<BaseMinionCard> frozenCards = game.findAllFrozenCards();
         final String serializedCards = String
-                .valueOf(JsonUtils.getObjectMapper().valueToTree(frozenCards));
+                .valueOf(JsonUtils.getOBJECT_MAPPER().valueToTree(frozenCards));
 
         this.setResult(serializedCards);
     }

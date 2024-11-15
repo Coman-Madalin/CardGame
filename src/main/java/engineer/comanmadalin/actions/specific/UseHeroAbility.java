@@ -12,8 +12,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UseHeroAbility extends BaseAction {
-    int affectedRow;
+public final class UseHeroAbility extends BaseAction {
+    private int affectedRow;
 
     public UseHeroAbility(final String command, final JsonNode affectedRow) {
         super(command);

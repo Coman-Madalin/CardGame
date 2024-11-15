@@ -20,29 +20,17 @@ import static java.lang.Math.min;
 @Setter
 @NoArgsConstructor
 public final class Game {
-    Player[] players = new Player[Input.getMAX_PLAYERS()];
+    private static final int NUMBER_OF_ROWS = 4;
+    @Getter
+    private static final int NUMBER_OF_ELEMENTS_PER_ROW = 5;
+    private static final int MAXIMUM_MANA_INCREASE_ROUND = 10;
+    private Player[] players = new Player[Input.getMAX_PLAYERS()];
     private int roundNumber = 0;
     private List<List<BaseMinionCard>> board;
     private Boolean nextEndTurnWillEndRound = false;
     private int playerIDTurn;
-
     private GameConditions gameConditions = new GameConditions();
     private List<BaseAction> actions = new ArrayList<>();
-
-    private void printBoard() {
-        System.out.println("Player2: " + players[1].getMana());
-        System.out.println("Player1: " + players[0].getMana());
-
-        for (final List<BaseMinionCard> row : board) {
-            for (final BaseMinionCard baseMinionCard : row) {
-                System.out.print(baseMinionCard.getName() + ":" + baseMinionCard.getManaCost() +
-                        " " + baseMinionCard.getIsFrozen() + "|||");
-            }
-            System.out.println();
-        }
-
-        System.out.println("*****************************************");
-    }
 
     public List<BaseMinionCard> findAllFrozenCards() {
         final List<BaseMinionCard> result = new ArrayList<>();
@@ -98,17 +86,14 @@ public final class Game {
 
     private void playActions() {
         for (final BaseAction action : actions) {
-            System.out.println("*****************************************");
-            System.out.println(action.getClass());
             action.run(this);
-            printBoard();
         }
     }
 
     public void startOfRound() {
         endOfRound();
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
-            players[i].addMana(min(roundNumber + 1, 10));
+            players[i].addMana(min(roundNumber + 1, MAXIMUM_MANA_INCREASE_ROUND));
 
             if (players[i].getDeck().getCards().isEmpty()) {
                 continue;
@@ -122,16 +107,16 @@ public final class Game {
     }
 
     public void setBoard() {
-        board = new ArrayList<>(4);
-        for (int i = 0; i < 4; i++) {
-            board.add(new ArrayList<>(5));
+        board = new ArrayList<>(NUMBER_OF_ROWS);
+        for (int i = 0; i < NUMBER_OF_ROWS; i++) {
+            board.add(new ArrayList<>(NUMBER_OF_ELEMENTS_PER_ROW));
         }
     }
 
     public void runGame(final int gameNumber) {
         setBoard();
         playerIDTurn = gameConditions.getStartingPlayer() - 1;
-        final Input inputInstance = Input.getINSTANCE();
+        final Input inputInstance = Input.getInstance();
 
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
             final Deck playerDeck = inputInstance.getPlayersData()[i].getDecks().getDecks()

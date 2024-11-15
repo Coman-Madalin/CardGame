@@ -13,12 +13,12 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class UseAttackHero extends BaseAction {
+public final class UseAttackHero extends BaseAction {
     private final Coordinates coordinatesAttacker;
 
     public UseAttackHero(final String command, final JsonNode coordinatesAttacker) {
         super(command);
-        this.coordinatesAttacker = JsonUtils.getObjectMapper()
+        this.coordinatesAttacker = JsonUtils.getOBJECT_MAPPER()
                 .convertValue(coordinatesAttacker, Coordinates.class);
     }
 
@@ -55,8 +55,8 @@ public class UseAttackHero extends BaseAction {
             this.setResult("Player " + (game.getPlayerIDTurn() == 0 ? "one" : "two")
                     + " killed the enemy hero.");
 
-            Input.getINSTANCE().getPlayersData()[game.getPlayerIDTurn()].increaseWins();
-            Input.getINSTANCE().increaseGamesPlayed();
+            Input.getInstance().getPlayersData()[game.getPlayerIDTurn()].increaseWins();
+            Input.getInstance().increaseGamesPlayed();
         }
     }
 }

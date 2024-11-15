@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.specific.CardUsesAttack;
 
 import java.io.IOException;
 
-public class CardUsesAttackSerializer extends StdSerializer<CardUsesAttack> {
+public final class CardUsesAttackSerializer extends StdSerializer<CardUsesAttack> {
     public CardUsesAttackSerializer(final Class<CardUsesAttack> t) {
         super(t);
     }
@@ -15,8 +15,9 @@ public class CardUsesAttackSerializer extends StdSerializer<CardUsesAttack> {
     @Override
     public void serialize(final CardUsesAttack value, final JsonGenerator jsonGenerator,
                           final SerializerProvider provider) throws IOException {
-        if (value.getError() == null)
+        if (value.getError() == null) {
             return;
+        }
 
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("command", value.getCommand());

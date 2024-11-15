@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.debug.GetPlayerTurn;
 
 import java.io.IOException;
 
-public class GetPlayerTurnSerializer extends StdSerializer<GetPlayerTurn> {
+public final class GetPlayerTurnSerializer extends StdSerializer<GetPlayerTurn> {
     public GetPlayerTurnSerializer(final Class<GetPlayerTurn> t) {
         super(t);
     }

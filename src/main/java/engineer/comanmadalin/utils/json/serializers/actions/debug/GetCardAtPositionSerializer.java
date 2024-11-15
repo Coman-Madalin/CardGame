@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.debug.GetCardAtPosition;
 
 import java.io.IOException;
 
-public class GetCardAtPositionSerializer extends StdSerializer<GetCardAtPosition> {
+public final class GetCardAtPositionSerializer extends StdSerializer<GetCardAtPosition> {
     public GetCardAtPositionSerializer(final Class<GetCardAtPosition> t) {
         super(t);
     }

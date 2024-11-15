@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.debug.GetPlayerMana;
 
 import java.io.IOException;
 
-public class GetPlayerManaSerializer extends StdSerializer<GetPlayerMana> {
+public final class GetPlayerManaSerializer extends StdSerializer<GetPlayerMana> {
     public GetPlayerManaSerializer(final Class<GetPlayerMana> t) {
         super(t);
     }

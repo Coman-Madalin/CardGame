@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
-public class GetPlayerWins extends BaseAction {
+public final class GetPlayerWins extends BaseAction {
     private int playerID;
 
     public GetPlayerWins(final String command) {
@@ -24,6 +24,6 @@ public class GetPlayerWins extends BaseAction {
 
     @Override
     public void run(final Game game) {
-        this.setResult(String.valueOf(Input.getINSTANCE().getPlayersData()[playerID].getWins()));
+        this.setResult(String.valueOf(Input.getInstance().getPlayersData()[playerID].getWins()));
     }
 }

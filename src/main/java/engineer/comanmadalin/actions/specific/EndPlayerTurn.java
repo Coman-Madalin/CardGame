@@ -3,7 +3,7 @@ package engineer.comanmadalin.actions.specific;
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.game.Game;
 
-public class EndPlayerTurn extends BaseAction {
+public final class EndPlayerTurn extends BaseAction {
     public EndPlayerTurn(final String command) {
         super(command);
     }

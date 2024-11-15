@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GetPlayerMana extends BaseAction {
+public final class GetPlayerMana extends BaseAction {
     private int playerID;
 
     public GetPlayerMana(final String command, final JsonNode playerID) {
@@ -22,7 +22,7 @@ public class GetPlayerMana extends BaseAction {
     @Override
     public void run(final Game game) {
         final Player player = game.getPlayers()[playerID - 1];
-        final ObjectMapper mapper = JsonUtils.getObjectMapper();
+        final ObjectMapper mapper = JsonUtils.getOBJECT_MAPPER();
         final String serializedDeck = String.valueOf(mapper.valueToTree(player.getMana()));
         this.setResult(serializedDeck);
     }

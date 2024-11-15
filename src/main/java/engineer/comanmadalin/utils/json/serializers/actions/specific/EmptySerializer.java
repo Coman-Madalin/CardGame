@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.BaseAction;
 
 import java.io.IOException;
 
-public class EmptySerializer<T extends BaseAction> extends StdSerializer<T> {
+public final class EmptySerializer<T extends BaseAction> extends StdSerializer<T> {
     public EmptySerializer(final Class<T> t) {
         super(t);
     }
@@ -15,7 +15,7 @@ public class EmptySerializer<T extends BaseAction> extends StdSerializer<T> {
     // This serializer is called for any action that don't need to be present in the output json
     @Override
     public void serialize(final T value, final JsonGenerator gen,
-                          final SerializerProvider provider)  throws IOException {
+                          final SerializerProvider provider) throws IOException {
 
     }
 }

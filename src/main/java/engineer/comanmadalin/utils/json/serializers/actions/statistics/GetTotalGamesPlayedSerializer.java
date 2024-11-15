@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.statistics.GetTotalGamesPlayed;
 
 import java.io.IOException;
 
-public class GetTotalGamesPlayedSerializer extends StdSerializer<GetTotalGamesPlayed> {
+public final class GetTotalGamesPlayedSerializer extends StdSerializer<GetTotalGamesPlayed> {
     public GetTotalGamesPlayedSerializer(final Class<GetTotalGamesPlayed> t) {
         super(t);
     }

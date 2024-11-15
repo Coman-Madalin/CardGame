@@ -10,7 +10,7 @@ import engineer.comanmadalin.deck.Deck;
 
 import java.io.IOException;
 
-public class DeckDeserializer extends StdDeserializer<Deck> {
+public final class DeckDeserializer extends StdDeserializer<Deck> {
     public DeckDeserializer(final Class<?> vc) {
         super(vc);
     }

@@ -8,14 +8,14 @@ import engineer.comanmadalin.utils.json.JsonUtils;
 
 import java.util.List;
 
-public class GetCardsOnTable extends BaseAction {
+public final class GetCardsOnTable extends BaseAction {
     public GetCardsOnTable(final String command) {
         super(command);
     }
 
     @Override
     public void run(final Game game) {
-        final ObjectMapper mapper = JsonUtils.getObjectMapper();
+        final ObjectMapper mapper = JsonUtils.getOBJECT_MAPPER();
         final List<List<BaseMinionCard>> table = game.getBoard();
         final String serializedDeck = String.valueOf(mapper.valueToTree(table));
 

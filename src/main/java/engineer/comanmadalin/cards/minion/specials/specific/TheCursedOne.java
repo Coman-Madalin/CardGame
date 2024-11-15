@@ -5,7 +5,7 @@ import engineer.comanmadalin.cards.minion.specials.BaseSpecialCard;
 
 import java.util.ArrayList;
 
-public class TheCursedOne extends BaseSpecialCard {
+public final class TheCursedOne extends BaseSpecialCard {
     public TheCursedOne(final int mana, final int health, final String description,
                         final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);

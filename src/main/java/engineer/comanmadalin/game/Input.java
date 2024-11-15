@@ -17,7 +17,7 @@ public final class Input {
     @Getter
     private static final int MAX_PLAYERS = 2;
     @Getter
-    private static Input INSTANCE;
+    private static Input instance;
 
     private int gamesPlayed = 0;
 
@@ -25,7 +25,7 @@ public final class Input {
     private ArrayList<Game> games = new ArrayList<>();
 
     public Input() {
-        Input.INSTANCE = this;
+        Input.instance = this;
 
         for (int i = 0; i < MAX_PLAYERS; i++) {
             playersData[i] = new PlayerData();
@@ -43,7 +43,7 @@ public final class Input {
     }
 
     public void gamesToJson(final String filePath1) throws IOException {
-        final ObjectMapper objectMapper = JsonUtils.getObjectMapper();
+        final ObjectMapper objectMapper = JsonUtils.getOBJECT_MAPPER();
         final ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(filePath1), this.getGames());
     }

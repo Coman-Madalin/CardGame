@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GetPlayerTurn extends BaseAction {
+public final class GetPlayerTurn extends BaseAction {
     public GetPlayerTurn(final String command) {
         super(command);
     }

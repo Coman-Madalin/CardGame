@@ -5,7 +5,7 @@ import engineer.comanmadalin.game.Game;
 
 import java.util.ArrayList;
 
-public class KingMudface extends BaseHero {
+public final class KingMudface extends BaseHero {
     public KingMudface(final int mana, final int health, final String description,
                        final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);

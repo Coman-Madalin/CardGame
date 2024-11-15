@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.debug.GetCardsInHand;
 
 import java.io.IOException;
 
-public class GetCardsInHandSerializer extends StdSerializer<GetCardsInHand> {
+public final class GetCardsInHandSerializer extends StdSerializer<GetCardsInHand> {
     public GetCardsInHandSerializer(final Class<GetCardsInHand> t) {
         super(t);
     }

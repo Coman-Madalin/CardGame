@@ -10,7 +10,7 @@ import engineer.comanmadalin.deck.PlayerDecks;
 
 import java.io.IOException;
 
-public class PlayerDecksDeserializer extends StdDeserializer<PlayerDecks> {
+public final class PlayerDecksDeserializer extends StdDeserializer<PlayerDecks> {
     public PlayerDecksDeserializer(final Class<?> vc) {
         super(vc);
     }
@@ -18,11 +18,8 @@ public class PlayerDecksDeserializer extends StdDeserializer<PlayerDecks> {
     @Override
     public PlayerDecks deserialize(final JsonParser jsonParser, final DeserializationContext ctxt)
             throws IOException {
-//        jsonParser.nextToken();
         final JsonNode root = jsonParser.getCodec().readTree(jsonParser);
-
         final PlayerDecks toReturnPlayerDecks = new PlayerDecks();
-//        toReturnPlayerDecks.setDecks(root.get("nrDecks").asInt(), root.get("nrCardsInDeck").asInt());
 
         final ArrayNode decks = (ArrayNode) root.get("decks");
         for (final JsonNode deck : decks) {

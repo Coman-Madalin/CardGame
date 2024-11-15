@@ -8,7 +8,7 @@ import engineer.comanmadalin.game.GameConditions;
 
 import java.io.IOException;
 
-public class GameConditionsDeserializer extends StdDeserializer<GameConditions> {
+public final class GameConditionsDeserializer extends StdDeserializer<GameConditions> {
     public GameConditionsDeserializer(final Class<?> vc) {
         super(vc);
     }

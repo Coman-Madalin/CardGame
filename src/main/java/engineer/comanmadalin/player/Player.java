@@ -12,7 +12,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Player {
+public final class Player {
     private Deck hand = new Deck();
     private Deck deck;
     private BaseHero hero;

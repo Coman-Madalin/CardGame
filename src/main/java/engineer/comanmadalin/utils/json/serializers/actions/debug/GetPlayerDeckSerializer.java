@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.debug.GetPlayerDeck;
 
 import java.io.IOException;
 
-public class GetPlayerDeckSerializer extends StdSerializer<GetPlayerDeck> {
+public final class GetPlayerDeckSerializer extends StdSerializer<GetPlayerDeck> {
     public GetPlayerDeckSerializer(final Class<GetPlayerDeck> t) {
         super(t);
     }

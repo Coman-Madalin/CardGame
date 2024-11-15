@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
-    private static final HashMap<String, String[]> nameToArguments = new HashMap<>() {{
+public final class BaseActionDeserializer extends StdDeserializer<BaseAction> {
+    private static final HashMap<String, String[]> NAME_TO_ARGUMENTS = new HashMap<>() {{
         put("getCardAtPosition", new String[]{"x", "y"});
 
         put("getCardsInHand", new String[]{"playerIdx"});
@@ -41,7 +41,7 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("getTotalGamesPlayed", new String[0]);
     }};
 
-    private static final HashMap<String, Class<?>> nameToActionClass = new HashMap<>() {{
+    private static final HashMap<String, Class<?>> NAME_TO_ACTION_CLASS = new HashMap<>() {{
         put("getCardAtPosition", GetCardAtPosition.class);
 
         put("getCardsInHand", GetCardsInHand.class);
@@ -78,7 +78,7 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
 
         final String command = root.get("command").asText();
 
-        final String[] argumentsNameArray = nameToArguments.get(command);
+        final String[] argumentsNameArray = NAME_TO_ARGUMENTS.get(command);
         final Object[] argumentsArray = new Object[argumentsNameArray.length + 1];
         argumentsArray[0] = command;
         int index = 1;
@@ -88,7 +88,7 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
             index++;
         }
 
-        final Class<?> clazz = nameToActionClass.get(command);
+        final Class<?> clazz = NAME_TO_ACTION_CLASS.get(command);
         final Object o;
         try {
             final Class<?>[] argumentTypes = new Class<?>[argumentsNameArray.length + 1];

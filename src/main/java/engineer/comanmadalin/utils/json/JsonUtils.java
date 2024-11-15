@@ -29,11 +29,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class JsonUtils {
+public final class JsonUtils {
     @Getter
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
-    private static final SimpleModule customDeserializers = new SimpleModule() {{
+    private static final SimpleModule CUSTOM_DESERIALIZERS = new SimpleModule() {{
         addDeserializer(Input.class, new InputDeserializer(Input.class));
         addDeserializer(Game.class, new GameDeserializer(Game.class));
         addDeserializer(BaseAction.class, new BaseActionDeserializer(BaseAction.class));
@@ -43,7 +43,7 @@ public class JsonUtils {
         addDeserializer(BaseCard.class, new BaseCardDeserializer(BaseCard.class));
     }};
 
-    private static final SimpleModule customSerializers = new SimpleModule() {{
+    private static final SimpleModule CUSTOM_SERIALIZERS = new SimpleModule() {{
         addSerializer(Game.class, new GameSerializer(Game.class));
         addSerializer(Deck.class, new DeckSerializer(Deck.class));
         addSerializer(BaseHero.class, new BaseHeroSerializer(BaseHero.class));
@@ -54,7 +54,8 @@ public class JsonUtils {
         addSerializer(GetPlayerTurn.class, new GetPlayerTurnSerializer(GetPlayerTurn.class));
         addSerializer(GetPlayerMana.class, new GetPlayerManaSerializer(GetPlayerMana.class));
 
-        addSerializer(GetCardAtPosition.class, new GetCardAtPositionSerializer(GetCardAtPosition.class));
+        addSerializer(GetCardAtPosition.class,
+                new GetCardAtPositionSerializer(GetCardAtPosition.class));
         addSerializer(GetCardsInHand.class, new GetCardsInHandSerializer(GetCardsInHand.class));
         addSerializer(GetFrozenCardsOnTable.class,
                 new GetFrozenCardsOnTableSerializer(GetFrozenCardsOnTable.class));
@@ -75,10 +76,10 @@ public class JsonUtils {
 
 
     static {
-        objectMapper.registerModule(customDeserializers);
-        objectMapper.registerModule(customSerializers);
+        OBJECT_MAPPER.registerModule(CUSTOM_DESERIALIZERS);
+        OBJECT_MAPPER.registerModule(CUSTOM_SERIALIZERS);
 
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        OBJECT_MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
 }

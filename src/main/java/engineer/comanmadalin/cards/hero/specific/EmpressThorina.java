@@ -7,7 +7,7 @@ import engineer.comanmadalin.game.Game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpressThorina extends BaseHero {
+public final class EmpressThorina extends BaseHero {
     public EmpressThorina(final int mana, final int health, final String description,
                           final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);

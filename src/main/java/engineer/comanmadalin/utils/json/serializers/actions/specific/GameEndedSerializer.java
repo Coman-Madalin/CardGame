@@ -7,7 +7,7 @@ import engineer.comanmadalin.actions.specific.UseAttackHero;
 
 import java.io.IOException;
 
-public class GameEndedSerializer extends StdSerializer<UseAttackHero> {
+public final class GameEndedSerializer extends StdSerializer<UseAttackHero> {
     public GameEndedSerializer(final Class<UseAttackHero> t) {
         super(t);
     }
@@ -23,8 +23,9 @@ public class GameEndedSerializer extends StdSerializer<UseAttackHero> {
             return;
         }
 
-        if (value.getError() == null)
+        if (value.getError() == null) {
             return;
+        }
 
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("command", value.getCommand());

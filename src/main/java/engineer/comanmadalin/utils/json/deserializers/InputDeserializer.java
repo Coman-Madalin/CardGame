@@ -13,7 +13,7 @@ import engineer.comanmadalin.game.Input;
 
 import java.io.IOException;
 
-public class InputDeserializer extends StdDeserializer<Input> {
+public final class InputDeserializer extends StdDeserializer<Input> {
     public InputDeserializer(final Class<?> vc) {
         super(vc);
     }
@@ -25,9 +25,11 @@ public class InputDeserializer extends StdDeserializer<Input> {
 
         final Input toReturnInput = new Input();
 
-        final PlayerDecks playerOneDecks = root.get("playerOneDecks").traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
+        final PlayerDecks playerOneDecks = root.get("playerOneDecks")
+                .traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
         toReturnInput.getPlayersData()[0].setDecks(playerOneDecks);
-        final PlayerDecks playerTwoDecks = root.get("playerTwoDecks").traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
+        final PlayerDecks playerTwoDecks = root.get("playerTwoDecks")
+                .traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
         toReturnInput.getPlayersData()[1].setDecks(playerTwoDecks);
 
         final ArrayNode games = (ArrayNode) root.get("games");
