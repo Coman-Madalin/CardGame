@@ -8,12 +8,13 @@ import engineer.comanmadalin.actions.specific.PlaceCard;
 import java.io.IOException;
 
 public class PlaceCardSerializer extends StdSerializer<PlaceCard> {
-    public PlaceCardSerializer(Class<PlaceCard> t) {
+    public PlaceCardSerializer(final Class<PlaceCard> t) {
         super(t);
     }
 
     @Override
-    public void serialize(PlaceCard value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+    public void serialize(final PlaceCard value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         if (value.getError() == null) {
             return;
         }

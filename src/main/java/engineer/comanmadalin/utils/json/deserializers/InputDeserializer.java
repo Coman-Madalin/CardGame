@@ -14,38 +14,39 @@ import engineer.comanmadalin.game.Input;
 import java.io.IOException;
 
 public class InputDeserializer extends StdDeserializer<Input> {
-    public InputDeserializer(Class<?> vc) {
+    public InputDeserializer(final Class<?> vc) {
         super(vc);
     }
 
     @Override
-    public Input deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException {
-        JsonNode root = jsonParser.getCodec().readTree(jsonParser);
+    public Input deserialize(final JsonParser jsonParser, final DeserializationContext ctxt)
+            throws IOException {
+        final JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
-        Input toReturnInput = new Input();
+        final Input toReturnInput = new Input();
 
-        PlayerDecks playerOneDecks = root.get("playerOneDecks").traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
+        final PlayerDecks playerOneDecks = root.get("playerOneDecks").traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
         toReturnInput.getPlayersData()[0].setDecks(playerOneDecks);
-        PlayerDecks playerTwoDecks = root.get("playerTwoDecks").traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
+        final PlayerDecks playerTwoDecks = root.get("playerTwoDecks").traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
         toReturnInput.getPlayersData()[1].setDecks(playerTwoDecks);
 
-        ArrayNode games = (ArrayNode) root.get("games");
-        for (JsonNode game : games) {
-            int playerOneDeckIndex = game.get("startGame").get("playerOneDeckIdx").asInt();
-            int playerTwoDeckIndex = game.get("startGame").get("playerTwoDeckIdx").asInt();
+        final ArrayNode games = (ArrayNode) root.get("games");
+        for (final JsonNode game : games) {
+            final int playerOneDeckIndex = game.get("startGame").get("playerOneDeckIdx").asInt();
+            final int playerTwoDeckIndex = game.get("startGame").get("playerTwoDeckIdx").asInt();
 
             toReturnInput.getPlayersData()[0].getDeckIndexForGame().add(playerOneDeckIndex);
             toReturnInput.getPlayersData()[1].getDeckIndexForGame().add(playerTwoDeckIndex);
 
-            BaseCard playerOneHero = game.get("startGame").get("playerOneHero")
+            final BaseCard playerOneHero = game.get("startGame").get("playerOneHero")
                     .traverse(jsonParser.getCodec()).readValueAs(BaseCard.class);
-            BaseCard playerTwoHero = game.get("startGame").get("playerTwoHero")
+            final BaseCard playerTwoHero = game.get("startGame").get("playerTwoHero")
                     .traverse(jsonParser.getCodec()).readValueAs(BaseCard.class);
 
             toReturnInput.getPlayersData()[0].getHero().add((BaseHero) playerOneHero);
             toReturnInput.getPlayersData()[1].getHero().add((BaseHero) playerTwoHero);
 
-            JsonParser jsonParserGame = game.traverse(jsonParser.getCodec());
+            final JsonParser jsonParserGame = game.traverse(jsonParser.getCodec());
             toReturnInput.getGames().add(jsonParserGame.readValueAs(Game.class));
         }
         return toReturnInput;

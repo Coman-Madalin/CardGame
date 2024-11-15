@@ -8,12 +8,13 @@ import engineer.comanmadalin.actions.specific.CardUsesAttack;
 import java.io.IOException;
 
 public class CardUsesAttackSerializer extends StdSerializer<CardUsesAttack> {
-    public CardUsesAttackSerializer(Class<CardUsesAttack> t) {
+    public CardUsesAttackSerializer(final Class<CardUsesAttack> t) {
         super(t);
     }
 
     @Override
-    public void serialize(CardUsesAttack value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+    public void serialize(final CardUsesAttack value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         if (value.getError() == null)
             return;
 

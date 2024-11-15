@@ -8,12 +8,13 @@ import engineer.comanmadalin.actions.specific.UseAttackHero;
 import java.io.IOException;
 
 public class GameEndedSerializer extends StdSerializer<UseAttackHero> {
-    public GameEndedSerializer(Class<UseAttackHero> t) {
+    public GameEndedSerializer(final Class<UseAttackHero> t) {
         super(t);
     }
 
     @Override
-    public void serialize(UseAttackHero value, JsonGenerator jsonGenerator, SerializerProvider provider)
+    public void serialize(final UseAttackHero value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider)
             throws IOException {
         if (value.getResult() != null) {
             jsonGenerator.writeStartObject();
@@ -22,7 +23,7 @@ public class GameEndedSerializer extends StdSerializer<UseAttackHero> {
             return;
         }
 
-        if(value.getError() == null)
+        if (value.getError() == null)
             return;
 
         jsonGenerator.writeStartObject();

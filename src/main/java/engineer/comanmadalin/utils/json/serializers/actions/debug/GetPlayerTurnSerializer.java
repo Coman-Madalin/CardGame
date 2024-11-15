@@ -8,12 +8,13 @@ import engineer.comanmadalin.actions.debug.GetPlayerTurn;
 import java.io.IOException;
 
 public class GetPlayerTurnSerializer extends StdSerializer<GetPlayerTurn> {
-    public GetPlayerTurnSerializer(Class<GetPlayerTurn> t) {
+    public GetPlayerTurnSerializer(final Class<GetPlayerTurn> t) {
         super(t);
     }
 
     @Override
-    public void serialize(GetPlayerTurn value, JsonGenerator jsonGenerator, SerializerProvider provider)
+    public void serialize(final GetPlayerTurn value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider)
             throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("command", value.getCommand());

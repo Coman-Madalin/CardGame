@@ -8,13 +8,13 @@ import engineer.comanmadalin.actions.debug.GetFrozenCardsOnTable;
 import java.io.IOException;
 
 public class GetFrozenCardsOnTableSerializer extends StdSerializer<GetFrozenCardsOnTable> {
-    public GetFrozenCardsOnTableSerializer(Class<GetFrozenCardsOnTable> t) {
+    public GetFrozenCardsOnTableSerializer(final Class<GetFrozenCardsOnTable> t) {
         super(t);
     }
 
     @Override
-    public void serialize(GetFrozenCardsOnTable value, JsonGenerator jsonGenerator,
-                          SerializerProvider provider) throws IOException {
+    public void serialize(final GetFrozenCardsOnTable value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         jsonGenerator.writeStartObject();
 
         jsonGenerator.writeStringField("command", value.getCommand());

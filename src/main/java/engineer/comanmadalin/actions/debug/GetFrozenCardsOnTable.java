@@ -8,14 +8,15 @@ import engineer.comanmadalin.utils.json.JsonUtils;
 import java.util.List;
 
 public class GetFrozenCardsOnTable extends BaseAction {
-    public GetFrozenCardsOnTable(String command) {
+    public GetFrozenCardsOnTable(final String command) {
         super(command);
     }
 
     @Override
-    public void run(Game game) {
-        List<BaseMinionCard> frozenCards = game.findAllFrozenCards();
-        String serializedCards = String.valueOf(JsonUtils.getObjectMapper().valueToTree(frozenCards));
+    public void run(final Game game) {
+        final List<BaseMinionCard> frozenCards = game.findAllFrozenCards();
+        final String serializedCards = String
+                .valueOf(JsonUtils.getObjectMapper().valueToTree(frozenCards));
 
         this.setResult(serializedCards);
     }

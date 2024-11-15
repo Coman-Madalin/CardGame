@@ -12,23 +12,23 @@ import engineer.comanmadalin.game.GameConditions;
 import java.io.IOException;
 
 public class GameDeserializer extends StdDeserializer<Game> {
-    public GameDeserializer(Class<?> vc) {
+    public GameDeserializer(final Class<?> vc) {
         super(vc);
     }
 
     @Override
-    public Game deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+    public Game deserialize(final JsonParser jsonParser, final DeserializationContext ctxt)
             throws IOException {
-        JsonNode root = jsonParser.getCodec().readTree(jsonParser);
+        final JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
-        Game toReturnGame = new Game();
+        final Game toReturnGame = new Game();
         toReturnGame.setGameConditions(root.get("startGame")
                 .traverse(jsonParser.getCodec())
                 .readValueAs(GameConditions.class));
 
-        ArrayNode actions = (ArrayNode) root.get("actions");
-        for (JsonNode action : actions) {
-            JsonParser jsonParserAction = action.traverse(jsonParser.getCodec());
+        final ArrayNode actions = (ArrayNode) root.get("actions");
+        for (final JsonNode action : actions) {
+            final JsonParser jsonParserAction = action.traverse(jsonParser.getCodec());
 
             toReturnGame.getActions().add(jsonParserAction.readValueAs(BaseAction.class));
         }

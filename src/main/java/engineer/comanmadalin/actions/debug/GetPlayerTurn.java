@@ -8,12 +8,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GetPlayerTurn extends BaseAction {
-    public GetPlayerTurn(String command) {
+    public GetPlayerTurn(final String command) {
         super(command);
     }
 
     @Override
-    public void run(Game game) {
+    public void run(final Game game) {
         this.setResult(String.valueOf(game.getPlayerIDTurn() + 1));
     }
 }

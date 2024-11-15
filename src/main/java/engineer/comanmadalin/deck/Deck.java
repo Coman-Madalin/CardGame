@@ -16,13 +16,13 @@ public class Deck implements Cloneable {
     @Override
     public Deck clone() {
         try {
-            Deck clone = (Deck) super.clone();
+            final Deck clone = (Deck) super.clone();
             clone.cards = new ArrayList<>(cards.size());
-            for (BaseCard card : cards) {
+            for (final BaseCard card : cards) {
                 clone.cards.add(card.clone());
             }
             return clone;
-        } catch (CloneNotSupportedException e) {
+        } catch (final CloneNotSupportedException e) {
             throw new AssertionError();
         }
     }

@@ -6,7 +6,8 @@ import engineer.comanmadalin.game.Game;
 import java.util.ArrayList;
 
 public abstract class BaseHero extends BaseCard {
-    public BaseHero(int mana, int health, String description, ArrayList<String> colors, String name) {
+    public BaseHero(final int mana, int health, final String description,
+                    final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);
         health = 30;
     }

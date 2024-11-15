@@ -8,12 +8,13 @@ import engineer.comanmadalin.actions.debug.GetCardAtPosition;
 import java.io.IOException;
 
 public class GetCardAtPositionSerializer extends StdSerializer<GetCardAtPosition> {
-    public GetCardAtPositionSerializer(Class<GetCardAtPosition> t) {
+    public GetCardAtPositionSerializer(final Class<GetCardAtPosition> t) {
         super(t);
     }
 
     @Override
-    public void serialize(GetCardAtPosition value, JsonGenerator jsonGenerator, SerializerProvider provider)
+    public void serialize(final GetCardAtPosition value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider)
             throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("command", value.getCommand());

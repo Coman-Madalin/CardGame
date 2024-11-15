@@ -17,14 +17,14 @@ import java.util.List;
 public class GetCardAtPosition extends BaseAction {
     private Coordinates cardCoordinates;
 
-    public GetCardAtPosition(String command, JsonNode x, JsonNode y) {
+    public GetCardAtPosition(final String command, final JsonNode x, final JsonNode y) {
         super(command);
         cardCoordinates = new Coordinates(x.asInt(), y.asInt());
     }
 
     @Override
-    public void run(Game game) {
-        List<List<BaseMinionCard>> board = game.getBoard();
+    public void run(final Game game) {
+        final List<List<BaseMinionCard>> board = game.getBoard();
 
         if (board.size() <= cardCoordinates.getX()) {
             setError("No card available at that position.");
@@ -35,10 +35,11 @@ public class GetCardAtPosition extends BaseAction {
             return;
         }
 
-        BaseMinionCard card = game.getBoard().get(cardCoordinates.getX()).get(cardCoordinates.getY());
+        final BaseMinionCard card = game.getBoard().get(cardCoordinates.getX())
+                .get(cardCoordinates.getY());
 
-        ObjectMapper mapper = JsonUtils.getObjectMapper();
-        String serializedCard = String.valueOf(mapper.valueToTree(card));
+        final ObjectMapper mapper = JsonUtils.getObjectMapper();
+        final String serializedCard = String.valueOf(mapper.valueToTree(card));
 
         this.setResult(serializedCard);
     }

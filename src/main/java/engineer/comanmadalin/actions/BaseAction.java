@@ -11,7 +11,7 @@ public abstract class BaseAction {
     private String error = null;
     private String result = null;
 
-    public BaseAction(String command) {
+    public BaseAction(final String command) {
         this.command = command;
     }
 

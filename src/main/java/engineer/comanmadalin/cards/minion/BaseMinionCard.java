@@ -14,26 +14,26 @@ public class BaseMinionCard extends BaseCard implements Cloneable {
     private Boolean isTank = false;
     private Boolean isFrozen = false;
 
-    public BaseMinionCard(int mana, int health, String description,
-                          ArrayList<String> colors, String name) {
+    public BaseMinionCard(final int mana, final int health, final String description,
+                          final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);
     }
 
-    public void subtractAttackDamage(int toSubtract) {
+    public void subtractAttackDamage(final int toSubtract) {
         attackDamage -= toSubtract;
         if (attackDamage < 0) {
             attackDamage = 0;
         }
     }
 
-    public void heal(int toHeal) {
+    public void heal(final int toHeal) {
         this.setHealth(this.getHealth() + toHeal);
     }
 
 
     @Override
     public BaseMinionCard clone() {
-        BaseMinionCard clone = (BaseMinionCard) super.clone();
+        final BaseMinionCard clone = (BaseMinionCard) super.clone();
         clone.mustBePlaceOnFrontRow = this.mustBePlaceOnFrontRow;
         return clone;
     }

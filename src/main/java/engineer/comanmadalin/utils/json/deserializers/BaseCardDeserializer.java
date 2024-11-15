@@ -42,22 +42,23 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
         put("General Kocioraw", GeneralKocioraw.class);
     }};
 
-    public BaseCardDeserializer(Class<?> vc) {
+    public BaseCardDeserializer(final Class<?> vc) {
         super(vc);
     }
 
     @Override
-    public BaseCard deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException {
-        JsonNode root = jsonParser.getCodec().readTree(jsonParser);
+    public BaseCard deserialize(final JsonParser jsonParser, final DeserializationContext ctxt)
+            throws IOException {
+        final JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
-        String name = root.get("name").asText();
+        final String name = root.get("name").asText();
         int health = 30;
-        int manaCost = root.get("mana").asInt();
-        String description = root.get("description").asText();
-        ArrayList<String> colors = new ArrayList<>();
+        final int manaCost = root.get("mana").asInt();
+        final String description = root.get("description").asText();
+        final ArrayList<String> colors = new ArrayList<>();
 
-        ArrayNode colorsNode = (ArrayNode) root.get("colors");
-        for (JsonNode colorNode : colorsNode) {
+        final ArrayNode colorsNode = (ArrayNode) root.get("colors");
+        for (final JsonNode colorNode : colorsNode) {
             colors.add(colorNode.asText());
         }
 
@@ -67,7 +68,7 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
             health = root.get("health").asInt();
         }
 
-        Object o;
+        final Object o;
         try {
             // This constructor is the one present in BaseCard.java
             o = clazz.getConstructor(int.class, int.class, String.class, ArrayList.class,
@@ -76,10 +77,10 @@ public class BaseCardDeserializer extends StdDeserializer<BaseCard> {
 
             // If the card is a minion type, we need to set the attack damage
             if (nameToMinionClass.containsKey(name)) {
-                int attackDamage = root.get("attackDamage").asInt();
+                final int attackDamage = root.get("attackDamage").asInt();
                 clazz.getMethod("setAttackDamage", int.class).invoke(o, attackDamage);
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new RuntimeException(e);
         }
 

@@ -8,12 +8,13 @@ import engineer.comanmadalin.actions.debug.GetPlayerMana;
 import java.io.IOException;
 
 public class GetPlayerManaSerializer extends StdSerializer<GetPlayerMana> {
-    public GetPlayerManaSerializer(Class<GetPlayerMana> t) {
+    public GetPlayerManaSerializer(final Class<GetPlayerMana> t) {
         super(t);
     }
 
     @Override
-    public void serialize(GetPlayerMana value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+    public void serialize(final GetPlayerMana value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("command", value.getCommand());
         jsonGenerator.writeNumberField("playerIdx", value.getPlayerID());

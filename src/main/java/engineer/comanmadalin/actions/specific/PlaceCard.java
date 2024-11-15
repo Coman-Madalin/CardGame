@@ -15,23 +15,23 @@ import java.util.List;
 public class PlaceCard extends BaseAction {
     private int handID;
 
-    public PlaceCard(String command, JsonNode handID) {
+    public PlaceCard(final String command, final JsonNode handID) {
         super(command);
         this.handID = handID.asInt();
     }
 
     @Override
-    public void run(Game game) {
-        Player player = game.getPlayers()[game.getPlayerIDTurn()];
-        BaseMinionCard card = (BaseMinionCard) player.getHand().getCards().get(handID);
+    public void run(final Game game) {
+        final Player player = game.getPlayers()[game.getPlayerIDTurn()];
+        final BaseMinionCard card = (BaseMinionCard) player.getHand().getCards().get(handID);
 
         if (player.getMana() < card.getManaCost()) {
             setError("Not enough mana to place card on table.");
             return;
         }
 
-        int cardPlacementRequirement = card.getMustBePlaceOnFrontRow() ? 2 : 3;
-        List<BaseMinionCard> row;
+        final int cardPlacementRequirement = card.getMustBePlaceOnFrontRow() ? 2 : 3;
+        final List<BaseMinionCard> row;
         if (cardPlacementRequirement == 3) {
             row = game.getBoard().get(cardPlacementRequirement - 3 * game.getPlayerIDTurn());
         } else {

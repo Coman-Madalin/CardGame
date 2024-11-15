@@ -23,7 +23,7 @@ public class PlayerData {
     private ArrayList<BaseHero> hero = new ArrayList<>();
     private int wins = 0;
 
-    public void increaseWins(){
+    public void increaseWins() {
         wins++;
     }
 }

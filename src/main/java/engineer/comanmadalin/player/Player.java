@@ -18,12 +18,12 @@ public class Player {
     private BaseHero hero;
     private int mana = 0;
 
-    public Player(Deck deck, BaseHero hero) {
+    public Player(final Deck deck, final BaseHero hero) {
         this.deck = deck;
         this.hero = hero;
     }
 
-    public void addMana(int manaToAdd) {
+    public void addMana(final int manaToAdd) {
         this.mana += manaToAdd;
     }
 }

@@ -8,18 +8,19 @@ import engineer.comanmadalin.cards.hero.BaseHero;
 import java.io.IOException;
 
 public class BaseHeroSerializer extends StdSerializer<BaseHero> {
-    public BaseHeroSerializer(Class<BaseHero> t) {
+    public BaseHeroSerializer(final Class<BaseHero> t) {
         super(t);
     }
 
     @Override
-    public void serialize(BaseHero value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+    public void serialize(final BaseHero value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeNumberField("mana", value.getManaCost());
         jsonGenerator.writeStringField("description", value.getDescription());
 
         jsonGenerator.writeArrayFieldStart("colors");
-        for (String color : value.getColors()) {
+        for (final String color : value.getColors()) {
             jsonGenerator.writeString(color);
         }
         jsonGenerator.writeEndArray();

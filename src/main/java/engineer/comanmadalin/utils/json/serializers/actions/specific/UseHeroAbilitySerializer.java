@@ -8,12 +8,13 @@ import engineer.comanmadalin.actions.specific.UseHeroAbility;
 import java.io.IOException;
 
 public class UseHeroAbilitySerializer extends StdSerializer<UseHeroAbility> {
-    public UseHeroAbilitySerializer(Class<UseHeroAbility> t) {
+    public UseHeroAbilitySerializer(final Class<UseHeroAbility> t) {
         super(t);
     }
 
     @Override
-    public void serialize(UseHeroAbility value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+    public void serialize(final UseHeroAbility value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         if (value.getError() == null) {
             return;
         }

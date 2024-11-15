@@ -15,16 +15,16 @@ import lombok.Setter;
 public class UseHeroAbility extends BaseAction {
     int affectedRow;
 
-    public UseHeroAbility(String command, JsonNode affectedRow) {
+    public UseHeroAbility(final String command, final JsonNode affectedRow) {
         super(command);
         this.affectedRow = affectedRow.asInt();
     }
 
     @Override
-    public void run(Game game) {
-        int currentPlayerID = game.getPlayerIDTurn();
-        Player currentPlayer = game.getPlayers()[currentPlayerID];
-        BaseHero currentPlayerHero = currentPlayer.getHero();
+    public void run(final Game game) {
+        final int currentPlayerID = game.getPlayerIDTurn();
+        final Player currentPlayer = game.getPlayers()[currentPlayerID];
+        final BaseHero currentPlayerHero = currentPlayer.getHero();
 
         if (currentPlayerHero.getManaCost() > currentPlayer.getMana()) {
             this.setError("Not enough mana to use hero's ability.");

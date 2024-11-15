@@ -8,12 +8,13 @@ import engineer.comanmadalin.actions.debug.GetCardsInHand;
 import java.io.IOException;
 
 public class GetCardsInHandSerializer extends StdSerializer<GetCardsInHand> {
-    public GetCardsInHandSerializer(Class<GetCardsInHand> t) {
+    public GetCardsInHandSerializer(final Class<GetCardsInHand> t) {
         super(t);
     }
 
     @Override
-    public void serialize(GetCardsInHand value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+    public void serialize(final GetCardsInHand value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("command", value.getCommand());
         jsonGenerator.writeNumberField("playerIdx", value.getPlayerID());

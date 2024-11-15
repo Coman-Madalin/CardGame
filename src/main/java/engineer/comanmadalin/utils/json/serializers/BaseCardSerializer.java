@@ -9,12 +9,13 @@ import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import java.io.IOException;
 
 public class BaseCardSerializer extends StdSerializer<BaseCard> {
-    public BaseCardSerializer(Class<BaseCard> t) {
+    public BaseCardSerializer(final Class<BaseCard> t) {
         super(t);
     }
 
     @Override
-    public void serialize(BaseCard value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+    public void serialize(final BaseCard value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeNumberField("mana", value.getManaCost());
         jsonGenerator.writeNumberField("attackDamage",
@@ -23,7 +24,7 @@ public class BaseCardSerializer extends StdSerializer<BaseCard> {
         jsonGenerator.writeStringField("description", value.getDescription());
 
         jsonGenerator.writeArrayFieldStart("colors");
-        for (String color : value.getColors()) {
+        for (final String color : value.getColors()) {
             jsonGenerator.writeString(color);
         }
         jsonGenerator.writeEndArray();

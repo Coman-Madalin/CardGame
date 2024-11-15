@@ -4,12 +4,12 @@ import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.game.Game;
 
 public class EndPlayerTurn extends BaseAction {
-    public EndPlayerTurn(String command) {
+    public EndPlayerTurn(final String command) {
         super(command);
     }
 
     @Override
-    public void run(Game game) {
+    public void run(final Game game) {
         if (game.getNextEndTurnWillEndRound()) {
             game.startOfRound();
         }

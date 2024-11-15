@@ -7,12 +7,13 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import java.io.IOException;
 
 public class CardUsesAbilitySerializer extends StdSerializer<CardUsesAbility> {
-    public CardUsesAbilitySerializer(Class<CardUsesAbility> t) {
+    public CardUsesAbilitySerializer(final Class<CardUsesAbility> t) {
         super(t);
     }
 
     @Override
-    public void serialize(CardUsesAbility value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+    public void serialize(final CardUsesAbility value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         if (value.getError() == null)
             return;
 

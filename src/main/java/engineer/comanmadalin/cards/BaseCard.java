@@ -15,7 +15,8 @@ public abstract class BaseCard implements Cloneable {
     private String name;
     private Boolean attackedThisRound = false;
 
-    public BaseCard(int manaCost, int health, String description, ArrayList<String> colors, String name) {
+    public BaseCard(final int manaCost, final int health, final String description,
+                    final ArrayList<String> colors, final String name) {
         this.manaCost = manaCost;
         this.health = health;
         this.description = description;
@@ -23,17 +24,17 @@ public abstract class BaseCard implements Cloneable {
         this.name = name;
     }
 
-    public void takeDamage(int damage) {
+    public void takeDamage(final int damage) {
         this.health -= damage;
     }
 
     @Override
     public BaseCard clone() {
         try {
-            BaseCard clone = (BaseCard) super.clone();
+            final BaseCard clone = (BaseCard) super.clone();
             clone.colors = new ArrayList<>(colors);
             return clone;
-        } catch (CloneNotSupportedException e) {
+        } catch (final CloneNotSupportedException e) {
             throw new AssertionError();
         }
     }

@@ -9,14 +9,15 @@ import engineer.comanmadalin.deck.Deck;
 import java.io.IOException;
 
 public class DeckSerializer extends StdSerializer<Deck> {
-    public DeckSerializer(Class<Deck> t) {
+    public DeckSerializer(final Class<Deck> t) {
         super(t);
     }
 
     @Override
-    public void serialize(Deck value, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+    public void serialize(final Deck value, final JsonGenerator jsonGenerator,
+                          final SerializerProvider provider) throws IOException {
         jsonGenerator.writeStartArray();
-        for (BaseCard card : value.getCards()) {
+        for (final BaseCard card : value.getCards()) {
             jsonGenerator.writeObject(card);
         }
 

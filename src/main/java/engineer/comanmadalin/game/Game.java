@@ -33,8 +33,8 @@ public final class Game {
         System.out.println("Player2: " + players[1].getMana());
         System.out.println("Player1: " + players[0].getMana());
 
-        for (List<BaseMinionCard> row : board) {
-            for (BaseMinionCard baseMinionCard : row) {
+        for (final List<BaseMinionCard> row : board) {
+            for (final BaseMinionCard baseMinionCard : row) {
                 System.out.print(baseMinionCard.getName() + ":" + baseMinionCard.getManaCost() +
                         " " + baseMinionCard.getIsFrozen() + "|||");
             }
@@ -45,10 +45,10 @@ public final class Game {
     }
 
     public List<BaseMinionCard> findAllFrozenCards() {
-        List<BaseMinionCard> result = new ArrayList<>();
+        final List<BaseMinionCard> result = new ArrayList<>();
 
-        for (List<BaseMinionCard> row : board) {
-            for (BaseMinionCard minion : row) {
+        for (final List<BaseMinionCard> row : board) {
+            for (final BaseMinionCard minion : row) {
                 if (minion.getIsFrozen()) {
                     result.add(minion);
                 }
@@ -58,9 +58,9 @@ public final class Game {
         return result;
     }
 
-    public Boolean checkForTank(int playerID) {
-        List<BaseMinionCard> row = board.get(2 - playerID);
-        for (BaseMinionCard minion : row) {
+    public Boolean checkForTank(final int playerID) {
+        final List<BaseMinionCard> row = board.get(2 - playerID);
+        for (final BaseMinionCard minion : row) {
             if (minion.getIsTank()) {
                 return true;
             }
@@ -70,7 +70,7 @@ public final class Game {
     }
 
     public void unfreezePlayerCards() {
-        int startingRow;
+        final int startingRow;
         if (playerIDTurn == 0) {
             startingRow = 2;
         } else {
@@ -78,26 +78,26 @@ public final class Game {
         }
 
         for (int i = startingRow; i <= startingRow + 1; i++) {
-            for (BaseMinionCard minionCard : board.get(i)) {
+            for (final BaseMinionCard minionCard : board.get(i)) {
                 minionCard.setIsFrozen(false);
             }
         }
     }
 
     private void endOfRound() {
-        for (List<BaseMinionCard> row : board) {
-            for (BaseMinionCard minionCard : row) {
+        for (final List<BaseMinionCard> row : board) {
+            for (final BaseMinionCard minionCard : row) {
                 minionCard.setAttackedThisRound(false);
             }
         }
 
-        for (Player player : players) {
+        for (final Player player : players) {
             player.getHero().setAttackedThisRound(false);
         }
     }
 
     private void playActions() {
-        for (BaseAction action : actions) {
+        for (final BaseAction action : actions) {
             System.out.println("*****************************************");
             System.out.println(action.getClass());
             action.run(this);
@@ -128,17 +128,18 @@ public final class Game {
         }
     }
 
-    public void runGame(int gameNumber) {
+    public void runGame(final int gameNumber) {
         setBoard();
         playerIDTurn = gameConditions.getStartingPlayer() - 1;
-        Input inputInstance = Input.getINSTANCE();
+        final Input inputInstance = Input.getINSTANCE();
 
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
-            Deck playerDeck = inputInstance.getPlayersData()[i].getDecks().getDecks()
-                    .get(inputInstance.getPlayersData()[i].getDeckIndexForGame().get(gameNumber)).clone();
+            final Deck playerDeck = inputInstance.getPlayersData()[i].getDecks().getDecks()
+                    .get(inputInstance.getPlayersData()[i].getDeckIndexForGame()
+                            .get(gameNumber)).clone();
             Collections.shuffle(playerDeck.getCards(), new Random(gameConditions.getShuffleSeed()));
 
-            BaseHero playerHero = inputInstance.getPlayersData()[i].getHero().get(gameNumber);
+            final BaseHero playerHero = inputInstance.getPlayersData()[i].getHero().get(gameNumber);
 
             players[i] = new Player(playerDeck, playerHero);
         }

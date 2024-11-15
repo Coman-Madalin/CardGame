@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class Warden extends BaseMinionCard {
 
-    public Warden(int mana, int health, String description, ArrayList<String> colors, String name) {
+    public Warden(final int mana, final int health, final String description,
+                  final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);
         setMustBePlaceOnFrontRow(true);
         setIsTank(true);

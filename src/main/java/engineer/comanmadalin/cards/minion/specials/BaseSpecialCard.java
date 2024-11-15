@@ -5,8 +5,8 @@ import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import java.util.ArrayList;
 
 public abstract class BaseSpecialCard extends BaseMinionCard {
-    public BaseSpecialCard(int mana, int health, String description,
-                           ArrayList<String> colors, String name) {
+    public BaseSpecialCard(final int mana, final int health, final String description,
+                           final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);
     }
 

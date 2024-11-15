@@ -8,16 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmpressThorina extends BaseHero {
-    public EmpressThorina(int mana, int health, String description, ArrayList<String> colors, String name) {
+    public EmpressThorina(final int mana, final int health, final String description,
+                          final ArrayList<String> colors, final String name) {
         super(mana, health, description, colors, name);
     }
 
     @Override
-    public void ability(Game game, int affectedRow) {
+    public void ability(final Game game, final int affectedRow) {
         int maxHealth = 0;
         int maxHealthCardIndex = -1;
 
-        List<BaseMinionCard> row = game.getBoard().get(affectedRow);
+        final List<BaseMinionCard> row = game.getBoard().get(affectedRow);
         for (int i = 0; i < row.size(); i++) {
             if (maxHealth < row.get(i).getHealth()) {
                 maxHealth = row.get(i).getHealth();

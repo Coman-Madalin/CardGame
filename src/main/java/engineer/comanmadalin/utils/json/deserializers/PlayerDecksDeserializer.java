@@ -11,21 +11,22 @@ import engineer.comanmadalin.deck.PlayerDecks;
 import java.io.IOException;
 
 public class PlayerDecksDeserializer extends StdDeserializer<PlayerDecks> {
-    public PlayerDecksDeserializer(Class<?> vc) {
+    public PlayerDecksDeserializer(final Class<?> vc) {
         super(vc);
     }
 
     @Override
-    public PlayerDecks deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException {
+    public PlayerDecks deserialize(final JsonParser jsonParser, final DeserializationContext ctxt)
+            throws IOException {
 //        jsonParser.nextToken();
-        JsonNode root = jsonParser.getCodec().readTree(jsonParser);
+        final JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
-        PlayerDecks toReturnPlayerDecks = new PlayerDecks();
+        final PlayerDecks toReturnPlayerDecks = new PlayerDecks();
 //        toReturnPlayerDecks.setDecks(root.get("nrDecks").asInt(), root.get("nrCardsInDeck").asInt());
 
-        ArrayNode decks = (ArrayNode) root.get("decks");
-        for (JsonNode deck : decks) {
-            JsonParser jsonParserGame = deck.traverse(jsonParser.getCodec());
+        final ArrayNode decks = (ArrayNode) root.get("decks");
+        for (final JsonNode deck : decks) {
+            final JsonParser jsonParserGame = deck.traverse(jsonParser.getCodec());
 
             toReturnPlayerDecks.getDecks().add(jsonParserGame.readValueAs(Deck.class));
         }

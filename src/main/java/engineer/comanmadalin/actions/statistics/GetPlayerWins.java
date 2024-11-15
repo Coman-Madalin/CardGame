@@ -13,7 +13,7 @@ import java.util.Objects;
 public class GetPlayerWins extends BaseAction {
     private int playerID;
 
-    public GetPlayerWins(String command) {
+    public GetPlayerWins(final String command) {
         super(command);
         if (Objects.equals(command, "getPlayerOneWins")) {
             playerID = 0;
@@ -23,7 +23,7 @@ public class GetPlayerWins extends BaseAction {
     }
 
     @Override
-    public void run(Game game) {
+    public void run(final Game game) {
         this.setResult(String.valueOf(Input.getINSTANCE().getPlayersData()[playerID].getWins()));
     }
 }

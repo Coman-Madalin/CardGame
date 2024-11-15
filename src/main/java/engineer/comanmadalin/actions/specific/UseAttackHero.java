@@ -16,17 +16,19 @@ import java.util.List;
 public class UseAttackHero extends BaseAction {
     private final Coordinates coordinatesAttacker;
 
-    public UseAttackHero(String command, JsonNode coordinatesAttacker) {
+    public UseAttackHero(final String command, final JsonNode coordinatesAttacker) {
         super(command);
-        this.coordinatesAttacker = JsonUtils.getObjectMapper().convertValue(coordinatesAttacker, Coordinates.class);
+        this.coordinatesAttacker = JsonUtils.getObjectMapper()
+                .convertValue(coordinatesAttacker, Coordinates.class);
     }
 
     @Override
-    public void run(Game game) {
-        List<List<BaseMinionCard>> board = game.getBoard();
-        BaseMinionCard attacker = board.get(coordinatesAttacker.getX()).get(coordinatesAttacker.getY());
+    public void run(final Game game) {
+        final List<List<BaseMinionCard>> board = game.getBoard();
+        final BaseMinionCard attacker = board.get(coordinatesAttacker.getX())
+                .get(coordinatesAttacker.getY());
 
-        int heroOwnerID = (game.getPlayerIDTurn() + 1) % 2;
+        final int heroOwnerID = (game.getPlayerIDTurn() + 1) % 2;
 
         if (attacker.getIsFrozen()) {
             this.setError("Attacker card is frozen.");
@@ -43,7 +45,7 @@ public class UseAttackHero extends BaseAction {
             return;
         }
 
-        BaseHero heroAttacked = game.getPlayers()[heroOwnerID].getHero();
+        final BaseHero heroAttacked = game.getPlayers()[heroOwnerID].getHero();
         heroAttacked.takeDamage(attacker.getAttackDamage());
 
         attacker.setAttackedThisRound(true);

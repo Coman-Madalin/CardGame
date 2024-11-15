@@ -38,13 +38,13 @@ public final class Input {
         }
     }
 
-    public void increaseGamesPlayed(){
+    public void increaseGamesPlayed() {
         gamesPlayed++;
     }
 
     public void gamesToJson(final String filePath1) throws IOException {
-        ObjectMapper objectMapper = JsonUtils.getObjectMapper();
-        ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
+        final ObjectMapper objectMapper = JsonUtils.getObjectMapper();
+        final ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(filePath1), this.getGames());
     }
 

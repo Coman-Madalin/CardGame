@@ -20,18 +20,22 @@ public class CardUsesAbility extends BaseAction {
     private final Coordinates coordinatesAttacker;
     private final Coordinates coordinatesAttacked;
 
-    public CardUsesAbility(String command, JsonNode coordinatesAttacker, JsonNode coordinatesAttacked) {
+    public CardUsesAbility(final String command, final JsonNode coordinatesAttacker,
+                           final JsonNode coordinatesAttacked) {
         super(command);
-        this.coordinatesAttacker = JsonUtils.getObjectMapper().convertValue(coordinatesAttacker, Coordinates.class);
-        this.coordinatesAttacked = JsonUtils.getObjectMapper().convertValue(coordinatesAttacked, Coordinates.class);
+        this.coordinatesAttacker = JsonUtils.getObjectMapper()
+                .convertValue(coordinatesAttacker, Coordinates.class);
+        this.coordinatesAttacked = JsonUtils.getObjectMapper()
+                .convertValue(coordinatesAttacked, Coordinates.class);
     }
 
     @Override
-    public void run(Game game) {
-        List<List<BaseMinionCard>> board = game.getBoard();
-        BaseSpecialCard attacker = (BaseSpecialCard) board.get(coordinatesAttacker.getX())
+    public void run(final Game game) {
+        final List<List<BaseMinionCard>> board = game.getBoard();
+        final BaseSpecialCard attacker = (BaseSpecialCard) board.get(coordinatesAttacker.getX())
                 .get(coordinatesAttacker.getY());
-        BaseMinionCard attacked = board.get(coordinatesAttacked.getX()).get(coordinatesAttacked.getY());
+        final BaseMinionCard attacked = board.get(coordinatesAttacked.getX())
+                .get(coordinatesAttacked.getY());
 
         if (attacker.getIsFrozen()) {
             this.setError("Attacker card is frozen.");
@@ -43,14 +47,14 @@ public class CardUsesAbility extends BaseAction {
             return;
         }
 
-        int attackedPlayerID;
+        final int attackedPlayerID;
         if (coordinatesAttacked.getX() < 2) {
             attackedPlayerID = 1;
         } else {
             attackedPlayerID = 0;
         }
 
-        int attackerPlayerID;
+        final int attackerPlayerID;
         if (coordinatesAttacker.getX() < 2) {
             attackerPlayerID = 1;
         } else {

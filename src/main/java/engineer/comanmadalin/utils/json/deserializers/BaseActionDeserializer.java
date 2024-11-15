@@ -67,40 +67,37 @@ public class BaseActionDeserializer extends StdDeserializer<BaseAction> {
         put("getTotalGamesPlayed", GetTotalGamesPlayed.class);
     }};
 
-    public BaseActionDeserializer(Class<?> vc) {
+    public BaseActionDeserializer(final Class<?> vc) {
         super(vc);
     }
 
     @Override
-    public BaseAction deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+    public BaseAction deserialize(final JsonParser jsonParser, final DeserializationContext ctxt)
             throws IOException {
-        JsonNode root = jsonParser.getCodec().readTree(jsonParser);
+        final JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
-        String command = root.get("command").asText();
+        final String command = root.get("command").asText();
 
-        if (command.equals("getPlayerOneWins")) {
-            System.out.println("TRSAED");
-        }
-        String[] argumentsNameArray = nameToArguments.get(command);
-        Object[] argumentsArray = new Object[argumentsNameArray.length + 1];
+        final String[] argumentsNameArray = nameToArguments.get(command);
+        final Object[] argumentsArray = new Object[argumentsNameArray.length + 1];
         argumentsArray[0] = command;
         int index = 1;
 
-        for (String s : argumentsNameArray) {
+        for (final String s : argumentsNameArray) {
             argumentsArray[index] = root.get(s);
             index++;
         }
 
-        Class<?> clazz = nameToActionClass.get(command);
-        Object o;
+        final Class<?> clazz = nameToActionClass.get(command);
+        final Object o;
         try {
-            Class<?>[] argumentTypes = new Class<?>[argumentsNameArray.length + 1];
+            final Class<?>[] argumentTypes = new Class<?>[argumentsNameArray.length + 1];
             Arrays.fill(argumentTypes, JsonNode.class);
             argumentTypes[0] = String.class;
 
             o = clazz.getConstructor(argumentTypes).newInstance(argumentsArray);
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new RuntimeException(e);
         }
 

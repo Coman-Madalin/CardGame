@@ -5,12 +5,12 @@ import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.game.Input;
 
 public class GetTotalGamesPlayed extends BaseAction {
-    public GetTotalGamesPlayed(String command) {
+    public GetTotalGamesPlayed(final String command) {
         super(command);
     }
 
     @Override
-    public void run(Game game) {
+    public void run(final Game game) {
         this.setResult(String.valueOf(Input.getINSTANCE().getGamesPlayed()));
     }
 }

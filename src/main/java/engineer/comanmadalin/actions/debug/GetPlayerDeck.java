@@ -14,16 +14,16 @@ import lombok.Setter;
 public class GetPlayerDeck extends BaseAction {
     private int playerID;
 
-    public GetPlayerDeck(String command, JsonNode playerID) {
+    public GetPlayerDeck(final String command, final JsonNode playerID) {
         super(command);
         this.playerID = playerID.asInt();
     }
 
     @Override
-    public void run(Game game) {
-        Player player = game.getPlayers()[playerID - 1];
-        ObjectMapper mapper = JsonUtils.getObjectMapper();
-        String serializedDeck = String.valueOf(mapper.valueToTree(player.getDeck()));
+    public void run(final Game game) {
+        final Player player = game.getPlayers()[playerID - 1];
+        final ObjectMapper mapper = JsonUtils.getObjectMapper();
+        final String serializedDeck = String.valueOf(mapper.valueToTree(player.getDeck()));
 
         this.setResult(serializedDeck);
     }
