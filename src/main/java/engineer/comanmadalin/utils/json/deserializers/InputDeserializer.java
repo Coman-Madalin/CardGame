@@ -30,19 +30,18 @@ public final class InputDeserializer extends StdDeserializer<Input> {
     public Input deserialize(final JsonParser jsonParser, final DeserializationContext ctxt)
             throws IOException {
         final JsonNode root = jsonParser.getCodec().readTree(jsonParser);
+        final Input toReturnInput = Input.getInstance(true);
 
-        final Input toReturnInput = new Input();
-
-        final ArrayNode oneDecks = (ArrayNode) root.get("playerOneDecks").get("decks");
-        for (final JsonNode deck : oneDecks) {
-            final Deck deck1 = jsonParser.getCodec().treeToValue(deck, Deck.class);
-            toReturnInput.getPlayersData()[0].getDecks().add(deck1);
+        final ArrayNode playerOneDecks = (ArrayNode) root.get("playerOneDecks").get("decks");
+        for (final JsonNode decks : playerOneDecks) {
+            final Deck deck = jsonParser.getCodec().treeToValue(decks, Deck.class);
+            toReturnInput.getPlayersData()[0].getDecks().add(deck);
         }
 
-        final ArrayNode twoDecks = (ArrayNode) root.get("playerTwoDecks").get("decks");
-        for (final JsonNode deck : twoDecks) {
-            final Deck deck1 = jsonParser.getCodec().treeToValue(deck, Deck.class);
-            toReturnInput.getPlayersData()[1].getDecks().add(deck1);
+        final ArrayNode playerTwoDecks = (ArrayNode) root.get("playerTwoDecks").get("decks");
+        for (final JsonNode decks : playerTwoDecks) {
+            final Deck deck = jsonParser.getCodec().treeToValue(decks, Deck.class);
+            toReturnInput.getPlayersData()[1].getDecks().add(deck);
         }
 
         final ArrayNode games = (ArrayNode) root.get("games");

@@ -19,6 +19,6 @@ public final class GetTotalGamesPlayed extends BaseAction {
 
     @Override
     public void run(final Game game) {
-        this.setResult(String.valueOf(Input.getInstance().getGamesPlayedCounter()));
+        this.setResult(String.valueOf(Input.getInstance(false).getGamesPlayedCounter()));
     }
 }

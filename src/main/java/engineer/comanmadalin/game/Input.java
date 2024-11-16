@@ -18,21 +18,39 @@ import java.util.List;
 public final class Input {
     @Getter
     private static final int MAX_PLAYERS = 2;
-    @Getter
-    private static Input instance;
+    private static Input instance = null;
     private final PlayerData[] playersData = new PlayerData[MAX_PLAYERS];
     private final List<Game> games = new ArrayList<>();
-    private int gamesPlayed = 0;
+    private int gamesPlayedCounter = 0;
 
     /**
      * Instantiates a new Input.
      */
-    public Input() {
+    private Input() {
         Input.instance = this;
 
         for (int i = 0; i < MAX_PLAYERS; i++) {
             playersData[i] = new PlayerData();
         }
+    }
+
+    /**
+     * Singleton specific constructor / accessor
+     * <p>
+     * NOTE: Because we run all test together rather than one per Main run, we need a parameter.
+     * Even if it might deviate from the design pattern, we need it to be able to create
+     * different Inputs between tests.
+     *
+     * @param isNewGame forces the method to call the private constructor
+     * @return the static instance
+     */
+    // We used the parameter to force the constructor only once, in InputDeserializer.java
+    public static Input getInstance(final boolean isNewGame) {
+        if (instance == null || isNewGame) {
+            instance = new Input();
+        }
+
+        return instance;
     }
 
     /**
@@ -47,8 +65,8 @@ public final class Input {
     /**
      * Increase games played.
      */
-    public void increaseGamesPlayed() {
-        gamesPlayed++;
+    public void increaseGamesPlayedCounter() {
+        gamesPlayedCounter++;
     }
 
     /**

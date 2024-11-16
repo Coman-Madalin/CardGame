@@ -143,7 +143,7 @@ public final class Game {
     public void runGame(final int gameNumber) {
         setBoard();
         playerIDTurn = startingPlayer - 1;
-        final Input inputInstance = Input.getInstance();
+        final Input inputInstance = Input.getInstance(false);
 
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
             final Deck playerDeck = inputInstance.getPlayersData()[i].getDecks()

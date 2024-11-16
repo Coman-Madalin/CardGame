@@ -30,6 +30,8 @@ public final class GetPlayerWins extends BaseAction {
 
     @Override
     public void run(final Game game) {
-        this.setResult(String.valueOf(Input.getInstance().getPlayersData()[playerID].getWins()));
+        this.setResult(String.valueOf(
+                Input.getInstance(false).getPlayersData()[playerID].getWins()
+        ));
     }
 }
