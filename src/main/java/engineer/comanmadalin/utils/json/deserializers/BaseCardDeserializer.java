@@ -22,6 +22,7 @@ import engineer.comanmadalin.cards.minion.specific.Warden;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * The type Base card deserializer.
@@ -81,7 +82,7 @@ public final class BaseCardDeserializer extends StdDeserializer<BaseCard> {
         final Object o;
         try {
             // This constructor is the one present in BaseCard.java
-            o = clazz.getConstructor(int.class, int.class, String.class, ArrayList.class,
+            o = clazz.getConstructor(int.class, int.class, String.class, List.class,
                             String.class)
                     .newInstance(manaCost, health, description, colors, name);
 

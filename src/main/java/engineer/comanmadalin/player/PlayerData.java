@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The `PlayerData` class holds information about a player's decks,
@@ -17,8 +18,8 @@ import java.util.ArrayList;
 @Setter
 public final class PlayerData {
     private PlayerDecks decks = new PlayerDecks();
-    private ArrayList<Integer> deckIndexForGame = new ArrayList<>();
-    private ArrayList<BaseHero> hero = new ArrayList<>();
+    private List<Integer> deckIndexForGame = new ArrayList<>();
+    private List<BaseHero> hero = new ArrayList<>();
     private int wins = 0;
 
     /**

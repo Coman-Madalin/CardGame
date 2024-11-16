@@ -4,7 +4,6 @@ import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.game.Game;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +20,7 @@ public final class EmpressThorina extends BaseHero {
      * @param name        the name
      */
     public EmpressThorina(final int mana, final int health, final String description,
-                          final ArrayList<String> colors, final String name) {
+                          final List<String> colors, final String name) {
         super(mana, health, description, colors, name);
     }
 

@@ -5,7 +5,6 @@ import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.deck.Deck;
 import engineer.comanmadalin.player.Player;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,16 +21,17 @@ import static java.lang.Math.min;
 @Getter
 @Setter
 public final class Game {
-    private static final int NUMBER_OF_ROWS = 4;
     @Getter
     private static final int NUMBER_OF_ELEMENTS_PER_ROW = 5;
+    private static final int NUMBER_OF_ROWS = 4;
     private static final int MAXIMUM_MANA_INCREASE_ROUND = 10;
+    private int shuffleSeed;
+    private int startingPlayer;
     private Player[] players = new Player[Input.getMAX_PLAYERS()];
     private int roundNumber = 0;
     private List<List<BaseMinionCard>> board;
     private Boolean nextEndTurnWillEndRound = false;
     private int playerIDTurn;
-    private GameConditions gameConditions = new GameConditions();
     private List<BaseAction> actions = new ArrayList<>();
 
     /**
@@ -142,14 +142,14 @@ public final class Game {
      */
     public void runGame(final int gameNumber) {
         setBoard();
-        playerIDTurn = gameConditions.getStartingPlayer() - 1;
+        playerIDTurn = startingPlayer - 1;
         final Input inputInstance = Input.getInstance();
 
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
             final Deck playerDeck = inputInstance.getPlayersData()[i].getDecks().getDecks()
                     .get(inputInstance.getPlayersData()[i].getDeckIndexForGame()
                             .get(gameNumber)).clone();
-            Collections.shuffle(playerDeck.getCards(), new Random(gameConditions.getShuffleSeed()));
+            Collections.shuffle(playerDeck.getCards(), new Random(shuffleSeed));
 
             final BaseHero playerHero = inputInstance.getPlayersData()[i].getHero().get(gameNumber);
 

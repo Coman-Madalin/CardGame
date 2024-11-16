@@ -4,7 +4,7 @@ import engineer.comanmadalin.cards.BaseCard;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Base minion card.
@@ -27,7 +27,7 @@ public class BaseMinionCard extends BaseCard implements Cloneable {
      * @param name        the name
      */
     public BaseMinionCard(final int mana, final int health, final String description,
-                          final ArrayList<String> colors, final String name) {
+                          final List<String> colors, final String name) {
         super(mana, health, description, colors, name);
     }
 

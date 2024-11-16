@@ -13,7 +13,6 @@ import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.deck.Deck;
 import engineer.comanmadalin.deck.PlayerDecks;
 import engineer.comanmadalin.game.Game;
-import engineer.comanmadalin.game.GameConditions;
 import engineer.comanmadalin.game.Input;
 import engineer.comanmadalin.utils.json.deserializers.*;
 import engineer.comanmadalin.utils.json.serializers.BaseCardSerializer;
@@ -39,7 +38,6 @@ public final class JsonUtils {
         addDeserializer(Game.class, new GameDeserializer(Game.class));
         addDeserializer(BaseAction.class, new BaseActionDeserializer(BaseAction.class));
         addDeserializer(PlayerDecks.class, new PlayerDecksDeserializer(PlayerDecks.class));
-        addDeserializer(GameConditions.class, new GameConditionsDeserializer(Game.class));
         addDeserializer(Deck.class, new DeckDeserializer(Deck.class));
         addDeserializer(BaseCard.class, new BaseCardDeserializer(BaseCard.class));
     }};

@@ -3,7 +3,8 @@ package engineer.comanmadalin.cards.hero.specific;
 import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.game.Game;
 
-import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * The type General kocioraw.
@@ -19,7 +20,7 @@ public final class GeneralKocioraw extends BaseHero {
      * @param name        the name
      */
     public GeneralKocioraw(final int mana, final int health, final String description,
-                           final ArrayList<String> colors, final String name) {
+                           final List<String> colors, final String name) {
         super(mana, health, description, colors, name);
     }
 

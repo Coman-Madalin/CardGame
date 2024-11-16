@@ -27,8 +27,8 @@ public final class DeckDeserializer extends StdDeserializer<Deck> {
     public Deck deserialize(final JsonParser jsonParser, final DeserializationContext ctxt)
             throws IOException {
         final JsonNode root = jsonParser.getCodec().readTree(jsonParser);
-
         final Deck toReturnDeck = new Deck();
+
         final ArrayNode decks = (ArrayNode) root;
         for (final JsonNode deck : decks) {
             final JsonParser jsonParserGame = deck.traverse(jsonParser.getCodec());

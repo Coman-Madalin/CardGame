@@ -9,6 +9,7 @@ import lombok.Getter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Input.
@@ -20,7 +21,7 @@ public final class Input {
     @Getter
     private static Input instance;
     private final PlayerData[] playersData = new PlayerData[MAX_PLAYERS];
-    private final ArrayList<Game> games = new ArrayList<>();
+    private final List<Game> games = new ArrayList<>();
     private int gamesPlayed = 0;
 
     /**

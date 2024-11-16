@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Base card.
@@ -14,7 +15,7 @@ public abstract class BaseCard implements Cloneable {
     private int manaCost;
     private int health;
     private String description;
-    private ArrayList<String> colors;
+    private List<String> colors;
     private String name;
     private Boolean attackedThisRound = false;
 
@@ -28,7 +29,7 @@ public abstract class BaseCard implements Cloneable {
      * @param name        the name
      */
     public BaseCard(final int manaCost, final int health, final String description,
-                    final ArrayList<String> colors, final String name) {
+                    final List<String> colors, final String name) {
         this.manaCost = manaCost;
         this.health = health;
         this.description = description;

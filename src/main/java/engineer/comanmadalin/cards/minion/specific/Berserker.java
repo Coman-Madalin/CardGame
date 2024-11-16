@@ -2,7 +2,8 @@ package engineer.comanmadalin.cards.minion.specific;
 
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 
-import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * The type Berserker.
@@ -18,7 +19,7 @@ public final class Berserker extends BaseMinionCard {
      * @param name        the name
      */
     public Berserker(final int mana, final int health, final String description,
-                     final ArrayList<String> colors, final String name) {
+                     final List<String> colors, final String name) {
         super(mana, health, description, colors, name);
         setMustBePlaceOnFrontRow(false);
     }

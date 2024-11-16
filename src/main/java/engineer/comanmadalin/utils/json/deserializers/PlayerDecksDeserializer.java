@@ -32,7 +32,6 @@ public final class PlayerDecksDeserializer extends StdDeserializer<PlayerDecks> 
         final ArrayNode decks = (ArrayNode) root.get("decks");
         for (final JsonNode deck : decks) {
             final JsonParser jsonParserGame = deck.traverse(jsonParser.getCodec());
-
             toReturnPlayerDecks.getDecks().add(jsonParserGame.readValueAs(Deck.class));
         }
 

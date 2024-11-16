@@ -15,14 +15,11 @@ import java.util.List;
  */
 @Getter
 public final class PlaceCard extends BaseAction {
-    private final int handID;
-
     // Need to have this because of magic number code style check
     private static final int PLAYER_TWO_BACK_ROW = 0;
     private static final int PLAYER_TWO_FRONT_ROW = 1;
     private static final int PLAYER_ONE_FRONT_ROW = 2;
     private static final int PLAYER_ONE_BACK_ROW = 3;
-
     // Because we don't have tuples/pairs, we will use a concatenated string
     private static final HashMap<String, Integer> DATA_TO_ROW = new HashMap<>() {{
         put("1false", PLAYER_TWO_BACK_ROW);
@@ -30,6 +27,7 @@ public final class PlaceCard extends BaseAction {
         put("0true", PLAYER_ONE_FRONT_ROW);
         put("0false", PLAYER_ONE_BACK_ROW);
     }};
+    private final int handID;
 
     /**
      * Instantiates a new Place card.

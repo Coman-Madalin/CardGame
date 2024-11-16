@@ -3,7 +3,8 @@ package engineer.comanmadalin.cards.hero;
 import engineer.comanmadalin.cards.BaseCard;
 import engineer.comanmadalin.game.Game;
 
-import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * The type Base hero.
@@ -19,7 +20,7 @@ public abstract class BaseHero extends BaseCard {
      * @param name        the name
      */
     public BaseHero(final int mana, final int health, final String description,
-                    final ArrayList<String> colors, final String name) {
+                    final List<String> colors, final String name) {
         super(mana, health, description, colors, name);
     }
 
