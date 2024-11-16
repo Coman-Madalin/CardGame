@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import engineer.comanmadalin.cards.BaseCard;
 import engineer.comanmadalin.cards.hero.BaseHero;
-import engineer.comanmadalin.deck.PlayerDecks;
+import engineer.comanmadalin.deck.Deck;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.game.Input;
 
@@ -33,12 +33,17 @@ public final class InputDeserializer extends StdDeserializer<Input> {
 
         final Input toReturnInput = new Input();
 
-        final PlayerDecks playerOneDecks = root.get("playerOneDecks")
-                .traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
-        toReturnInput.getPlayersData()[0].setDecks(playerOneDecks);
-        final PlayerDecks playerTwoDecks = root.get("playerTwoDecks")
-                .traverse(jsonParser.getCodec()).readValueAs(PlayerDecks.class);
-        toReturnInput.getPlayersData()[1].setDecks(playerTwoDecks);
+        final ArrayNode oneDecks = (ArrayNode) root.get("playerOneDecks").get("decks");
+        for (final JsonNode deck : oneDecks) {
+            final Deck deck1 = jsonParser.getCodec().treeToValue(deck, Deck.class);
+            toReturnInput.getPlayersData()[0].getDecks().add(deck1);
+        }
+
+        final ArrayNode twoDecks = (ArrayNode) root.get("playerTwoDecks").get("decks");
+        for (final JsonNode deck : twoDecks) {
+            final Deck deck1 = jsonParser.getCodec().treeToValue(deck, Deck.class);
+            toReturnInput.getPlayersData()[1].getDecks().add(deck1);
+        }
 
         final ArrayNode games = (ArrayNode) root.get("games");
         for (final JsonNode game : games) {

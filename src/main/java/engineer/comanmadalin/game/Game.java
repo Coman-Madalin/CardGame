@@ -146,7 +146,7 @@ public final class Game {
         final Input inputInstance = Input.getInstance();
 
         for (int i = 0; i < Input.getMAX_PLAYERS(); i++) {
-            final Deck playerDeck = inputInstance.getPlayersData()[i].getDecks().getDecks()
+            final Deck playerDeck = inputInstance.getPlayersData()[i].getDecks()
                     .get(inputInstance.getPlayersData()[i].getDeckIndexForGame()
                             .get(gameNumber)).clone();
             Collections.shuffle(playerDeck.getCards(), new Random(shuffleSeed));

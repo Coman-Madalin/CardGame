@@ -1,7 +1,7 @@
 package engineer.comanmadalin.player;
 
 import engineer.comanmadalin.cards.hero.BaseHero;
-import engineer.comanmadalin.deck.PlayerDecks;
+import engineer.comanmadalin.deck.Deck;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 public final class PlayerData {
-    private PlayerDecks decks = new PlayerDecks();
+    private List<Deck> decks = new ArrayList<>();
     private List<Integer> deckIndexForGame = new ArrayList<>();
     private List<BaseHero> hero = new ArrayList<>();
     private int wins = 0;
