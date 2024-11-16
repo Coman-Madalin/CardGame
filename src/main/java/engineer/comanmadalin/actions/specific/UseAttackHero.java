@@ -65,7 +65,7 @@ public final class UseAttackHero extends BaseAction {
                     + " killed the enemy hero.");
 
             Input.getInstance().getPlayersData()[game.getPlayerIDTurn()].increaseWins();
-            Input.getInstance().increaseGamesPlayed();
+            Input.getInstance().increaseGamesPlayedCounter();
         }
     }
 }

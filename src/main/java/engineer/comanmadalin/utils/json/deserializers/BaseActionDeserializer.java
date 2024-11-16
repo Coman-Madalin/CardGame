@@ -11,64 +11,67 @@ import engineer.comanmadalin.actions.statistics.GetPlayerWins;
 import engineer.comanmadalin.actions.statistics.GetTotalGamesPlayed;
 
 import java.io.IOException;
+import java.util.AbstractMap;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The type Base action deserializer.
  */
 public final class BaseActionDeserializer extends StdDeserializer<BaseAction> {
-    private static final HashMap<String, String[]> NAME_TO_ARGUMENTS = new HashMap<>() {{
-        put("getCardAtPosition", new String[]{"x", "y"});
+    private static final Map<String, String[]> NAME_TO_ARGUMENTS = Map.ofEntries(
+            new AbstractMap.SimpleEntry<>("getCardAtPosition", new String[]{"x", "y"}),
 
-        put("getCardsInHand", new String[]{"playerIdx"});
-        put("getPlayerDeck", new String[]{"playerIdx"});
-        put("getPlayerHero", new String[]{"playerIdx"});
-        put("getPlayerMana", new String[]{"playerIdx"});
+            new AbstractMap.SimpleEntry<>("getCardsInHand", new String[]{"playerIdx"}),
+            new AbstractMap.SimpleEntry<>("getPlayerDeck", new String[]{"playerIdx"}),
+            new AbstractMap.SimpleEntry<>("getPlayerHero", new String[]{"playerIdx"}),
+            new AbstractMap.SimpleEntry<>("getPlayerMana", new String[]{"playerIdx"}),
 
-        put("cardUsesAbility", new String[]{"cardAttacker", "cardAttacked"});
-        put("cardUsesAttack", new String[]{"cardAttacker", "cardAttacked"});
-        put("useAttackHero", new String[]{"cardAttacker"});
+            new AbstractMap.SimpleEntry<>("cardUsesAbility",
+                    new String[]{"cardAttacker", "cardAttacked"}),
+            new AbstractMap.SimpleEntry<>("cardUsesAttack",
+                    new String[]{"cardAttacker", "cardAttacked"}),
+            new AbstractMap.SimpleEntry<>("useAttackHero", new String[]{"cardAttacker"}),
 
-        put("useHeroAbility", new String[]{"affectedRow"});
+            new AbstractMap.SimpleEntry<>("useHeroAbility", new String[]{"affectedRow"}),
 
-        put("placeCard", new String[]{"handIdx"});
+            new AbstractMap.SimpleEntry<>("placeCard", new String[]{"handIdx"}),
 
-        put("getFrozenCardsOnTable", new String[0]);
-        put("getCardsOnTable", new String[0]);
-        put("getPlayerTurn", new String[0]);
-        put("endPlayerTurn", new String[0]);
+            new AbstractMap.SimpleEntry<>("getFrozenCardsOnTable", new String[0]),
+            new AbstractMap.SimpleEntry<>("getCardsOnTable", new String[0]),
+            new AbstractMap.SimpleEntry<>("getPlayerTurn", new String[0]),
+            new AbstractMap.SimpleEntry<>("endPlayerTurn", new String[0]),
 
-        put("getPlayerOneWins", new String[0]);
-        put("getPlayerTwoWins", new String[0]);
-        put("getTotalGamesPlayed", new String[0]);
-    }};
+            new AbstractMap.SimpleEntry<>("getPlayerOneWins", new String[0]),
+            new AbstractMap.SimpleEntry<>("getPlayerTwoWins", new String[0]),
+            new AbstractMap.SimpleEntry<>("getTotalGamesPlayed", new String[0])
+    );
 
-    private static final HashMap<String, Class<?>> NAME_TO_ACTION_CLASS = new HashMap<>() {{
-        put("getCardAtPosition", GetCardAtPosition.class);
+    private static final Map<String, Class<?>> NAME_TO_ACTION_CLASS = Map.ofEntries(
+            new AbstractMap.SimpleEntry<>("getCardAtPosition", GetCardAtPosition.class),
 
-        put("getCardsInHand", GetCardsInHand.class);
-        put("getPlayerDeck", GetPlayerDeck.class);
-        put("getPlayerHero", GetPlayerHero.class);
-        put("getPlayerMana", GetPlayerMana.class);
+            new AbstractMap.SimpleEntry<>("getCardsInHand", GetCardsInHand.class),
+            new AbstractMap.SimpleEntry<>("getPlayerDeck", GetPlayerDeck.class),
+            new AbstractMap.SimpleEntry<>("getPlayerHero", GetPlayerHero.class),
+            new AbstractMap.SimpleEntry<>("getPlayerMana", GetPlayerMana.class),
 
-        put("cardUsesAbility", CardUsesAbility.class);
-        put("cardUsesAttack", CardUsesAttack.class);
-        put("useAttackHero", UseAttackHero.class);
+            new AbstractMap.SimpleEntry<>("cardUsesAbility", CardUsesAbility.class),
+            new AbstractMap.SimpleEntry<>("cardUsesAttack", CardUsesAttack.class),
+            new AbstractMap.SimpleEntry<>("useAttackHero", UseAttackHero.class),
 
-        put("useHeroAbility", UseHeroAbility.class);
+            new AbstractMap.SimpleEntry<>("useHeroAbility", UseHeroAbility.class),
 
-        put("placeCard", PlaceCard.class);
+            new AbstractMap.SimpleEntry<>("placeCard", PlaceCard.class),
 
-        put("getFrozenCardsOnTable", GetFrozenCardsOnTable.class);
-        put("getCardsOnTable", GetCardsOnTable.class);
-        put("getPlayerTurn", GetPlayerTurn.class);
-        put("endPlayerTurn", EndPlayerTurn.class);
+            new AbstractMap.SimpleEntry<>("getFrozenCardsOnTable", GetFrozenCardsOnTable.class),
+            new AbstractMap.SimpleEntry<>("getCardsOnTable", GetCardsOnTable.class),
+            new AbstractMap.SimpleEntry<>("getPlayerTurn", GetPlayerTurn.class),
+            new AbstractMap.SimpleEntry<>("endPlayerTurn", EndPlayerTurn.class),
 
-        put("getPlayerOneWins", GetPlayerWins.class);
-        put("getPlayerTwoWins", GetPlayerWins.class);
-        put("getTotalGamesPlayed", GetTotalGamesPlayed.class);
-    }};
+            new AbstractMap.SimpleEntry<>("getPlayerOneWins", GetPlayerWins.class),
+            new AbstractMap.SimpleEntry<>("getPlayerTwoWins", GetPlayerWins.class),
+            new AbstractMap.SimpleEntry<>("getTotalGamesPlayed", GetTotalGamesPlayed.class)
+    );
 
     /**
      * Instantiates a new Base action deserializer.

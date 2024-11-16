@@ -20,31 +20,32 @@ import engineer.comanmadalin.cards.minion.specific.Sentinel;
 import engineer.comanmadalin.cards.minion.specific.Warden;
 
 import java.io.IOException;
+import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The type Base card deserializer.
  */
 public final class BaseCardDeserializer extends StdDeserializer<BaseCard> {
-    private static final HashMap<String, Class<?>> NAME_TO_MINION_CLASS = new HashMap<>() {{
-        put("Sentinel", Sentinel.class);
-        put("Warden", Warden.class);
-        put("Berserker", Berserker.class);
-        put("Goliath", Goliath.class);
+    private static final Map<String, Class<?>> NAME_TO_MINION_CLASS = Map.ofEntries(
+            new AbstractMap.SimpleEntry<>("Sentinel", Sentinel.class),
+            new AbstractMap.SimpleEntry<>("Warden", Warden.class),
+            new AbstractMap.SimpleEntry<>("Berserker", Berserker.class),
+            new AbstractMap.SimpleEntry<>("Goliath", Goliath.class),
 
-        put("The Ripper", TheRipper.class);
-        put("Miraj", Miraj.class);
-        put("The Cursed One", TheCursedOne.class);
-        put("Disciple", Disciple.class);
-    }};
-    private static final HashMap<String, Class<?>> NAME_TO_HERO_CLASS = new HashMap<>() {{
-        put("Lord Royce", LordRoyce.class);
-        put("Empress Thorina", EmpressThorina.class);
-        put("King Mudface", KingMudface.class);
-        put("General Kocioraw", GeneralKocioraw.class);
-    }};
+            new AbstractMap.SimpleEntry<>("The Ripper", TheRipper.class),
+            new AbstractMap.SimpleEntry<>("Miraj", Miraj.class),
+            new AbstractMap.SimpleEntry<>("The Cursed One", TheCursedOne.class),
+            new AbstractMap.SimpleEntry<>("Disciple", Disciple.class)
+    );
+    private static final Map<String, Class<?>> NAME_TO_HERO_CLASS = Map.ofEntries(
+            new AbstractMap.SimpleEntry<>("Lord Royce", LordRoyce.class),
+            new AbstractMap.SimpleEntry<>("Empress Thorina", EmpressThorina.class),
+            new AbstractMap.SimpleEntry<>("King Mudface", KingMudface.class),
+            new AbstractMap.SimpleEntry<>("General Kocioraw", GeneralKocioraw.class)
+    );
 
     private static final int DEFAULT_HEALTH_VALUE = 30;
 
