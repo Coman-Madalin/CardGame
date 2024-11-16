@@ -27,20 +27,19 @@ public final class UseHeroAbility extends BaseAction {
         this.affectedRow = affectedRow.asInt();
     }
 
-    @Override
-    public void run(final Game game) {
+    private boolean isValid(final Game game) {
         final int currentPlayerID = game.getPlayerIDTurn();
         final Player currentPlayer = game.getPlayers()[currentPlayerID];
         final BaseHero currentPlayerHero = currentPlayer.getHero();
 
         if (currentPlayerHero.getManaCost() > currentPlayer.getMana()) {
             this.setError("Not enough mana to use hero's ability.");
-            return;
+            return false;
         }
 
         if (currentPlayerHero.getAttackedThisRound()) {
             this.setError("Hero has already attacked this turn.");
-            return;
+            return false;
         }
 
         int playerIDOfTargetedRow = 0;
@@ -50,14 +49,26 @@ public final class UseHeroAbility extends BaseAction {
         if (currentPlayerHero instanceof LordRoyce || currentPlayerHero instanceof EmpressThorina) {
             if (playerIDOfTargetedRow == currentPlayerID) {
                 this.setError("Selected row does not belong to the enemy.");
-                return;
+                return false;
             }
         } else {
             if (playerIDOfTargetedRow != currentPlayerID) {
                 this.setError("Selected row does not belong to the current player.");
-                return;
+                return false;
             }
         }
+        return true;
+    }
+
+    @Override
+    public void run(final Game game) {
+        if (!isValid(game)) {
+            return;
+        }
+
+        final int currentPlayerID = game.getPlayerIDTurn();
+        final Player currentPlayer = game.getPlayers()[currentPlayerID];
+        final BaseHero currentPlayerHero = currentPlayer.getHero();
 
         currentPlayer.addMana(-currentPlayerHero.getManaCost());
         currentPlayerHero.ability(game, affectedRow);

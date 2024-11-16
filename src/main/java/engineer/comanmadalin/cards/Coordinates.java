@@ -1,4 +1,4 @@
-package engineer.comanmadalin.utils;
+package engineer.comanmadalin.cards;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

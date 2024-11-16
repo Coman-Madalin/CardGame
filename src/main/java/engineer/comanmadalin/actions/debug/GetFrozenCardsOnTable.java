@@ -3,7 +3,7 @@ package engineer.comanmadalin.actions.debug;
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.game.Game;
-import engineer.comanmadalin.utils.json.JsonUtils;
+import engineer.comanmadalin.json.JsonUtils;
 
 import java.util.List;
 

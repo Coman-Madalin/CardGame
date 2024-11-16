@@ -2,8 +2,8 @@ package engineer.comanmadalin.game;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import engineer.comanmadalin.json.JsonUtils;
 import engineer.comanmadalin.player.PlayerData;
-import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
 
 import java.io.File;

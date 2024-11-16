@@ -2,6 +2,7 @@ package engineer.comanmadalin.actions.specific;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import engineer.comanmadalin.actions.BaseAction;
+import engineer.comanmadalin.cards.Coordinates;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.cards.minion.specials.BaseSpecialCard;
 import engineer.comanmadalin.cards.minion.specials.specific.Disciple;
@@ -9,11 +10,12 @@ import engineer.comanmadalin.cards.minion.specials.specific.Miraj;
 import engineer.comanmadalin.cards.minion.specials.specific.TheCursedOne;
 import engineer.comanmadalin.cards.minion.specials.specific.TheRipper;
 import engineer.comanmadalin.game.Game;
-import engineer.comanmadalin.utils.Coordinates;
-import engineer.comanmadalin.utils.json.JsonUtils;
+import engineer.comanmadalin.json.JsonUtils;
 import lombok.Getter;
 
 import java.util.List;
+
+import static engineer.comanmadalin.actions.CardUtils.isCardValid;
 
 /**
  * The type Card uses ability.
@@ -39,33 +41,46 @@ public final class CardUsesAbility extends BaseAction {
                 .convertValue(coordinatesAttacked, Coordinates.class);
     }
 
-    @Override
-    public void run(final Game game) {
+    private boolean isValid(final Game game) {
         final List<List<BaseMinionCard>> board = game.getBoard();
-        final BaseSpecialCard attacker = (BaseSpecialCard) board.get(coordinatesAttacker.getX())
-                .get(coordinatesAttacker.getY());
-        final BaseMinionCard attacked = board.get(coordinatesAttacked.getX())
-                .get(coordinatesAttacked.getY());
+
+        String result = isCardValid(board, getCoordinatesAttacker());
+        if (result != null) {
+            setError(result);
+            return false;
+        }
+        result = isCardValid(board, getCoordinatesAttacked());
+        if (result != null) {
+            setError(result);
+            return false;
+        }
+
+        final BaseSpecialCard attacker = (BaseSpecialCard) board
+                .get(getCoordinatesAttacker().getX())
+                .get(getCoordinatesAttacker().getY());
+        final BaseMinionCard attacked = board
+                .get(getCoordinatesAttacked().getX())
+                .get(getCoordinatesAttacked().getY());
 
         if (attacker.getIsFrozen()) {
-            this.setError("Attacker card is frozen.");
-            return;
+            setError("Attacker card is frozen.");
+            return false;
         }
 
         if (attacker.getAttackedThisRound()) {
-            this.setError("Attacker card has already attacked this turn.");
-            return;
+            setError("Attacker card has already attacked this turn.");
+            return false;
         }
 
         final int attackedPlayerID;
-        if (coordinatesAttacked.getX() < 2) {
+        if (getCoordinatesAttacked().getX() < 2) {
             attackedPlayerID = 1;
         } else {
             attackedPlayerID = 0;
         }
 
         final int attackerPlayerID;
-        if (coordinatesAttacker.getX() < 2) {
+        if (getCoordinatesAttacker().getX() < 2) {
             attackerPlayerID = 1;
         } else {
             attackerPlayerID = 0;
@@ -73,21 +88,37 @@ public final class CardUsesAbility extends BaseAction {
 
         if (attacker instanceof Disciple) {
             if (attackedPlayerID != attackerPlayerID) {
-                this.setError("Attacked card does not belong to the current player.");
-                return;
+                setError("Attacked card does not belong to the current player.");
+                return false;
             }
         } else if (attacker instanceof TheRipper || attacker instanceof Miraj
                 || attacker instanceof TheCursedOne) {
             if (attackedPlayerID == attackerPlayerID) {
-                this.setError("Attacked card does not belong to the enemy.");
-                return;
+                setError("Attacked card does not belong to the enemy.");
+                return false;
             }
 
             if (!attacked.getIsTank() && game.checkForTank(attackedPlayerID)) {
-                this.setError("Attacked card is not of type 'Tank'.");
-                return;
+                setError("Attacked card is not of type 'Tank'.");
+                return false;
             }
         }
+        return true;
+    }
+
+    @Override
+    public void run(final Game game) {
+        if (!isValid(game)) {
+            return;
+        }
+
+        final List<List<BaseMinionCard>> board = game.getBoard();
+        final BaseSpecialCard attacker = (BaseSpecialCard) board
+                .get(coordinatesAttacker.getX())
+                .get(coordinatesAttacker.getY());
+        final BaseMinionCard attacked = board
+                .get(coordinatesAttacked.getX())
+                .get(coordinatesAttacked.getY());
 
         attacker.ability(attacked);
         attacker.setAttackedThisRound(true);

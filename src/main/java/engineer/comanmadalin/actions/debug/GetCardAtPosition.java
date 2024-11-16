@@ -3,10 +3,11 @@ package engineer.comanmadalin.actions.debug;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import engineer.comanmadalin.actions.BaseAction;
+import engineer.comanmadalin.actions.CardUtils;
+import engineer.comanmadalin.cards.Coordinates;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.game.Game;
-import engineer.comanmadalin.utils.Coordinates;
-import engineer.comanmadalin.utils.json.JsonUtils;
+import engineer.comanmadalin.json.JsonUtils;
 import lombok.Getter;
 
 import java.util.List;
@@ -33,13 +34,9 @@ public final class GetCardAtPosition extends BaseAction {
     @Override
     public void run(final Game game) {
         final List<List<BaseMinionCard>> board = game.getBoard();
-
-        if (board.size() <= cardCoordinates.getX()) {
-            setError("No card available at that position.");
-            return;
-        }
-        if (board.get(getCardCoordinates().getX()).size() <= cardCoordinates.getY()) {
-            setError("No card available at that position.");
+        final String result = CardUtils.isCardValid(board, cardCoordinates);
+        if (result != null) {
+            setError(result);
             return;
         }
 

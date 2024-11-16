@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.game.Game;
+import engineer.comanmadalin.json.JsonUtils;
 import engineer.comanmadalin.player.Player;
-import engineer.comanmadalin.utils.json.JsonUtils;
 import lombok.Getter;
 
 /**
