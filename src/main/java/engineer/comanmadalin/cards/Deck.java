@@ -1,6 +1,5 @@
-package engineer.comanmadalin.deck;
+package engineer.comanmadalin.cards;
 
-import engineer.comanmadalin.cards.BaseCard;
 import lombok.Getter;
 
 import java.util.ArrayList;
