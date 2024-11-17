@@ -3,7 +3,7 @@ package engineer.comanmadalin.actions.debug;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import engineer.comanmadalin.actions.BaseAction;
-import engineer.comanmadalin.actions.CardUtils;
+import engineer.comanmadalin.cards.CardUtils;
 import engineer.comanmadalin.cards.Coordinates;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.game.Game;

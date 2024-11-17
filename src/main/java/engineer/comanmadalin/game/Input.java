@@ -41,12 +41,12 @@ public final class Input {
      * Even if it might deviate from the design pattern, we need it to be able to create
      * different Inputs between tests.
      *
-     * @param isNewGame forces the method to call the private constructor
+     * @param isNewTest forces the method to call the private constructor
      * @return the static instance
      */
     // We used the parameter to force the constructor only once, in InputDeserializer.java
-    public static Input getInstance(final boolean isNewGame) {
-        if (instance == null || isNewGame) {
+    public static Input getInstance(final boolean isNewTest) {
+        if (instance == null || isNewTest) {
             instance = new Input();
         }
 

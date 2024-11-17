@@ -1,9 +1,9 @@
 package engineer.comanmadalin.game;
 
 import engineer.comanmadalin.actions.BaseAction;
+import engineer.comanmadalin.cards.Deck;
 import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
-import engineer.comanmadalin.cards.Deck;
 import engineer.comanmadalin.player.Player;
 import lombok.Getter;
 import lombok.Setter;

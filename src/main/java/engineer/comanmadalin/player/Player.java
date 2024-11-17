@@ -1,7 +1,7 @@
 package engineer.comanmadalin.player;
 
-import engineer.comanmadalin.cards.hero.BaseHero;
 import engineer.comanmadalin.cards.Deck;
+import engineer.comanmadalin.cards.hero.BaseHero;
 import lombok.Getter;
 
 /**

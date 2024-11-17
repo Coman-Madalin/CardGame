@@ -10,7 +10,7 @@ import lombok.Getter;
 
 import java.util.List;
 
-import static engineer.comanmadalin.actions.CardUtils.isCardValid;
+import static engineer.comanmadalin.cards.CardUtils.isCardValid;
 
 /**
  * The type Card uses attack.

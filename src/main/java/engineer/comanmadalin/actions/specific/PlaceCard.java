@@ -16,7 +16,6 @@ import java.util.Map;
  */
 @Getter
 public final class PlaceCard extends BaseAction {
-
     // Because we don't have tuples/pairs, we will use a concatenated string
     private static final Map<String, Integer> DATA_TO_ROW = Map.ofEntries(
             new AbstractMap.SimpleEntry<>("1false", 0),
@@ -24,7 +23,6 @@ public final class PlaceCard extends BaseAction {
             new AbstractMap.SimpleEntry<>("0true", 2),
             new AbstractMap.SimpleEntry<>("0false", 3)
     );
-
     private final int handID;
 
     /**
