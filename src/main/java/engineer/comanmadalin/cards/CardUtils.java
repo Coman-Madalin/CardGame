@@ -1,6 +1,5 @@
-package engineer.comanmadalin.actions;
+package engineer.comanmadalin.cards;
 
-import engineer.comanmadalin.cards.Coordinates;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 
 import java.util.List;
