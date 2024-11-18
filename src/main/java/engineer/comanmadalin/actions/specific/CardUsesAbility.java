@@ -5,10 +5,6 @@ import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.cards.Coordinates;
 import engineer.comanmadalin.cards.minion.BaseMinionCard;
 import engineer.comanmadalin.cards.minion.specials.BaseSpecialCard;
-import engineer.comanmadalin.cards.minion.specials.specific.Disciple;
-import engineer.comanmadalin.cards.minion.specials.specific.Miraj;
-import engineer.comanmadalin.cards.minion.specials.specific.TheCursedOne;
-import engineer.comanmadalin.cards.minion.specials.specific.TheRipper;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.json.JsonUtils;
 import lombok.Getter;
@@ -86,23 +82,14 @@ public final class CardUsesAbility extends BaseAction {
             attackerPlayerID = 0;
         }
 
-        if (attacker instanceof Disciple) {
-            if (attackedPlayerID != attackerPlayerID) {
-                setError("Attacked card does not belong to the current player.");
-                return false;
-            }
-        } else if (attacker instanceof TheRipper || attacker instanceof Miraj
-                || attacker instanceof TheCursedOne) {
-            if (attackedPlayerID == attackerPlayerID) {
-                setError("Attacked card does not belong to the enemy.");
-                return false;
-            }
+        result = attacker.canUseAbility(attackedPlayerID, attackerPlayerID, attacked.getIsTank(),
+                game.checkForTank(attackedPlayerID));
 
-            if (!attacked.getIsTank() && game.checkForTank(attackedPlayerID)) {
-                setError("Attacked card is not of type 'Tank'.");
-                return false;
-            }
+        if (result != null) {
+            this.setError(result);
+            return false;
         }
+
         return true;
     }
 

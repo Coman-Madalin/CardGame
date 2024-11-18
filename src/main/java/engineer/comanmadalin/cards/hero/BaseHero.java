@@ -31,4 +31,11 @@ public abstract class BaseHero extends BaseCard {
      * @param affectedRow the affected row
      */
     public abstract void ability(Game game, int affectedRow);
+
+    public String canUseAbility(final int targetedPlayerID, final int currentPlayerID) {
+        if (targetedPlayerID == currentPlayerID) {
+            return "Selected row does not belong to the enemy.";
+        }
+        return null;
+    }
 }

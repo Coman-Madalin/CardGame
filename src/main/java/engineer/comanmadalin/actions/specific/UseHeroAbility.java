@@ -3,8 +3,6 @@ package engineer.comanmadalin.actions.specific;
 import com.fasterxml.jackson.databind.JsonNode;
 import engineer.comanmadalin.actions.BaseAction;
 import engineer.comanmadalin.cards.hero.BaseHero;
-import engineer.comanmadalin.cards.hero.specific.EmpressThorina;
-import engineer.comanmadalin.cards.hero.specific.LordRoyce;
 import engineer.comanmadalin.game.Game;
 import engineer.comanmadalin.player.Player;
 import lombok.Getter;
@@ -42,21 +40,17 @@ public final class UseHeroAbility extends BaseAction {
             return false;
         }
 
-        int playerIDOfTargetedRow = 0;
+        int targetedPlayerID = 0;
         if (affectedRow < 2) {
-            playerIDOfTargetedRow = 1;
+            targetedPlayerID = 1;
         }
-        if (currentPlayerHero instanceof LordRoyce || currentPlayerHero instanceof EmpressThorina) {
-            if (playerIDOfTargetedRow == currentPlayerID) {
-                this.setError("Selected row does not belong to the enemy.");
-                return false;
-            }
-        } else {
-            if (playerIDOfTargetedRow != currentPlayerID) {
-                this.setError("Selected row does not belong to the current player.");
-                return false;
-            }
+
+        final String result = currentPlayerHero.canUseAbility(targetedPlayerID, currentPlayerID);
+        if (result != null) {
+            this.setError(result);
+            return false;
         }
+
         return true;
     }
 

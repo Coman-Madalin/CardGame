@@ -1,4 +1,6 @@
-# GwentStone
+##### Copyright 2024 Andrei-Madalin Coman (comanandreimadalin@gmail.com)
+
+# GwentStone Light
 
 ## Overview
 

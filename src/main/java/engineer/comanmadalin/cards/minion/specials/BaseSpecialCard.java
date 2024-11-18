@@ -29,4 +29,17 @@ public abstract class BaseSpecialCard extends BaseMinionCard {
      * @param target the target
      */
     public abstract void ability(BaseMinionCard target);
+
+    public String canUseAbility(final int targetedPlayerID, final int currentPlayerID,
+                                final boolean isTargetedCardTank, final boolean areThereTanks) {
+        if (targetedPlayerID == currentPlayerID) {
+            return "Attacked card does not belong to the enemy.";
+        }
+
+        if (!isTargetedCardTank && areThereTanks) {
+            return "Attacked card is not of type 'Tank'.";
+        }
+
+        return null;
+    }
 }

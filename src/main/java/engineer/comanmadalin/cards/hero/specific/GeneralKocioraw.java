@@ -30,4 +30,12 @@ public final class GeneralKocioraw extends BaseHero {
         game.getBoard().get(affectedRow)
                 .forEach((baseMinion) -> baseMinion.subtractAttackDamage(-1));
     }
+
+    @Override
+    public String canUseAbility(final int targetedPlayerID, final int currentPlayerID) {
+        if (targetedPlayerID != currentPlayerID) {
+            return "Selected row does not belong to the current player.";
+        }
+        return null;
+    }
 }

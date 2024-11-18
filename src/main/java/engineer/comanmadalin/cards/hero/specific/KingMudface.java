@@ -28,4 +28,12 @@ public final class KingMudface extends BaseHero {
     public void ability(final Game game, final int affectedRow) {
         game.getBoard().get(affectedRow).forEach((baseMinion) -> baseMinion.heal(1));
     }
+
+    @Override
+    public String canUseAbility(final int targetedPlayerID, final int currentPlayerID) {
+        if (targetedPlayerID != currentPlayerID) {
+            return "Selected row does not belong to the current player.";
+        }
+        return null;
+    }
 }
